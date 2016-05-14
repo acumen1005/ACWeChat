@@ -1,0 +1,26 @@
+//
+//  PrefixHeader.pch
+//  ChatDemo
+//
+//  Created by acumen on 16/4/27.
+//  Copyright © 2016年 acumen. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "UIViewExt.h"
+#import "SVProgressHUD.h"
+#import "XMPPTool.h"
+
+
+#define XMPP_DOMAIN @"192.168.0.23"
+#define LOCAL_HOST @"acumendemacbook-pro.local"
+
+#define kScreenWidth [[UIScreen mainScreen] bounds].size.width
+#define kScreenHeight [[UIScreen mainScreen] bounds].size.height
+
+#endif /* PrefixHeader_pch */
