@@ -228,6 +228,11 @@
 		4C87EE311CD1FA9C00ACBD15 /* SingleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C87EE301CD1FA9C00ACBD15 /* SingleViewController.m */; };
 		4C87EE361CD1FB4600ACBD15 /* MyChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C87EE331CD1FB4600ACBD15 /* MyChatCell.m */; };
 		4C87EE371CD1FB4600ACBD15 /* OtherChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C87EE351CD1FB4600ACBD15 /* OtherChatCell.m */; };
+		4CADD9191D48B39C008AF597 /* CommonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CADD9181D48B39C008AF597 /* CommonTableViewController.m */; };
+		4CADD91C1D48B44F008AF597 /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CADD91B1D48B44F008AF597 /* FindViewController.m */; };
+		4CADD9201D48B4EC008AF597 /* CommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CADD91F1D48B4EC008AF597 /* CommonCell.m */; };
+		4CADD9231D48B7AE008AF597 /* FindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CADD9221D48B7AE008AF597 /* FindCell.m */; };
+		4CADD9261D48D764008AF597 /* HeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CADD9251D48D764008AF597 /* HeaderFooterView.m */; };
 		4CBC99B71CD53C5300E6E807 /* AddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC99B61CD53C5300E6E807 /* AddFriendsViewController.m */; };
 		4CBC99BA1CD53ECD00E6E807 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC99B91CD53ECD00E6E807 /* RegisterViewController.m */; };
 /* End PBXBuildFile section */
@@ -707,6 +712,16 @@
 		4C87EE331CD1FB4600ACBD15 /* MyChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyChatCell.m; sourceTree = "<group>"; };
 		4C87EE341CD1FB4600ACBD15 /* OtherChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherChatCell.h; sourceTree = "<group>"; };
 		4C87EE351CD1FB4600ACBD15 /* OtherChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherChatCell.m; sourceTree = "<group>"; };
+		4CADD9171D48B39C008AF597 /* CommonTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTableViewController.h; sourceTree = "<group>"; };
+		4CADD9181D48B39C008AF597 /* CommonTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewController.m; sourceTree = "<group>"; };
+		4CADD91A1D48B44F008AF597 /* FindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindViewController.h; sourceTree = "<group>"; };
+		4CADD91B1D48B44F008AF597 /* FindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindViewController.m; sourceTree = "<group>"; };
+		4CADD91E1D48B4EC008AF597 /* CommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonCell.h; sourceTree = "<group>"; };
+		4CADD91F1D48B4EC008AF597 /* CommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonCell.m; sourceTree = "<group>"; };
+		4CADD9211D48B7AE008AF597 /* FindCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindCell.h; sourceTree = "<group>"; };
+		4CADD9221D48B7AE008AF597 /* FindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindCell.m; sourceTree = "<group>"; };
+		4CADD9241D48D764008AF597 /* HeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderFooterView.h; sourceTree = "<group>"; };
+		4CADD9251D48D764008AF597 /* HeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderFooterView.m; sourceTree = "<group>"; };
 		4CBC99B51CD53C5300E6E807 /* AddFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendsViewController.h; sourceTree = "<group>"; };
 		4CBC99B61CD53C5300E6E807 /* AddFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendsViewController.m; sourceTree = "<group>"; };
 		4CBC99B81CD53ECD00E6E807 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -856,6 +871,8 @@
 		4C7FF5561CD0CC28000E995A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4CADD9151D48B141008AF597 /* Common */,
+				4CADD90E1D489392008AF597 /* Find */,
 				4C7CB3431CD5DDB0001BA0CF /* Message */,
 				4C7CB33F1CD5DB9B001BA0CF /* Main */,
 				4C87EE2E1CD1FA8300ACBD15 /* Single */,
@@ -2016,6 +2033,46 @@
 			path = Single;
 			sourceTree = "<group>";
 		};
+		4CADD90E1D489392008AF597 /* Find */ = {
+			isa = PBXGroup;
+			children = (
+				4CADD9211D48B7AE008AF597 /* FindCell.h */,
+				4CADD9221D48B7AE008AF597 /* FindCell.m */,
+				4CADD9241D48D764008AF597 /* HeaderFooterView.h */,
+				4CADD9251D48D764008AF597 /* HeaderFooterView.m */,
+				4CADD91A1D48B44F008AF597 /* FindViewController.h */,
+				4CADD91B1D48B44F008AF597 /* FindViewController.m */,
+			);
+			path = Find;
+			sourceTree = "<group>";
+		};
+		4CADD9151D48B141008AF597 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4CADD91D1D48B4CE008AF597 /* CommonCell */,
+				4CADD9161D48B37C008AF597 /* CommonTableView */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4CADD9161D48B37C008AF597 /* CommonTableView */ = {
+			isa = PBXGroup;
+			children = (
+				4CADD9171D48B39C008AF597 /* CommonTableViewController.h */,
+				4CADD9181D48B39C008AF597 /* CommonTableViewController.m */,
+			);
+			path = CommonTableView;
+			sourceTree = "<group>";
+		};
+		4CADD91D1D48B4CE008AF597 /* CommonCell */ = {
+			isa = PBXGroup;
+			children = (
+				4CADD91E1D48B4EC008AF597 /* CommonCell.h */,
+				4CADD91F1D48B4EC008AF597 /* CommonCell.m */,
+			);
+			path = CommonCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2188,6 +2245,7 @@
 				4C50C7E91CD4EDE400119079 /* XMPPMessage+Tools.m in Sources */,
 				4C7FF7CE1CD0CC91000E995A /* XMPPRosterCoreDataStorage.m in Sources */,
 				4C7FF8141CD0CC91000E995A /* XMPPStreamManagementMemoryStorage.m in Sources */,
+				4CADD9201D48B4EC008AF597 /* CommonCell.m in Sources */,
 				4C7FF7CB1CD0CC91000E995A /* XMPPGroupCoreDataStorageObject.m in Sources */,
 				4C7FF82C1CD0CC91000E995A /* GCDAsyncSocket.m in Sources */,
 				4C7FF8051CD0CC91000E995A /* XMPPCapabilitiesCoreDataStorage.m in Sources */,
@@ -2234,6 +2292,7 @@
 				4C7FF7E81CD0CC91000E995A /* XMPPRoom.m in Sources */,
 				4C7FF8271CD0CC91000E995A /* RFImageToDataTransformer.m in Sources */,
 				4C7FF7721CD0CC91000E995A /* AFHTTPRequestOperationManager.m in Sources */,
+				4CADD9231D48B7AE008AF597 /* FindCell.m in Sources */,
 				4C7FF7C81CD0CC91000E995A /* XMPPGoogleSharedStatus.m in Sources */,
 				4C7FF7BF1CD0CC91000E995A /* XMPPModule.m in Sources */,
 				4C7FF7AC1CD0CC91000E995A /* SVProgressHUD.m in Sources */,
@@ -2252,6 +2311,7 @@
 				4CBC99B71CD53C5300E6E807 /* AddFriendsViewController.m in Sources */,
 				4C87EE311CD1FA9C00ACBD15 /* SingleViewController.m in Sources */,
 				4C7FF7CF1CD0CC91000E995A /* XMPPUserCoreDataStorageObject.m in Sources */,
+				4CADD9191D48B39C008AF597 /* CommonTableViewController.m in Sources */,
 				4C7FF7761CD0CC91000E995A /* AFURLConnectionOperation.m in Sources */,
 				4C7FF7E41CD0CC91000E995A /* XMPPRoomMessageMemoryStorageObject.m in Sources */,
 				4C7FF77E1CD0CC91000E995A /* UIImageView+AFNetworking.m in Sources */,
@@ -2331,6 +2391,7 @@
 				4C7FF7B11CD0CC91000E995A /* XMPPDeprecatedPlainAuthentication.m in Sources */,
 				4C7FF7971CD0CC91000E995A /* NSObject+MJIvar.m in Sources */,
 				4C7FF77A1CD0CC91000E995A /* AFNetworkActivityIndicatorManager.m in Sources */,
+				4CADD9261D48D764008AF597 /* HeaderFooterView.m in Sources */,
 				4C7FF7ED1CD0CC91000E995A /* XMPPvCardTempCoreDataStorageObject.m in Sources */,
 				4C7FF7B21CD0CC91000E995A /* XMPPDigestMD5Authentication.m in Sources */,
 				4C7FF7DD1CD0CC91000E995A /* XMPPRoomMessageCoreDataStorageObject.m in Sources */,
@@ -2359,6 +2420,7 @@
 				4C7FF7B41CD0CC91000E995A /* XMPPSCRAMSHA1Authentication.m in Sources */,
 				4C7FF8011CD0CC91000E995A /* XMPPSoftwareVersion.m in Sources */,
 				4C7FF8411CD0CC91000E995A /* YTKNetworkAgent.m in Sources */,
+				4CADD91C1D48B44F008AF597 /* FindViewController.m in Sources */,
 				4C7FF7B01CD0CC91000E995A /* XMPPDeprecatedDigestAuthentication.m in Sources */,
 				4C7FF7FB1CD0CC91000E995A /* XMPPIQ+XEP_0066.m in Sources */,
 			);

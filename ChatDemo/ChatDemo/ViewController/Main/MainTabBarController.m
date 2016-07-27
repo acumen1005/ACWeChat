@@ -10,12 +10,14 @@
 #import "FriendsViewController.h"
 #import "RoomViewController.h"
 #import "MessageViewController.h"
+#import "FindViewController.h"
 
 @interface MainTabBarController ()
 
 @property (strong,nonatomic) FriendsViewController *friendsVC;
 @property (strong,nonatomic) RoomViewController *roomVC;
 @property (strong,nonatomic) MessageViewController *messageVC;
+@property (strong,nonatomic) FindViewController *findVC;
 
 @end
 
@@ -28,6 +30,14 @@
     [self initView];
 }
 
+#pragma mark - getter
+
+- (FindViewController *) findVC {
+    if(!_findVC){
+        _findVC = [[FindViewController alloc] init];
+    }
+    return _findVC;
+}
 
 - (FriendsViewController *) friendsVC {
     if(!_friendsVC){
@@ -50,11 +60,14 @@
     return  _messageVC;
 }
 
+
+#pragma mark - init
+
 - (void) initView{
 
     [self addChildVc:self.messageVC title:@"消息" image:@"tab_recent_nor" selectedImage:@"tab_recent_press" setTag:0];
     [self addChildVc:self.friendsVC title:@"好友列表" image:@"tab_buddy_nor" selectedImage:@"tab_buddy_press" setTag:1];
-    [self addChildVc:self.roomVC title:@"群组" image:@"tab_qworld_nor" selectedImage:@"tab_qworld_press" setTag:0];
+    [self addChildVc:self.findVC title:@"发现" image:@"tab_qworld_nor" selectedImage:@"tab_qworld_press" setTag:0];
     
 }
 

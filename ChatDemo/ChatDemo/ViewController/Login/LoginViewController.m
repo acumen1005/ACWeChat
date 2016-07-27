@@ -39,6 +39,12 @@
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationToLogin:) name:ResultNotification object:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setHidden:YES];
+}
+
+#pragma mark - getter
 
 - (RoomViewController *) roomVC{
     if(!_roomVC){
@@ -47,6 +53,8 @@
     return _roomVC;
 }
 
+#pragma mark - init
+
 - (void) initData{
     
     _rosterArray = [[NSMutableArray alloc] init];
@@ -54,19 +62,27 @@
 
 - (void) initView{
 
+    UIView *blankView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10.0, 40.0)];
     _userText = [[UITextField alloc] initWithFrame:CGRectMake(kScreenWidth * 0.15, kScreenHeight * 0.3, kScreenWidth * 0.7, 40.0)];
     _userText.placeholder = @"用户名";
     _userText.layer.masksToBounds = YES;
     _userText.layer.cornerRadius = 5.0;
     _userText.layer.borderWidth = 1.0f;
     _userText.layer.borderColor = [UIColor colorWithRed:205/255.0 green:205/255.0 blue:205/255.0 alpha:1].CGColor;
+    _userText.leftView = blankView1;
+    _userText.leftViewMode = UITextFieldViewModeAlways;
+    _userText.clearButtonMode = UITextFieldViewModeWhileEditing;
     
+    UIView *blankView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10.0, 40.0)];
     _pwdText = [[UITextField alloc] initWithFrame:CGRectMake(_userText.x, _userText.bottom + 10.0, _userText.width, _userText.height)];
     _pwdText.placeholder = @"密码";
     _pwdText.layer.masksToBounds = YES;
     _pwdText.layer.cornerRadius = 5.0;
     _pwdText.layer.borderWidth = 1.0f;
     _pwdText.layer.borderColor = [UIColor colorWithRed:205/255.0 green:205/255.0 blue:205/255.0 alpha:1].CGColor;
+    _pwdText.leftView = blankView2;
+    _pwdText.leftViewMode = UITextFieldViewModeAlways;
+    _pwdText.clearButtonMode = UITextFieldViewModeWhileEditing;
     
     UIButton *loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(_pwdText.x, _pwdText.bottom + 20.0, _pwdText.width, _pwdText.height)];
     [loginBtn setTitle:@"登陆" forState:UIControlStateNormal];
@@ -99,7 +115,6 @@
     _registerVC = [[RegisterViewController alloc] init];
     
     [self.navigationController pushViewController:_registerVC animated:YES];
-    
 }
 
 - (void) actionToLogin{

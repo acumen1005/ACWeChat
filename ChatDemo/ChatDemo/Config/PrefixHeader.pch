@@ -17,10 +17,19 @@
 #import "XMPPTool.h"
 
 
-#define XMPP_DOMAIN @"192.168.0.23"
+#define XMPP_DOMAIN @"192.168.0.9"
 #define LOCAL_HOST @"acumendemacbook-pro.local"
 
 #define kScreenWidth [[UIScreen mainScreen] bounds].size.width
 #define kScreenHeight [[UIScreen mainScreen] bounds].size.height
+
+#define COLOR_RGBA(a,b,c,d) [UIColor colorWithRed:a/255.0 green:b/255.0 blue:c/255.0 alpha:d]
+//颜色
+#define BG_GREEN [UIColor colorWithRed:50.0/255 green:189.0/255 blue:114.0/255 alpha:1.0]
+#define BG_GRAY [UIColor colorWithRed:123.0/255 green:123.0/255 blue:123.0/255 alpha:1.0]
+#define BG_LIGHTGRAY [UIColor colorWithRed:247.0/255 green:247.0/255 blue:247.0/255 alpha:1.0]
+#define BG_PINK [UIColor colorWithRed:226.0/255 green:69.0/255 blue:76.0/255 alpha:1.0]
+#define TEXT_GRAY [UIColor colorWithRed:61.0/255 green:74.0/255 blue:84.0/255 alpha:1.0]
+#define BUTTON_HEIGHT kScreenWidth/8.5
 
 #endif /* PrefixHeader_pch */
