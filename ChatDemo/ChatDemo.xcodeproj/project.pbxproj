@@ -235,6 +235,7 @@
 		4CADD9261D48D764008AF597 /* HeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CADD9251D48D764008AF597 /* HeaderFooterView.m */; };
 		4CBC99B71CD53C5300E6E807 /* AddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC99B61CD53C5300E6E807 /* AddFriendsViewController.m */; };
 		4CBC99BA1CD53ECD00E6E807 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC99B91CD53ECD00E6E807 /* RegisterViewController.m */; };
+		4CE302EB1D49EFA5008C1CC7 /* FriendStatusTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE302EA1D49EFA5008C1CC7 /* FriendStatusTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -726,6 +727,8 @@
 		4CBC99B61CD53C5300E6E807 /* AddFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendsViewController.m; sourceTree = "<group>"; };
 		4CBC99B81CD53ECD00E6E807 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		4CBC99B91CD53ECD00E6E807 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		4CE302E91D49EFA5008C1CC7 /* FriendStatusTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendStatusTableViewController.h; sourceTree = "<group>"; };
+		4CE302EA1D49EFA5008C1CC7 /* FriendStatusTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendStatusTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2077,6 +2080,8 @@
 		4CE302E81D49ECB6008C1CC7 /* FriendStatus */ = {
 			isa = PBXGroup;
 			children = (
+				4CE302E91D49EFA5008C1CC7 /* FriendStatusTableViewController.h */,
+				4CE302EA1D49EFA5008C1CC7 /* FriendStatusTableViewController.m */,
 			);
 			path = FriendStatus;
 			sourceTree = "<group>";
@@ -2306,6 +2311,7 @@
 				4C7FF7AC1CD0CC91000E995A /* SVProgressHUD.m in Sources */,
 				4C7FF7BC1CD0CC91000E995A /* XMPPIQ.m in Sources */,
 				4CBC99BA1CD53ECD00E6E807 /* RegisterViewController.m in Sources */,
+				4CE302EB1D49EFA5008C1CC7 /* FriendStatusTableViewController.m in Sources */,
 				4C7FF7DE1CD0CC91000E995A /* XMPPRoomOccupantCoreDataStorageObject.m in Sources */,
 				4C7FF78A1CD0CC91000E995A /* IQTextView.m in Sources */,
 				4C7FF7B71CD0CC91000E995A /* NSData+XMPP.m in Sources */,
