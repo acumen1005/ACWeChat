@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FriendStatusTableViewController : UIViewController
+@interface FriendStatusViewController : UIViewController
 
 @end

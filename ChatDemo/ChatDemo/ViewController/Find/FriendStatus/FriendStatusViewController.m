@@ -6,23 +6,30 @@
 //  Copyright © 2016年 acumen. All rights reserved.
 //
 
-#import "FriendStatusTableViewController.h"
+#import "FriendStatusViewController.h"
 
-@interface FriendStatusTableViewController ()
+#define LOADING_Y  110
 
+@interface FriendStatusViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (strong,nonatomic) UITableView *tableView;
 @property (strong,nonatomic) UIView *headerView;
+@property (strong,nonatomic) UIImageView *avatarImageView;
+@property (strong,nonatomic) UIView *bgAvatarView;
+@property (strong,nonatomic) UILabel *nameLabel;
+
+@property (strong,nonatomic) UIImageView *loadingView;
 
 @end
 
-@implementation FriendStatusTableViewController
+@implementation FriendStatusViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTitle:@"朋友圈"];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     
-//    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kScreenWidth) style:UITableViewStylePlain];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
-    
+    [self.view addSubview:self.tableView];
     [self initHeaderView];
 }
 
@@ -31,34 +38,85 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 #pragma mark - init
 
 - (void) initHeaderView {
 
-    _headerView = [[UIView alloc] init];
+    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth)];
+    _avatarImageView = [[UIImageView alloc] init];
+    _bgAvatarView = [[UIView alloc] init];
+    _nameLabel = [[UILabel alloc] init];
+    _loadingView = [[UIImageView alloc] init];
     UIImageView *imageView = [[UIImageView alloc] init];
 
     self.tableView.tableHeaderView = _headerView;
+    [_headerView addSubview:_avatarImageView];
+    [_headerView addSubview:_bgAvatarView];
+    [_headerView addSubview:_nameLabel];
     [_headerView addSubview:imageView];
+    [_headerView sendSubviewToBack:imageView];
+    [self.view addSubview:_loadingView];
+    [_headerView bringSubviewToFront:_avatarImageView];
+    
+    [_headerView setBackgroundColor:[UIColor whiteColor]];
 
-    [_headerView setBackgroundColor:[UIColor redColor]];
+    [_bgAvatarView setBackgroundColor:[UIColor whiteColor]];
+    [[_bgAvatarView layer] setBorderWidth:0.5];
+    [[_bgAvatarView layer] setBorderColor:[[UIColor lightGrayColor] CGColor]];
+    
+    [_avatarImageView setImage:[UIImage imageNamed:@"2"]];
+    
+    [_nameLabel setText:@"acumen"];
+    [_nameLabel setTextColor:[UIColor whiteColor]];
+    [_nameLabel setShadowColor:[UIColor grayColor]];
+    [_nameLabel setShadowOffset:CGSizeMake(1.5, 1.5)];
+    [_nameLabel setFont:[UIFont boldSystemFontOfSize:18.0]];
+    [_nameLabel sizeToFit];
+    
+    [_loadingView setImage:[UIImage imageNamed:@"ff_IconShowAlbum"]];
+    [_loadingView setBackgroundColor:[UIColor whiteColor]];
+    [[_loadingView layer] setMasksToBounds:YES];
+    [[_loadingView layer] setCornerRadius:15.0];
     
     [imageView setImage:[UIImage imageNamed:@"bottleBkg"]];
     
-    [_headerView setFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth)];
+    CGFloat space = 3.0;
+    CGFloat avatarSize = kScreenWidth/5.0;
+    
     [imageView setFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth * 0.8)];
+    [_bgAvatarView setFrame:CGRectMake(kScreenWidth - avatarSize * 0.3 - avatarSize, imageView.bottom - avatarSize * 0.7, avatarSize, avatarSize)];
+    [_avatarImageView setFrame:CGRectMake(_bgAvatarView.x + space,_bgAvatarView.y + space, avatarSize - space * 2, avatarSize - space * 2)];
+    
+    [_nameLabel setRight:_bgAvatarView.x - 10.0];
+    [_nameLabel setBottom:imageView.bottom - 10.0];
+    
+    [_loadingView setFrame:CGRectMake(20.0, BUTTON_HEIGHT * 2 - 40.0, 30.0, 30.0)];
 }
+
+#pragma mark - getter
+
+- (UITableView *) tableView {
+    
+    if(!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -BUTTON_HEIGHT * 2, kScreenWidth, kScreenHeight + BUTTON_HEIGHT * 2)];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        [_tableView setBackgroundColor:[UIColor grayColor]];
+        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+    }
+    return _tableView;
+}
+
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
+    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
+    
     return 10;
 }
 
@@ -76,39 +134,26 @@
     return BUTTON_HEIGHT;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    NSLog(@"%f -----------",scrollView.contentOffset.y);
+    
+    CGFloat y = scrollView.contentOffset.y;
+    
+    if(y <= -LOADING_Y){
+        
+    }
+    else {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //回调或者说是通知主线程刷新，
+            [_loadingView setY:-(y + 30.0)];
+            [self.view layoutIfNeeded];
+        });
+    }
+    
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation
