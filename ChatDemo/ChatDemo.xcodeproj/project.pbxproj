@@ -236,6 +236,7 @@
 		4CBC99B71CD53C5300E6E807 /* AddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC99B61CD53C5300E6E807 /* AddFriendsViewController.m */; };
 		4CBC99BA1CD53ECD00E6E807 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC99B91CD53ECD00E6E807 /* RegisterViewController.m */; };
 		4CE302EB1D49EFA5008C1CC7 /* FriendStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE302EA1D49EFA5008C1CC7 /* FriendStatusViewController.m */; };
+		4CE302EE1D4A2146008C1CC7 /* FriendStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE302ED1D4A2146008C1CC7 /* FriendStatusCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -729,6 +730,8 @@
 		4CBC99B91CD53ECD00E6E807 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		4CE302E91D49EFA5008C1CC7 /* FriendStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendStatusViewController.h; sourceTree = "<group>"; };
 		4CE302EA1D49EFA5008C1CC7 /* FriendStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendStatusViewController.m; sourceTree = "<group>"; };
+		4CE302EC1D4A2146008C1CC7 /* FriendStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendStatusCell.h; sourceTree = "<group>"; };
+		4CE302ED1D4A2146008C1CC7 /* FriendStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendStatusCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2082,6 +2085,8 @@
 			children = (
 				4CE302E91D49EFA5008C1CC7 /* FriendStatusViewController.h */,
 				4CE302EA1D49EFA5008C1CC7 /* FriendStatusViewController.m */,
+				4CE302EC1D4A2146008C1CC7 /* FriendStatusCell.h */,
+				4CE302ED1D4A2146008C1CC7 /* FriendStatusCell.m */,
 			);
 			path = FriendStatus;
 			sourceTree = "<group>";
@@ -2289,6 +2294,7 @@
 				4C7FF8371CD0CC91000E995A /* DDXMLDocument.m in Sources */,
 				4C87EE361CD1FB4600ACBD15 /* MyChatCell.m in Sources */,
 				4C7FF81C1CD0CC91000E995A /* XEP_0223.m in Sources */,
+				4CE302EE1D4A2146008C1CC7 /* FriendStatusCell.m in Sources */,
 				4C7FF8101CD0CC91000E995A /* XMPPPresence+XEP_0172.m in Sources */,
 				4C7FF8171CD0CC91000E995A /* XMPPAutoPing.m in Sources */,
 				4C7FF7881CD0CC91000E995A /* IQKeyboardManager.m in Sources */,
