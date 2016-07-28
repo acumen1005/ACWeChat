@@ -125,7 +125,6 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
     
-    
     return cell;
 }
 
@@ -137,7 +136,7 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
-    NSLog(@"%f -----------",scrollView.contentOffset.y);
+//    NSLog(@"%f -----------",scrollView.contentOffset.y);
     
     CGFloat y = scrollView.contentOffset.y;
     
