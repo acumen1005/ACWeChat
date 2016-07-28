@@ -237,6 +237,8 @@
 		4CBC99BA1CD53ECD00E6E807 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC99B91CD53ECD00E6E807 /* RegisterViewController.m */; };
 		4CE302EB1D49EFA5008C1CC7 /* FriendStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE302EA1D49EFA5008C1CC7 /* FriendStatusViewController.m */; };
 		4CE302EE1D4A2146008C1CC7 /* FriendStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE302ED1D4A2146008C1CC7 /* FriendStatusCell.m */; };
+		4CE302F41D4A2974008C1CC7 /* CommonRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE302F31D4A2974008C1CC7 /* CommonRefreshView.m */; };
+		4CE302F71D4A2B75008C1CC7 /* FriendStatusRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE302F61D4A2B75008C1CC7 /* FriendStatusRefreshHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -732,6 +734,10 @@
 		4CE302EA1D49EFA5008C1CC7 /* FriendStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendStatusViewController.m; sourceTree = "<group>"; };
 		4CE302EC1D4A2146008C1CC7 /* FriendStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendStatusCell.h; sourceTree = "<group>"; };
 		4CE302ED1D4A2146008C1CC7 /* FriendStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendStatusCell.m; sourceTree = "<group>"; };
+		4CE302F21D4A2974008C1CC7 /* CommonRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonRefreshView.h; sourceTree = "<group>"; };
+		4CE302F31D4A2974008C1CC7 /* CommonRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonRefreshView.m; sourceTree = "<group>"; };
+		4CE302F51D4A2B75008C1CC7 /* FriendStatusRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendStatusRefreshHeaderView.h; sourceTree = "<group>"; };
+		4CE302F61D4A2B75008C1CC7 /* FriendStatusRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendStatusRefreshHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2056,6 +2062,7 @@
 		4CADD9151D48B141008AF597 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4CE302F11D4A2958008C1CC7 /* CommonRefreshView */,
 				4CADD91D1D48B4CE008AF597 /* CommonCell */,
 				4CADD9161D48B37C008AF597 /* CommonTableView */,
 			);
@@ -2083,12 +2090,31 @@
 		4CE302E81D49ECB6008C1CC7 /* FriendStatus */ = {
 			isa = PBXGroup;
 			children = (
+				4CE302EF1D4A2687008C1CC7 /* RefreshHeaderView */,
 				4CE302E91D49EFA5008C1CC7 /* FriendStatusViewController.h */,
 				4CE302EA1D49EFA5008C1CC7 /* FriendStatusViewController.m */,
 				4CE302EC1D4A2146008C1CC7 /* FriendStatusCell.h */,
 				4CE302ED1D4A2146008C1CC7 /* FriendStatusCell.m */,
 			);
 			path = FriendStatus;
+			sourceTree = "<group>";
+		};
+		4CE302EF1D4A2687008C1CC7 /* RefreshHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				4CE302F51D4A2B75008C1CC7 /* FriendStatusRefreshHeaderView.h */,
+				4CE302F61D4A2B75008C1CC7 /* FriendStatusRefreshHeaderView.m */,
+			);
+			path = RefreshHeaderView;
+			sourceTree = "<group>";
+		};
+		4CE302F11D4A2958008C1CC7 /* CommonRefreshView */ = {
+			isa = PBXGroup;
+			children = (
+				4CE302F21D4A2974008C1CC7 /* CommonRefreshView.h */,
+				4CE302F31D4A2974008C1CC7 /* CommonRefreshView.m */,
+			);
+			path = CommonRefreshView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2290,6 +2316,7 @@
 				4C7FF7F31CD0CC91000E995A /* XMPPvCardTempLabel.m in Sources */,
 				4C7FF7D31CD0CC91000E995A /* XMPPRoster.m in Sources */,
 				4C7FF8421CD0CC91000E995A /* YTKNetworkConfig.m in Sources */,
+				4CE302F71D4A2B75008C1CC7 /* FriendStatusRefreshHeaderView.m in Sources */,
 				4C7FF84E1CD0CF6A000E995A /* LoginViewController.m in Sources */,
 				4C7FF8371CD0CC91000E995A /* DDXMLDocument.m in Sources */,
 				4C87EE361CD1FB4600ACBD15 /* MyChatCell.m in Sources */,
@@ -2393,6 +2420,7 @@
 				4C7FF7BB1CD0CC91000E995A /* XMPPElement.m in Sources */,
 				4C7FF7FD1CD0CC91000E995A /* XMPPRegistration.m in Sources */,
 				4C7FF7CA1CD0CC91000E995A /* XMPPReconnect.m in Sources */,
+				4CE302F41D4A2974008C1CC7 /* CommonRefreshView.m in Sources */,
 				4C7FF7B31CD0CC91000E995A /* XMPPPlainAuthentication.m in Sources */,
 				4C7FF80D1CD0CC91000E995A /* XMPPMessageArchiving.m in Sources */,
 				4C7FF80A1CD0CC91000E995A /* XMPPMessageArchiving_Contact_CoreDataObject.m in Sources */,
