@@ -20,11 +20,10 @@
     [super viewDidLoad];
     [self setTitle:@"朋友圈"];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+//    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kScreenWidth) style:UITableViewStylePlain];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self initHeaderView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,30 +36,45 @@
 
 - (void) initHeaderView {
 
+    _headerView = [[UIView alloc] init];
+    UIImageView *imageView = [[UIImageView alloc] init];
+
+    self.tableView.tableHeaderView = _headerView;
+    [_headerView addSubview:imageView];
+
+    [_headerView setBackgroundColor:[UIColor redColor]];
     
+    [imageView setImage:[UIImage imageNamed:@"bottleBkg"]];
+    
+    [_headerView setFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth)];
+    [imageView setFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth * 0.8)];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of rows
-    return 0;
+    return 10;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+    
     
     return cell;
 }
-*/
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return BUTTON_HEIGHT;
+}
 
 /*
 // Override to support conditional editing of the table view.

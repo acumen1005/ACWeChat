@@ -7,7 +7,7 @@
 //
 
 #import "FindViewController.h"
-#import "FriendStatusTableViewController.h"
+#import "FriendStatusViewController.h"
 #import "HeaderFooterView.h"
 #import "FindCell.h"
 
@@ -95,9 +95,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
     if (indexPath.row == 0 && indexPath.section == 0) {
-        FriendStatusTableViewController *friendStatusTableVC = [[FriendStatusTableViewController alloc] init];
+        FriendStatusViewController *friendStatusVC = [[FriendStatusViewController alloc] init];
         [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:friendStatusTableVC animated:YES];
+        [self.navigationController pushViewController:friendStatusVC animated:YES];
         [self setHidesBottomBarWhenPushed:NO];
     }
     
