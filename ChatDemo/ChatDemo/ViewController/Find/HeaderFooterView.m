@@ -16,6 +16,7 @@
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
         [self setUserInteractionEnabled:NO];
         [self setBackgroundView:[[UIView alloc] init]];
+//        [self.contentView setBackgroundColor:[UIColor whiteColor]];
     }
     return self;
 }

@@ -15,7 +15,8 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setBackgroundColor:[UIColor whiteColor]];
         _topLineStyle = SegmentationLineNone;
-        _bottomLineStyle = SegmentationLineFill;
+        _bottomLineStyle = SegmentationLineIndent;
+        _leftSpace = 15.0;
     }
     return self;
 }
@@ -75,7 +76,7 @@
 - (UILabel *) topLine
 {
     if (_topLine == nil) {
-        _topLine = [[UILabel alloc] init];
+        _topLine = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5f)];
         [_topLine setHeight:0.5f];
         [_topLine setBackgroundColor:[UIColor grayColor]];
         [_topLine setAlpha:0.4];
@@ -87,7 +88,7 @@
 - (UILabel *) bottomLine
 {
     if (_bottomLine == nil) {
-        _bottomLine = [[UILabel alloc] init];
+        _bottomLine = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5f)];
         [_topLine setHeight:0.5f];
         [_bottomLine setBackgroundColor:[UIColor grayColor]];
         [_bottomLine setAlpha:0.4];

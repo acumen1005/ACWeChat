@@ -26,7 +26,7 @@
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
     self.window.rootViewController = nav;
     
-    [[UINavigationBar appearance] setBarTintColor:COLOR_RGBA(54,54,54,1.0)];
+    [[UINavigationBar appearance] setBarTintColor:COLOR_RGBA(0,0,0,1.0)];
     [[UINavigationBar appearance] setTranslucent:YES];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];

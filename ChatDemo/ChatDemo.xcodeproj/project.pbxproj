@@ -2036,6 +2036,7 @@
 		4CADD90E1D489392008AF597 /* Find */ = {
 			isa = PBXGroup;
 			children = (
+				4CE302E81D49ECB6008C1CC7 /* FriendStatus */,
 				4CADD9211D48B7AE008AF597 /* FindCell.h */,
 				4CADD9221D48B7AE008AF597 /* FindCell.m */,
 				4CADD9241D48D764008AF597 /* HeaderFooterView.h */,
@@ -2071,6 +2072,13 @@
 				4CADD91F1D48B4EC008AF597 /* CommonCell.m */,
 			);
 			path = CommonCell;
+			sourceTree = "<group>";
+		};
+		4CE302E81D49ECB6008C1CC7 /* FriendStatus */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FriendStatus;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

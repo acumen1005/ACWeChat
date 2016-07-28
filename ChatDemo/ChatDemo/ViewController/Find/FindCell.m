@@ -16,6 +16,7 @@
     
         [self addSubview:self.iconImageView];
         [self addSubview:self.titleLabel];
+        [self addSubview:self.rightImageView];
     }
     return self;
 }
@@ -24,8 +25,9 @@
 
     [super layoutSubviews];
     
-    [self.iconImageView setFrame:CGRectMake(10.0, self.height/2.0, self.iconImageView.width, self.iconImageView.height)];
-    [self.titleLabel setFrame:CGRectMake(10.0, self.height/2.0, self.titleLabel.width, self.titleLabel.height)];
+    [self.iconImageView setFrame:CGRectMake(15.0, self.height/2.0 - self.height/1.6/2.0, self.self.height/1.6, self.height/1.6)];
+    [self.titleLabel setFrame:CGRectMake(self.iconImageView.right + 10.0, self.iconImageView.centerY - self.titleLabel.height/2.0, self.titleLabel.width, self.titleLabel.height)];
+    [self.rightImageView setFrame:CGRectMake(kScreenWidth - self.height/1.6 - 35.0, self.height/2.0 - self.height/1.6/2.0, self.self.height/1.6, self.height/1.6)];
 }
 
 
@@ -34,12 +36,23 @@
     [self.iconImageView setImage:[UIImage imageNamed:image]];
     
     [self.titleLabel setText:title];
-    [self.titleLabel setTextColor:COLOR_RGBA(54, 54, 54, 1.0)];
-    [self.titleLabel setFont:[UIFont systemFontOfSize:13.0]];
-    [self sizeToFit];
+    [self.titleLabel setTextColor:COLOR_RGBA(0.0, 0.0, 0.0, 1.0)];
+    [self.titleLabel setFont:[UIFont systemFontOfSize:16.0]];
+    [self.titleLabel sizeToFit];
     
     [self layoutSubviews];
 }
+
+- (void) setRightImageViewWithImageName:(NSString *)rightImageView{
+
+    [self.rightImageView setHidden:NO];
+    [self.rightImageView setImage:[UIImage imageNamed:rightImageView]];
+}
+
+- (void) dismissRightImageView{
+    [self.rightImageView setHidden:YES];
+}
+
 #pragma mark - getter 
 
 - (UIImageView *) iconImageView {
@@ -48,6 +61,14 @@
         _iconImageView = [[UIImageView alloc] init];
     }
     return _iconImageView;
+}
+
+- (UIImageView *) rightImageView {
+    
+    if(!_rightImageView){
+        _rightImageView = [[UIImageView alloc] init];
+    }
+    return _rightImageView;
 }
 
 - (UILabel *) titleLabel{

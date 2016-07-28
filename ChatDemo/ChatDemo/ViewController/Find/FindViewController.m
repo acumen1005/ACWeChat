@@ -22,10 +22,19 @@
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 20)]];
     
-    self.tableView.sectionFooterHeight = 10.0;
     [self.tableView registerClass:[FindCell class] forCellReuseIdentifier:@"FindCell"];
     [self.tableView registerClass:[HeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"HeaderFooterView"];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+
+    
+    self.data = [NSArray arrayWithObjects:
+                 @[@{@"title":@"朋友圈",@"pic":@"ff_IconShowAlbum"}],
+                 @[@{@"title":@"扫一扫",@"pic":@"ff_IconQRCode"},
+                   @{@"title":@"摇一摇",@"pic":@"ff_IconShake"}],
+                 @[@{@"title":@"附近的人",@"pic":@"ff_IconLocationService"},
+                   @{@"title":@"漂流瓶",@"pic":@"ff_IconBottle"}],
+                 @[@{@"title":@"购物",@"pic":@"CreditCard_ShoppingBag"},
+                   @{@"title":@"游戏",@"pic":@"MoreGame"}],nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,14 +42,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark - init
+
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return self.data.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    
+    return [self.data[section] count];
 }
 
 
@@ -48,8 +63,38 @@
     
     FindCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FindCell" forIndexPath:indexPath];
     
+    NSString *title = [self.data[indexPath.section][indexPath.row] objectForKey:@"title"];
+    NSString *icon = [self.data[indexPath.section][indexPath.row] objectForKey:@"pic"];
+    
+    [cell setImageWithImageName:icon Title:title];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    
+    if(indexPath.row == 0 && indexPath.section == 0){
+        [cell setRightImageViewWithImageName:@"login_avatar_default"];
+    }
+    
+    
+    if(indexPath.row == 0){
+        [cell setTopLineStyle:SegmentationLineFill];
+        if(indexPath.row == ([self.data[indexPath.section] count] - 1)){
+            [cell setBottomLineStyle:SegmentationLineFill];
+        }
+    }
+    else {
+        [cell setBottomLineStyle:SegmentationLineIndent];
+        if(indexPath.row == ([self.data[indexPath.section] count] - 1)){
+            [cell setBottomLineStyle:SegmentationLineFill];
+        }
+    }
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    
+    
 }
 
 #pragma mark - tableView Delegate
