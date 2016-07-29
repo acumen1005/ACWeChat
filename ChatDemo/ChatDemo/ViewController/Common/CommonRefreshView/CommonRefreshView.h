@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger,CommonRefreshViewState){
 
 - (void) endRefreshing;
 
-@property (assign, nonatomic) UIEdgeInsets scrollViewOriginalInsets;
+//@property (assign, nonatomic) UIEdgeInsets scrollViewOriginalInsets;
 @property (assign, nonatomic) CommonRefreshViewState refreshState;
 
 @end

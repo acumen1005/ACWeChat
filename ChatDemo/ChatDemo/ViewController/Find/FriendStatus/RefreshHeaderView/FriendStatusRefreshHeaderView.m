@@ -8,7 +8,7 @@
 
 #import "FriendStatusRefreshHeaderView.h"
 
-static const CGFloat criticalY = -100.0f;
+static const CGFloat criticalY = -60.0f;
 
 #define kFriendStatusRefreshHeaderRotateAnimationKey @"RotateAnimationKey"
 
@@ -17,10 +17,10 @@ static const CGFloat criticalY = -100.0f;
     CABasicAnimation *_rotateAnimation;
 }
 
-+ (instancetype)refreshHeaderWithCenter:(CGPoint)center
-{
-    FriendStatusRefreshHeaderView *header = [FriendStatusRefreshHeaderView new];
++ (instancetype)refreshHeaderWithCenter:(CGPoint)center {
+    FriendStatusRefreshHeaderView *header = [[FriendStatusRefreshHeaderView alloc]init];
     header.center = center;
+    
     return header;
 }
 
@@ -48,7 +48,8 @@ static const CGFloat criticalY = -100.0f;
     _rotateAnimation.repeatCount = MAXFLOAT;
 }
 
-- (void)setRefreshState:(CommonRefreshViewState)refreshState {
+- (void)setRefreshState:(CommonRefreshViewState) refreshState {
+    
     [super setRefreshState:refreshState];
     
     if (refreshState == CommonRefreshViewStateDidRefresh) {
@@ -57,13 +58,16 @@ static const CGFloat criticalY = -100.0f;
         }
         [self.layer addAnimation:_rotateAnimation forKey:kFriendStatusRefreshHeaderRotateAnimationKey];
     } else if (refreshState == CommonRefreshViewStateNormal) {
+        
         [self.layer removeAnimationForKey:kFriendStatusRefreshHeaderRotateAnimationKey];
-        [UIView animateWithDuration:0.3 animations:^{
-            self.transform = CGAffineTransformIdentity;
+    
+        [UIView animateWithDuration:0.3f animations:^{
+            CGAffineTransform transform = CGAffineTransformIdentity;
+            transform = CGAffineTransformTranslate(transform, 0, 0);
+            self.transform = transform;
         }];
     }
 }
-
 
 - (void)updateRefreshHeaderWithOffsetY:(CGFloat)y {
     
@@ -96,7 +100,9 @@ static const CGFloat criticalY = -100.0f;
         return;
     }
     
-    [self updateRefreshHeaderWithOffsetY:self.scrollView.contentOffset.y];
+    NSLog(@"%f --------",self.scrollView.contentOffset.y);
+    
+    [self updateRefreshHeaderWithOffsetY:self.scrollView.contentOffset.y + 64];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

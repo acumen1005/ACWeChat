@@ -8,14 +8,29 @@
 
 #import "CommonRefreshView.h"
 
+NSString *const kCommonRefreshViewObserveKeyPath = @"contentOffset";
+
 @implementation CommonRefreshView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)setScrollView:(UIScrollView *)scrollView {
+    _scrollView = scrollView;
+    
+    //KVO
+    [scrollView addObserver:self forKeyPath:kCommonRefreshViewObserveKeyPath options:NSKeyValueObservingOptionNew context:nil];
 }
-*/
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    if (!newSuperview) {
+        [self.scrollView removeObserver:self forKeyPath:kCommonRefreshViewObserveKeyPath];
+    }
+}
+
+- (void) endRefreshing {
+    self.refreshState = CommonRefreshViewStateNormal;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+  
+}
 
 @end

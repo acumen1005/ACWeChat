@@ -7,6 +7,7 @@
 //
 
 #import "FriendStatusViewController.h"
+#import "FriendStatusRefreshHeaderView.h"
 
 #define LOADING_Y  110
 
@@ -18,7 +19,7 @@
 @property (strong,nonatomic) UIView *bgAvatarView;
 @property (strong,nonatomic) UILabel *nameLabel;
 
-@property (strong,nonatomic) UIImageView *loadingView;
+@property (strong,nonatomic) FriendStatusRefreshHeaderView *headerRefreshView;
 
 @end
 
@@ -33,6 +34,35 @@
     [self initHeaderView];
 }
 
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    if (!_headerRefreshView.superview) {
+        
+        _headerRefreshView = [FriendStatusRefreshHeaderView refreshHeaderWithCenter:CGPointMake(40, 45)];
+        _headerRefreshView.scrollView = self.tableView;
+        __weak typeof(_headerRefreshView) weakHeader = _headerRefreshView;
+        __weak typeof(self) weakSelf = self;
+        [_headerRefreshView setRefreshingBlock:^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                [weakHeader endRefreshing];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf.tableView reloadData];
+                });
+            });
+        }];
+        [self.tableView.superview addSubview:_headerRefreshView];
+    } else {
+        [self.tableView.superview bringSubviewToFront:_headerRefreshView];
+    }
+
+}
+
+- (void) dealloc {
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -42,11 +72,10 @@
 
 - (void) initHeaderView {
 
-    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth)];
+    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, kScreenWidth)];
     _avatarImageView = [[UIImageView alloc] init];
     _bgAvatarView = [[UIView alloc] init];
     _nameLabel = [[UILabel alloc] init];
-    _loadingView = [[UIImageView alloc] init];
     UIImageView *imageView = [[UIImageView alloc] init];
 
     self.tableView.tableHeaderView = _headerView;
@@ -55,7 +84,6 @@
     [_headerView addSubview:_nameLabel];
     [_headerView addSubview:imageView];
     [_headerView sendSubviewToBack:imageView];
-    [self.view addSubview:_loadingView];
     [_headerView bringSubviewToFront:_avatarImageView];
     
     [_headerView setBackgroundColor:[UIColor whiteColor]];
@@ -73,11 +101,6 @@
     [_nameLabel setFont:[UIFont boldSystemFontOfSize:18.0]];
     [_nameLabel sizeToFit];
     
-    [_loadingView setImage:[UIImage imageNamed:@"ff_IconShowAlbum"]];
-    [_loadingView setBackgroundColor:[UIColor whiteColor]];
-    [[_loadingView layer] setMasksToBounds:YES];
-    [[_loadingView layer] setCornerRadius:15.0];
-    
     [imageView setImage:[UIImage imageNamed:@"bottleBkg"]];
     
     CGFloat space = 3.0;
@@ -89,8 +112,6 @@
     
     [_nameLabel setRight:_bgAvatarView.x - 10.0];
     [_nameLabel setBottom:imageView.bottom - 10.0];
-    
-    [_loadingView setFrame:CGRectMake(20.0, BUTTON_HEIGHT * 2 - 40.0, 30.0, 30.0)];
 }
 
 #pragma mark - getter
@@ -133,26 +154,6 @@
     return BUTTON_HEIGHT;
 }
 
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-
-//    NSLog(@"%f -----------",scrollView.contentOffset.y);
-    
-    CGFloat y = scrollView.contentOffset.y;
-    
-    if(y <= -LOADING_Y){
-        
-    }
-    else {
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //回调或者说是通知主线程刷新，
-            [_loadingView setY:-(y + 30.0)];
-            [self.view layoutIfNeeded];
-        });
-    }
-    
-}
 
 /*
 #pragma mark - Navigation
