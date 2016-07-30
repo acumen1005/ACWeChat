@@ -8,6 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		4C0CB9731CD473E30061C4CB /* XMPPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0CB9721CD473E30061C4CB /* XMPPTool.m */; };
+		4C4275A11D4C81BB00D4A789 /* NSAttributedString+MLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275861D4C81BB00D4A789 /* NSAttributedString+MLLabel.m */; };
+		4C4275A21D4C81BB00D4A789 /* NSMutableAttributedString+MLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275881D4C81BB00D4A789 /* NSMutableAttributedString+MLLabel.m */; };
+		4C4275A31D4C81BB00D4A789 /* NSString+MLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42758A1D4C81BB00D4A789 /* NSString+MLLabel.m */; };
+		4C4275A41D4C81BB00D4A789 /* MLExpressionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42758D1D4C81BB00D4A789 /* MLExpressionManager.m */; };
+		4C4275A51D4C81BB00D4A789 /* MLTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42758F1D4C81BB00D4A789 /* MLTextAttachment.m */; };
+		4C4275A61D4C81BB00D4A789 /* NSAttributedString+MLExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275911D4C81BB00D4A789 /* NSAttributedString+MLExpression.m */; };
+		4C4275A71D4C81BB00D4A789 /* NSString+MLExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275931D4C81BB00D4A789 /* NSString+MLExpression.m */; };
+		4C4275A81D4C81BB00D4A789 /* MLLabelLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275971D4C81BB00D4A789 /* MLLabelLayoutManager.m */; };
+		4C4275A91D4C81BB00D4A789 /* MLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275991D4C81BB00D4A789 /* MLLabel.m */; };
+		4C4275AA1D4C81BB00D4A789 /* MLLinkLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42759B1D4C81BB00D4A789 /* MLLinkLabel.m */; };
+		4C4275AB1D4C81BB00D4A789 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4C42759C1D4C81BB00D4A789 /* LICENSE */; };
+		4C4275AC1D4C81BB00D4A789 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4C42759D1D4C81BB00D4A789 /* README.md */; };
+		4C4275AD1D4C81BB00D4A789 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275A01D4C81BB00D4A789 /* TTTAttributedLabel.m */; };
+		4C4275BA1D4C83E600D4A789 /* ACBrowseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275B71D4C83E600D4A789 /* ACBrowseCell.m */; };
+		4C4275BB1D4C83E600D4A789 /* ACImageBrowseContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275B91D4C83E600D4A789 /* ACImageBrowseContainerView.m */; };
+		4C4275C01D4C878A00D4A789 /* FriendStatusBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275BF1D4C878A00D4A789 /* FriendStatusBean.m */; };
+		4C4275C31D4C8AC300D4A789 /* ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275C21D4C8AC300D4A789 /* ModelHelper.m */; };
+		4C4275C71D4C932200D4A789 /* UILabel+Spread.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275C61D4C932200D4A789 /* UILabel+Spread.m */; };
 		4C50C7E91CD4EDE400119079 /* XMPPMessage+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C50C7E81CD4EDE400119079 /* XMPPMessage+Tools.m */; };
 		4C50C7EC1CD4F06800119079 /* NSFileManager+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C50C7EB1CD4F06800119079 /* NSFileManager+Tools.m */; };
 		4C7CB3421CD5DBCC001BA0CF /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7CB3411CD5DBCC001BA0CF /* MainTabBarController.m */; };
@@ -261,6 +279,41 @@
 /* Begin PBXFileReference section */
 		4C0CB9711CD473E30061C4CB /* XMPPTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPTool.h; sourceTree = "<group>"; };
 		4C0CB9721CD473E30061C4CB /* XMPPTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPTool.m; sourceTree = "<group>"; };
+		4C4275851D4C81BB00D4A789 /* NSAttributedString+MLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+MLLabel.h"; sourceTree = "<group>"; };
+		4C4275861D4C81BB00D4A789 /* NSAttributedString+MLLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+MLLabel.m"; sourceTree = "<group>"; };
+		4C4275871D4C81BB00D4A789 /* NSMutableAttributedString+MLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+MLLabel.h"; sourceTree = "<group>"; };
+		4C4275881D4C81BB00D4A789 /* NSMutableAttributedString+MLLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+MLLabel.m"; sourceTree = "<group>"; };
+		4C4275891D4C81BB00D4A789 /* NSString+MLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MLLabel.h"; sourceTree = "<group>"; };
+		4C42758A1D4C81BB00D4A789 /* NSString+MLLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MLLabel.m"; sourceTree = "<group>"; };
+		4C42758C1D4C81BB00D4A789 /* MLExpressionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLExpressionManager.h; sourceTree = "<group>"; };
+		4C42758D1D4C81BB00D4A789 /* MLExpressionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLExpressionManager.m; sourceTree = "<group>"; };
+		4C42758E1D4C81BB00D4A789 /* MLTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLTextAttachment.h; sourceTree = "<group>"; };
+		4C42758F1D4C81BB00D4A789 /* MLTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLTextAttachment.m; sourceTree = "<group>"; };
+		4C4275901D4C81BB00D4A789 /* NSAttributedString+MLExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+MLExpression.h"; sourceTree = "<group>"; };
+		4C4275911D4C81BB00D4A789 /* NSAttributedString+MLExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+MLExpression.m"; sourceTree = "<group>"; };
+		4C4275921D4C81BB00D4A789 /* NSString+MLExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MLExpression.h"; sourceTree = "<group>"; };
+		4C4275931D4C81BB00D4A789 /* NSString+MLExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MLExpression.m"; sourceTree = "<group>"; };
+		4C4275951D4C81BB00D4A789 /* MLLabel+Override.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MLLabel+Override.h"; sourceTree = "<group>"; };
+		4C4275961D4C81BB00D4A789 /* MLLabelLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLLabelLayoutManager.h; sourceTree = "<group>"; };
+		4C4275971D4C81BB00D4A789 /* MLLabelLayoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLLabelLayoutManager.m; sourceTree = "<group>"; };
+		4C4275981D4C81BB00D4A789 /* MLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLLabel.h; sourceTree = "<group>"; };
+		4C4275991D4C81BB00D4A789 /* MLLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLLabel.m; sourceTree = "<group>"; };
+		4C42759A1D4C81BB00D4A789 /* MLLinkLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLLinkLabel.h; sourceTree = "<group>"; };
+		4C42759B1D4C81BB00D4A789 /* MLLinkLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLLinkLabel.m; sourceTree = "<group>"; };
+		4C42759C1D4C81BB00D4A789 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		4C42759D1D4C81BB00D4A789 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4C42759F1D4C81BB00D4A789 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		4C4275A01D4C81BB00D4A789 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
+		4C4275B61D4C83E600D4A789 /* ACBrowseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACBrowseCell.h; sourceTree = "<group>"; };
+		4C4275B71D4C83E600D4A789 /* ACBrowseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACBrowseCell.m; sourceTree = "<group>"; };
+		4C4275B81D4C83E600D4A789 /* ACImageBrowseContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACImageBrowseContainerView.h; sourceTree = "<group>"; };
+		4C4275B91D4C83E600D4A789 /* ACImageBrowseContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACImageBrowseContainerView.m; sourceTree = "<group>"; };
+		4C4275BE1D4C878A00D4A789 /* FriendStatusBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendStatusBean.h; sourceTree = "<group>"; };
+		4C4275BF1D4C878A00D4A789 /* FriendStatusBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendStatusBean.m; sourceTree = "<group>"; };
+		4C4275C11D4C8AC300D4A789 /* ModelHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelHelper.h; sourceTree = "<group>"; };
+		4C4275C21D4C8AC300D4A789 /* ModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelHelper.m; sourceTree = "<group>"; };
+		4C4275C51D4C932200D4A789 /* UILabel+Spread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Spread.h"; sourceTree = "<group>"; };
+		4C4275C61D4C932200D4A789 /* UILabel+Spread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Spread.m"; sourceTree = "<group>"; };
 		4C50C7E71CD4EDE400119079 /* XMPPMessage+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XMPPMessage+Tools.h"; sourceTree = "<group>"; };
 		4C50C7E81CD4EDE400119079 /* XMPPMessage+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XMPPMessage+Tools.m"; sourceTree = "<group>"; };
 		4C50C7EA1CD4F06800119079 /* NSFileManager+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Tools.h"; sourceTree = "<group>"; };
@@ -768,6 +821,116 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C4275821D4C81BB00D4A789 /* MLLabel */ = {
+			isa = PBXGroup;
+			children = (
+				4C4275831D4C81BB00D4A789 /* Classes */,
+				4C42759C1D4C81BB00D4A789 /* LICENSE */,
+				4C42759D1D4C81BB00D4A789 /* README.md */,
+			);
+			path = MLLabel;
+			sourceTree = "<group>";
+		};
+		4C4275831D4C81BB00D4A789 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4C4275841D4C81BB00D4A789 /* Category */,
+				4C42758B1D4C81BB00D4A789 /* Expression */,
+				4C4275941D4C81BB00D4A789 /* Helper */,
+				4C4275981D4C81BB00D4A789 /* MLLabel.h */,
+				4C4275991D4C81BB00D4A789 /* MLLabel.m */,
+				4C42759A1D4C81BB00D4A789 /* MLLinkLabel.h */,
+				4C42759B1D4C81BB00D4A789 /* MLLinkLabel.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		4C4275841D4C81BB00D4A789 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				4C4275851D4C81BB00D4A789 /* NSAttributedString+MLLabel.h */,
+				4C4275861D4C81BB00D4A789 /* NSAttributedString+MLLabel.m */,
+				4C4275871D4C81BB00D4A789 /* NSMutableAttributedString+MLLabel.h */,
+				4C4275881D4C81BB00D4A789 /* NSMutableAttributedString+MLLabel.m */,
+				4C4275891D4C81BB00D4A789 /* NSString+MLLabel.h */,
+				4C42758A1D4C81BB00D4A789 /* NSString+MLLabel.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		4C42758B1D4C81BB00D4A789 /* Expression */ = {
+			isa = PBXGroup;
+			children = (
+				4C42758C1D4C81BB00D4A789 /* MLExpressionManager.h */,
+				4C42758D1D4C81BB00D4A789 /* MLExpressionManager.m */,
+				4C42758E1D4C81BB00D4A789 /* MLTextAttachment.h */,
+				4C42758F1D4C81BB00D4A789 /* MLTextAttachment.m */,
+				4C4275901D4C81BB00D4A789 /* NSAttributedString+MLExpression.h */,
+				4C4275911D4C81BB00D4A789 /* NSAttributedString+MLExpression.m */,
+				4C4275921D4C81BB00D4A789 /* NSString+MLExpression.h */,
+				4C4275931D4C81BB00D4A789 /* NSString+MLExpression.m */,
+			);
+			path = Expression;
+			sourceTree = "<group>";
+		};
+		4C4275941D4C81BB00D4A789 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				4C4275951D4C81BB00D4A789 /* MLLabel+Override.h */,
+				4C4275961D4C81BB00D4A789 /* MLLabelLayoutManager.h */,
+				4C4275971D4C81BB00D4A789 /* MLLabelLayoutManager.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		4C42759E1D4C81BB00D4A789 /* TTTAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				4C42759F1D4C81BB00D4A789 /* TTTAttributedLabel.h */,
+				4C4275A01D4C81BB00D4A789 /* TTTAttributedLabel.m */,
+			);
+			path = TTTAttributedLabel;
+			sourceTree = "<group>";
+		};
+		4C4275B51D4C83E600D4A789 /* ACImageBrowse */ = {
+			isa = PBXGroup;
+			children = (
+				4C4275B61D4C83E600D4A789 /* ACBrowseCell.h */,
+				4C4275B71D4C83E600D4A789 /* ACBrowseCell.m */,
+				4C4275B81D4C83E600D4A789 /* ACImageBrowseContainerView.h */,
+				4C4275B91D4C83E600D4A789 /* ACImageBrowseContainerView.m */,
+			);
+			path = ACImageBrowse;
+			sourceTree = "<group>";
+		};
+		4C4275BC1D4C875000D4A789 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4C4275BD1D4C877300D4A789 /* FriendStatus */,
+				4C4275C11D4C8AC300D4A789 /* ModelHelper.h */,
+				4C4275C21D4C8AC300D4A789 /* ModelHelper.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4C4275BD1D4C877300D4A789 /* FriendStatus */ = {
+			isa = PBXGroup;
+			children = (
+				4C4275BE1D4C878A00D4A789 /* FriendStatusBean.h */,
+				4C4275BF1D4C878A00D4A789 /* FriendStatusBean.m */,
+			);
+			path = FriendStatus;
+			sourceTree = "<group>";
+		};
+		4C4275C41D4C928400D4A789 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				4C4275C51D4C932200D4A789 /* UILabel+Spread.h */,
+				4C4275C61D4C932200D4A789 /* UILabel+Spread.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		4C7CB33F1CD5DB9B001BA0CF /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -811,6 +974,7 @@
 		4C7FF5201CD0CBE8000E995A /* ChatDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4C4275BC1D4C875000D4A789 /* Model */,
 				4C7FF5541CD0CC28000E995A /* Config */,
 				4C7FF5551CD0CC28000E995A /* Tools */,
 				4C7FF5561CD0CC28000E995A /* ViewController */,
@@ -864,6 +1028,8 @@
 		4C7FF5551CD0CC28000E995A /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				4C4275821D4C81BB00D4A789 /* MLLabel */,
+				4C42759E1D4C81BB00D4A789 /* TTTAttributedLabel */,
 				4C7FF5571CD0CC90000E995A /* AFNetworking */,
 				4C7FF5801CD0CC90000E995A /* IQKeyboardManager */,
 				4C7FF5A61CD0CC90000E995A /* JSONKit */,
@@ -2090,6 +2256,8 @@
 		4CE302E81D49ECB6008C1CC7 /* FriendStatus */ = {
 			isa = PBXGroup;
 			children = (
+				4C4275C41D4C928400D4A789 /* Category */,
+				4C4275B51D4C83E600D4A789 /* ACImageBrowse */,
 				4CE302EF1D4A2687008C1CC7 /* RefreshHeaderView */,
 				4CE302E91D49EFA5008C1CC7 /* FriendStatusViewController.h */,
 				4CE302EA1D49EFA5008C1CC7 /* FriendStatusViewController.m */,
@@ -2222,6 +2390,7 @@
 			files = (
 				4C7FF83A1CD0CC91000E995A /* build-libidn.sh in Resources */,
 				4C7FF7AB1CD0CC91000E995A /* SVProgressHUD.bundle in Resources */,
+				4C4275AB1D4C81BB00D4A789 /* LICENSE in Resources */,
 				4C7FF5311CD0CBE8000E995A /* LaunchScreen.storyboard in Resources */,
 				4C7FF52E1CD0CBE8000E995A /* Assets.xcassets in Resources */,
 				4C7FF7901CD0CC91000E995A /* IQKeyboardManager.bundle in Resources */,
@@ -2259,6 +2428,7 @@
 				4C7FF8111CD0CC91000E995A /* XMPPMessage+XEP_0184.m in Sources */,
 				4C7CB3461CD5DDC5001BA0CF /* MessageViewController.m in Sources */,
 				4C7FF8311CD0CC91000E995A /* DDTTYLogger.m in Sources */,
+				4C4275A91D4C81BB00D4A789 /* MLLabel.m in Sources */,
 				4C7FF8131CD0CC91000E995A /* XMPPBlocking.m in Sources */,
 				4C7FF7F41CD0CC91000E995A /* XMPPvCardTempModule.m in Sources */,
 				4C7FF8321CD0CC91000E995A /* DDContextFilterLogFormatter.m in Sources */,
@@ -2296,6 +2466,7 @@
 				4C7FF8241CD0CC91000E995A /* NSXMLElement+XEP_0335.m in Sources */,
 				4C7FF7B51CD0CC91000E995A /* XMPPXFacebookPlatformAuthentication.m in Sources */,
 				4C7FF77C1CD0CC91000E995A /* UIAlertView+AFNetworking.m in Sources */,
+				4C4275BB1D4C83E600D4A789 /* ACImageBrowseContainerView.m in Sources */,
 				4C7FF7BE1CD0CC91000E995A /* XMPPMessage.m in Sources */,
 				4C7FF7701CD0CC91000E995A /* AFDownloadRequestOperation.m in Sources */,
 				4C7FF8231CD0CC91000E995A /* XMPPMessage+XEP_0333.m in Sources */,
@@ -2313,10 +2484,12 @@
 				4C7FF7981CD0CC91000E995A /* NSObject+MJKeyValue.m in Sources */,
 				4C50C7EC1CD4F06800119079 /* NSFileManager+Tools.m in Sources */,
 				4C7FF7D51CD0CC91000E995A /* XMPPIQ+JabberRPC.m in Sources */,
+				4C4275C71D4C932200D4A789 /* UILabel+Spread.m in Sources */,
 				4C7FF7F31CD0CC91000E995A /* XMPPvCardTempLabel.m in Sources */,
 				4C7FF7D31CD0CC91000E995A /* XMPPRoster.m in Sources */,
 				4C7FF8421CD0CC91000E995A /* YTKNetworkConfig.m in Sources */,
 				4CE302F71D4A2B75008C1CC7 /* FriendStatusRefreshHeaderView.m in Sources */,
+				4C4275AA1D4C81BB00D4A789 /* MLLinkLabel.m in Sources */,
 				4C7FF84E1CD0CF6A000E995A /* LoginViewController.m in Sources */,
 				4C7FF8371CD0CC91000E995A /* DDXMLDocument.m in Sources */,
 				4C87EE361CD1FB4600ACBD15 /* MyChatCell.m in Sources */,
@@ -2335,6 +2508,7 @@
 				4C7FF7AD1CD0CC91000E995A /* SVRadialGradientLayer.m in Sources */,
 				4C7FF81F1CD0CC91000E995A /* XMPPMessage+XEP_0280.m in Sources */,
 				4C7FF8261CD0CC91000E995A /* GCDMulticastDelegate.m in Sources */,
+				4C4275A41D4C81BB00D4A789 /* MLExpressionManager.m in Sources */,
 				4C7FF7E81CD0CC91000E995A /* XMPPRoom.m in Sources */,
 				4C7FF8271CD0CC91000E995A /* RFImageToDataTransformer.m in Sources */,
 				4C7FF7721CD0CC91000E995A /* AFHTTPRequestOperationManager.m in Sources */,
@@ -2346,6 +2520,7 @@
 				4CBC99BA1CD53ECD00E6E807 /* RegisterViewController.m in Sources */,
 				4CE302EB1D49EFA5008C1CC7 /* FriendStatusViewController.m in Sources */,
 				4C7FF7DE1CD0CC91000E995A /* XMPPRoomOccupantCoreDataStorageObject.m in Sources */,
+				4C4275A61D4C81BB00D4A789 /* NSAttributedString+MLExpression.m in Sources */,
 				4C7FF78A1CD0CC91000E995A /* IQTextView.m in Sources */,
 				4C7FF7B71CD0CC91000E995A /* NSData+XMPP.m in Sources */,
 				4C7FF7F71CD0CC91000E995A /* XMPPResultSet.m in Sources */,
@@ -2355,11 +2530,13 @@
 				4C7FF8361CD0CC91000E995A /* NSString+DDXML.m in Sources */,
 				4C7FF7D91CD0CC91000E995A /* XMPPLastActivity.m in Sources */,
 				4C7FF7E01CD0CC91000E995A /* XMPPRoomHybridStorage.m in Sources */,
+				4C4275AC1D4C81BB00D4A789 /* README.md in Sources */,
 				4CBC99B71CD53C5300E6E807 /* AddFriendsViewController.m in Sources */,
 				4C87EE311CD1FA9C00ACBD15 /* SingleViewController.m in Sources */,
 				4C7FF7CF1CD0CC91000E995A /* XMPPUserCoreDataStorageObject.m in Sources */,
 				4CADD9191D48B39C008AF597 /* CommonTableViewController.m in Sources */,
 				4C7FF7761CD0CC91000E995A /* AFURLConnectionOperation.m in Sources */,
+				4C4275A81D4C81BB00D4A789 /* MLLabelLayoutManager.m in Sources */,
 				4C7FF7E41CD0CC91000E995A /* XMPPRoomMessageMemoryStorageObject.m in Sources */,
 				4C7FF77E1CD0CC91000E995A /* UIImageView+AFNetworking.m in Sources */,
 				4C7FF7FF1CD0CC91000E995A /* XMPPDateTimeProfiles.m in Sources */,
@@ -2409,12 +2586,15 @@
 				4C7FF7C31CD0CC91000E995A /* XMPPBandwidthMonitor.m in Sources */,
 				4C7FF8041CD0CC91000E995A /* XMPPCapabilities.xcdatamodel in Sources */,
 				4C7FF8001CD0CC91000E995A /* XMPPMessage+XEP_0085.m in Sources */,
+				4C4275C31D4C8AC300D4A789 /* ModelHelper.m in Sources */,
 				4C7FF8061CD0CC91000E995A /* XMPPCapsCoreDataStorageObject.m in Sources */,
 				4C7FF7811CD0CC91000E995A /* UIWebView+AFNetworking.m in Sources */,
 				4C7FF7EB1CD0CC91000E995A /* XMPPvCardCoreDataStorage.m in Sources */,
 				4C7FF78E1CD0CC91000E995A /* IQToolbar.m in Sources */,
 				4C7FF8181CD0CC91000E995A /* XMPPPing.m in Sources */,
+				4C4275A31D4C81BB00D4A789 /* NSString+MLLabel.m in Sources */,
 				4C7FF8291CD0CC91000E995A /* XMPPSRVResolver.m in Sources */,
+				4C4275BA1D4C83E600D4A789 /* ACBrowseCell.m in Sources */,
 				4C7FF7791CD0CC91000E995A /* AFURLSessionManager.m in Sources */,
 				4C7FF8341CD0CC91000E995A /* DDMultiFormatter.m in Sources */,
 				4C7FF7BB1CD0CC91000E995A /* XMPPElement.m in Sources */,
@@ -2426,6 +2606,7 @@
 				4C7FF80A1CD0CC91000E995A /* XMPPMessageArchiving_Contact_CoreDataObject.m in Sources */,
 				4C7FF7921CD0CC91000E995A /* MJConst.m in Sources */,
 				4C7FF78F1CD0CC91000E995A /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				4C4275A51D4C81BB00D4A789 /* MLTextAttachment.m in Sources */,
 				4C7FF7E61CD0CC91000E995A /* XMPPMessage+XEP0045.m in Sources */,
 				4C7FF8031CD0CC91000E995A /* NSString+XEP_0106.m in Sources */,
 				4C7FF7E91CD0CC91000E995A /* XMPPvCard.xcdatamodeld in Sources */,
@@ -2438,18 +2619,22 @@
 				4C7FF83C1CD0CC91000E995A /* YTKBaseRequest.m in Sources */,
 				4C7FF7B11CD0CC91000E995A /* XMPPDeprecatedPlainAuthentication.m in Sources */,
 				4C7FF7971CD0CC91000E995A /* NSObject+MJIvar.m in Sources */,
+				4C4275C01D4C878A00D4A789 /* FriendStatusBean.m in Sources */,
 				4C7FF77A1CD0CC91000E995A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				4CADD9261D48D764008AF597 /* HeaderFooterView.m in Sources */,
 				4C7FF7ED1CD0CC91000E995A /* XMPPvCardTempCoreDataStorageObject.m in Sources */,
+				4C4275A21D4C81BB00D4A789 /* NSMutableAttributedString+MLLabel.m in Sources */,
 				4C7FF7B21CD0CC91000E995A /* XMPPDigestMD5Authentication.m in Sources */,
 				4C7FF7DD1CD0CC91000E995A /* XMPPRoomMessageCoreDataStorageObject.m in Sources */,
 				4C7FF81E1CD0CC91000E995A /* XMPPMessage+XEP_0224.m in Sources */,
 				4C7FF7C21CD0CC91000E995A /* XMPPStream.m in Sources */,
 				4C7FF7D21CD0CC91000E995A /* XMPPUserMemoryStorageObject.m in Sources */,
 				4C7FF7BD1CD0CC91000E995A /* XMPPJID.m in Sources */,
+				4C4275A71D4C81BB00D4A789 /* NSString+MLExpression.m in Sources */,
 				4C7FF7EE1CD0CC91000E995A /* XMPPvCardTemp.m in Sources */,
 				4C7FF82A1CD0CC91000E995A /* XMPPStringPrep.m in Sources */,
 				4C7FF7E31CD0CC91000E995A /* XMPPRoomMemoryStorage.m in Sources */,
+				4C4275A11D4C81BB00D4A789 /* NSAttributedString+MLLabel.m in Sources */,
 				4C7FF7C51CD0CC91000E995A /* XMPPFileTransfer.m in Sources */,
 				4C7FF82E1CD0CC91000E995A /* DDASLLogger.m in Sources */,
 				4C7FF8071CD0CC91000E995A /* XMPPCapsResourceCoreDataStorageObject.m in Sources */,
@@ -2467,6 +2652,7 @@
 				4C7FF83D1CD0CC91000E995A /* YTKBatchRequest.m in Sources */,
 				4C7FF7B41CD0CC91000E995A /* XMPPSCRAMSHA1Authentication.m in Sources */,
 				4C7FF8011CD0CC91000E995A /* XMPPSoftwareVersion.m in Sources */,
+				4C4275AD1D4C81BB00D4A789 /* TTTAttributedLabel.m in Sources */,
 				4C7FF8411CD0CC91000E995A /* YTKNetworkAgent.m in Sources */,
 				4CADD91C1D48B44F008AF597 /* FindViewController.m in Sources */,
 				4C7FF7B01CD0CC91000E995A /* XMPPDeprecatedDigestAuthentication.m in Sources */,

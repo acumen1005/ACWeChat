@@ -8,6 +8,8 @@
 
 #import "FriendStatusViewController.h"
 #import "FriendStatusRefreshHeaderView.h"
+#import "FriendStatusCell.h"
+#import "ModelHelper.h"
 
 #define LOADING_Y  110
 
@@ -18,6 +20,8 @@
 @property (strong,nonatomic) UIImageView *avatarImageView;
 @property (strong,nonatomic) UIView *bgAvatarView;
 @property (strong,nonatomic) UILabel *nameLabel;
+
+@property (strong,nonatomic) NSArray *friendStatuses;
 
 @property (strong,nonatomic) FriendStatusRefreshHeaderView *headerRefreshView;
 
@@ -32,6 +36,8 @@
     
     [self.view addSubview:self.tableView];
     [self initHeaderView];
+    
+    self.friendStatuses = [ModelHelper getFriendStatusWithCount:6];
 }
 
 - (void) viewDidAppear:(BOOL)animated{
@@ -72,7 +78,7 @@
 
 - (void) initHeaderView {
 
-    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, kScreenWidth)];
+    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, kScreenWidth * 0.9)];
     _avatarImageView = [[UIImageView alloc] init];
     _bgAvatarView = [[UIView alloc] init];
     _nameLabel = [[UILabel alloc] init];
@@ -123,7 +129,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         [_tableView setBackgroundColor:[UIColor grayColor]];
-        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+        [_tableView registerClass:[FriendStatusCell class] forCellReuseIdentifier:@"FriendStatusCell"];
     }
     return _tableView;
 }
@@ -138,20 +144,35 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 10;
+    return [self.friendStatuses count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+    FriendStatusCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendStatusCell" forIndexPath:indexPath];
+    
+    if(!cell) {
+        cell = [[FriendStatusCell alloc] init];
+    }
+    
+    [cell setFriendStatus:self.friendStatuses[indexPath.row]];
+    
+    cell.returnClickLabelBlock = ^(){
+//        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [tableView reloadData];
+    };
     
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return BUTTON_HEIGHT;
+//    FriendStatusCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendStatusCell" forIndexPath:indexPath];
+    
+//    FriendStatusCel
+    
+    return BUTTON_HEIGHT * 5.0;
 }
 
 
