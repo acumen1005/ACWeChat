@@ -52,6 +52,8 @@
         [_headerRefreshView setRefreshingBlock:^{
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
+                weakSelf.friendStatuses = [ModelHelper getFriendStatusWithCount:6];
+                
                 [weakHeader endRefreshing];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.tableView reloadData];
@@ -157,22 +159,32 @@
     }
     
     [cell setFriendStatus:self.friendStatuses[indexPath.row]];
-    
-    cell.returnClickLabelBlock = ^(){
-//        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-        [tableView reloadData];
-    };
+    cell.indexPath = indexPath;
+    __weak typeof(self) weakSelf = self;
+    if (!cell.returnClickLabelBlock) {
+        cell.returnClickLabelBlock = ^(id indexPath){
+            NSIndexPath *tmp = indexPath;
+            
+            FriendStatusBean *friendStatusBean = weakSelf.friendStatuses[tmp.row];
+//            if(friendStatusBean.isOpen){
+                friendStatusBean.isOpen = !friendStatusBean.isOpen;
+//            }
+//            else {
+//                friendStatusBean.isOpen = YES;
+//            }
+//            [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            [weakSelf.tableView reloadData];
+        };
+    }
     
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-//    FriendStatusCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendStatusCell" forIndexPath:indexPath];
+    CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:self.friendStatuses[indexPath.row]];
     
-//    FriendStatusCel
-    
-    return BUTTON_HEIGHT * 5.0;
+    return height;
 }
 
 

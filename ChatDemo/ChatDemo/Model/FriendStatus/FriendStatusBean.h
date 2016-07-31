@@ -14,5 +14,6 @@
 @property (strong,nonatomic) NSString *userName;
 @property (strong,nonatomic) NSString *content;
 @property (strong,nonatomic) NSArray *statusPics;
+@property (assign,nonatomic) BOOL isOpen;
 
 @end

@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "FriendStatusBean.h"
 
-typedef void (^ReturnClickLabelBlock)();
+typedef void (^ReturnClickLabelBlock)(id indexPath);
 
 @interface FriendStatusCell : UITableViewCell
 
 - (void) setFriendStatus:(FriendStatusBean *) friendStatusBean;
++ (CGFloat) calocCellHeightWithFriendStatus:(FriendStatusBean *) friendStatusBean;
 
 @property (copy,nonatomic) ReturnClickLabelBlock returnClickLabelBlock;
+@property (strong,nonatomic) NSIndexPath *indexPath;
 
 @end

@@ -12,7 +12,7 @@
 
 #define INDENT 10.0
 
-@interface FriendStatusCell()<MLLinkLabelDelegate>
+@interface FriendStatusCell()<MLLinkLabelDelegate,ACImageBrowseContainerView>
 
 @property (strong,nonatomic) UIImageView *avatarImageView;
 @property (strong,nonatomic) MLLinkLabel *nameLabel;
@@ -97,6 +97,19 @@
     [self.spreadLabel setFont:[UIFont systemFontOfSize:14.0]];
     [self.spreadLabel sizeToFit];
     
+    
+    [self.acImageBrowse setFrame:CGRectMake(0, 0, kScreenWidth - 50 - INDENT * 3, (kScreenWidth - 50 - INDENT * 3 - 10))];
+    self.acImageBrowse.myDelegate = self;
+    //status_image
+    self.acImageBrowse.imageNames = friendStatusBean.statusPics;
+    self.acImageBrowse.acWidth = (kScreenWidth - 50 - INDENT * 3 - 20) / 3.0;
+    self.acImageBrowse.acHeight = self.acImageBrowse.acWidth;
+    self.acImageBrowse.horizontalSpacing = 5.0;
+    self.acImageBrowse.verticalSpacing = 5.0;
+    
+    [self.acImageBrowse generateLocalImages];
+    [self.acImageBrowse drawImagesLayout];
+    
     [self layoutSubviews];
 }
 
@@ -115,7 +128,7 @@
     [self.contentLabel setNumberOfLines:0];
     [self.contentLabel sizeToFit];
     [self.contentLabel setX:self.nameLabel.left];
-    [self.contentLabel setY:self.nameLabel.bottom + 2.0];
+    [self.contentLabel setY:self.nameLabel.bottom + 5.0];
     
     if (self.contentLabel.height > 51.0) {
         if([self.spreadLabel.text isEqualToString:@"全文"]){
@@ -143,13 +156,14 @@
             [self.contentLabel setHeight:60.0];
         }
         
-        self.returnClickLabelBlock();
+        self.returnClickLabelBlock(self.indexPath);
     };
     
     [self.spreadLabel setLeft:self.nameLabel.left];
-    [self.spreadLabel setTop:self.contentLabel.bottom + 3.0];
+    [self.spreadLabel setTop:self.contentLabel.bottom + 5.0];
     
-    NSLog(@"%@ ---- height",NSStringFromCGSize(self.contentLabel.size));
+    [self.acImageBrowse setLeft:self.nameLabel.left];
+    [self.acImageBrowse setTop:self.spreadLabel.bottom + 5.0];
 
 }
 
@@ -166,6 +180,12 @@
     return  attri;
 }
 
+#pragma mark - 
+
+- (void) addMaskViewInImageView:(UIImageView *) image ImageName:(NSString *) imageName{
+
+}
+
 #pragma mark - MLLinkLabelDelegate
 
 - (void)didClickLink:(MLLink*)link linkText:(NSString*)linkText linkLabel:(MLLinkLabel*)linkLabel{
@@ -176,9 +196,23 @@
 
 + (CGFloat) calocCellHeightWithFriendStatus:(FriendStatusBean *) friendStatusBean {
     
-    CGFloat height = 10;
+    CGSize size = [FriendStatusCell sizeWithString:friendStatusBean.content font:[UIFont systemFontOfSize:14.0] maxSize:CGSizeMake(kScreenWidth - 50.0 - INDENT * 3, CGFLOAT_MAX)];
     
-    return BUTTON_HEIGHT * 5.0;
+    CGFloat height = friendStatusBean.isOpen == NO? 51:size.height;
+    
+    height += INDENT * 3 + 17.0 * 3 + 2.0;
+    height += (kScreenWidth - 50.0 - INDENT * 3)/3.0 * ([friendStatusBean.statusPics count]/3 + ([friendStatusBean.statusPics count]%3 != 0));
+    
+    NSLog(@"%f -----====== ",height);
+    
+    return MAX(height, INDENT + 50 + INDENT);
+}
+
++ (CGSize)sizeWithString:(NSString *)str font:(UIFont *)font maxSize:(CGSize)maxSize
+{
+    NSDictionary *dict = @{NSFontAttributeName : font};
+    CGSize size =  [str boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
+    return size;
 }
 
 #pragma mark - 系统方法
