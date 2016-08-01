@@ -10,6 +10,7 @@
 #import "FriendStatusRefreshHeaderView.h"
 #import "FriendStatusCell.h"
 #import "ModelHelper.h"
+#import "MenuSliderView.h"
 
 #define LOADING_Y  110
 
@@ -22,6 +23,7 @@
 @property (strong,nonatomic) UILabel *nameLabel;
 
 @property (strong,nonatomic) NSArray *friendStatuses;
+@property (strong,nonatomic) NSIndexPath *focuseIndexPath;
 
 @property (strong,nonatomic) FriendStatusRefreshHeaderView *headerRefreshView;
 
@@ -136,6 +138,9 @@
     return _tableView;
 }
 
+#pragma mark - 通知方法
+
+
 
 #pragma mark - Table view data source
 
@@ -166,14 +171,21 @@
             NSIndexPath *tmp = indexPath;
             
             FriendStatusBean *friendStatusBean = weakSelf.friendStatuses[tmp.row];
-//            if(friendStatusBean.isOpen){
-                friendStatusBean.isOpen = !friendStatusBean.isOpen;
-//            }
-//            else {
-//                friendStatusBean.isOpen = YES;
-//            }
-//            [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            friendStatusBean.isOpen = !friendStatusBean.isOpen;
             [weakSelf.tableView reloadData];
+        };
+    }
+    
+    __weak typeof(FriendStatusCell *) weakCell = cell;
+    if(!cell.returnTableViewCellBlock) {
+        cell.returnTableViewCellBlock = ^(NSIndexPath *indexPath){
+            
+            FriendStatusBean *friendStatusBean = weakSelf.friendStatuses[indexPath.row];
+            //初始化
+            for (FriendStatusBean *tmp in weakSelf.friendStatuses) {
+                tmp.isCommentStatus = NO;
+            }
+            friendStatusBean.isCommentStatus = YES;
         };
     }
     
@@ -185,6 +197,11 @@
     CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:self.friendStatuses[indexPath.row]];
     
     return height;
+}
+
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+
 }
 
 

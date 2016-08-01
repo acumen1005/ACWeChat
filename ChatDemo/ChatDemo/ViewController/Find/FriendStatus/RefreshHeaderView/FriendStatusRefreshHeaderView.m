@@ -100,7 +100,7 @@ static const CGFloat criticalY = -60.0f;
         return;
     }
     
-    NSLog(@"%f --------",self.scrollView.contentOffset.y);
+//    NSLog(@"%f --------",self.scrollView.contentOffset.y);
     
     [self updateRefreshHeaderWithOffsetY:self.scrollView.contentOffset.y + 64];
 }

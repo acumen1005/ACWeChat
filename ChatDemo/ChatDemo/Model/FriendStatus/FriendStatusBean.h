@@ -15,5 +15,6 @@
 @property (strong,nonatomic) NSString *content;
 @property (strong,nonatomic) NSArray *statusPics;
 @property (assign,nonatomic) BOOL isOpen;
+@property (assign,nonatomic) BOOL isCommentStatus;
 
 @end

@@ -241,6 +241,7 @@
 		4C7FF84A1CD0CE30000E995A /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C7FF8481CD0CD08000E995A /* libxml2.tbd */; };
 		4C7FF84E1CD0CF6A000E995A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FF84D1CD0CF6A000E995A /* LoginViewController.m */; };
 		4C7FF8531CD0D7ED000E995A /* RoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FF8521CD0D7ED000E995A /* RoomViewController.m */; };
+		4C8492AC1D4EFA7000D2BBA6 /* MenuSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8492AB1D4EFA7000D2BBA6 /* MenuSliderView.m */; };
 		4C87EE2A1CD1C1A500ACBD15 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C87EE291CD1C1A500ACBD15 /* FriendsViewController.m */; };
 		4C87EE2D1CD1C22800ACBD15 /* FriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C87EE2C1CD1C22800ACBD15 /* FriendsCell.m */; };
 		4C87EE311CD1FA9C00ACBD15 /* SingleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C87EE301CD1FA9C00ACBD15 /* SingleViewController.m */; };
@@ -759,6 +760,8 @@
 		4C7FF84F1CD0CFA1000E995A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		4C7FF8511CD0D7ED000E995A /* RoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomViewController.h; sourceTree = "<group>"; };
 		4C7FF8521CD0D7ED000E995A /* RoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomViewController.m; sourceTree = "<group>"; };
+		4C8492AA1D4EFA7000D2BBA6 /* MenuSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuSliderView.h; sourceTree = "<group>"; };
+		4C8492AB1D4EFA7000D2BBA6 /* MenuSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuSliderView.m; sourceTree = "<group>"; };
 		4C87EE281CD1C1A500ACBD15 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		4C87EE291CD1C1A500ACBD15 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		4C87EE2B1CD1C22800ACBD15 /* FriendsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsCell.h; sourceTree = "<group>"; };
@@ -2181,6 +2184,15 @@
 			path = Room;
 			sourceTree = "<group>";
 		};
+		4C8492A91D4EFA4900D2BBA6 /* MenuSlider */ = {
+			isa = PBXGroup;
+			children = (
+				4C8492AA1D4EFA7000D2BBA6 /* MenuSliderView.h */,
+				4C8492AB1D4EFA7000D2BBA6 /* MenuSliderView.m */,
+			);
+			path = MenuSlider;
+			sourceTree = "<group>";
+		};
 		4C87EE271CD1C17000ACBD15 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
@@ -2256,6 +2268,7 @@
 		4CE302E81D49ECB6008C1CC7 /* FriendStatus */ = {
 			isa = PBXGroup;
 			children = (
+				4C8492A91D4EFA4900D2BBA6 /* MenuSlider */,
 				4C4275C41D4C928400D4A789 /* Category */,
 				4C4275B51D4C83E600D4A789 /* ACImageBrowse */,
 				4CE302EF1D4A2687008C1CC7 /* RefreshHeaderView */,
@@ -2644,6 +2657,7 @@
 				4C7FF7C61CD0CC91000E995A /* XMPPIncomingFileTransfer.m in Sources */,
 				4C87EE371CD1FB4600ACBD15 /* OtherChatCell.m in Sources */,
 				4C7FF7D11CD0CC91000E995A /* XMPPRosterMemoryStorage.m in Sources */,
+				4C8492AC1D4EFA7000D2BBA6 /* MenuSliderView.m in Sources */,
 				4C7FF81D1CD0CC91000E995A /* XMPPAttentionModule.m in Sources */,
 				4C7FF78D1CD0CC91000E995A /* IQTitleBarButtonItem.m in Sources */,
 				4C7FF5231CD0CBE8000E995A /* main.m in Sources */,

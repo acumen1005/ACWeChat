@@ -9,14 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "FriendStatusBean.h"
 
+extern NSString *const kNSNotificationNameForLikeOrCommentView;
+
 typedef void (^ReturnClickLabelBlock)(id indexPath);
+typedef void (^ReturnTableViewCellBlock)(NSIndexPath *indexPath);
 
 @interface FriendStatusCell : UITableViewCell
 
-- (void) setFriendStatus:(FriendStatusBean *) friendStatusBean;
 + (CGFloat) calocCellHeightWithFriendStatus:(FriendStatusBean *) friendStatusBean;
 
+- (void) dismissMenuSilderView;
+- (void) setFriendStatus:(FriendStatusBean *) friendStatusBean;
+
 @property (copy,nonatomic) ReturnClickLabelBlock returnClickLabelBlock;
+@property (copy,nonatomic) ReturnTableViewCellBlock returnTableViewCellBlock;
 @property (strong,nonatomic) NSIndexPath *indexPath;
 
 @end
