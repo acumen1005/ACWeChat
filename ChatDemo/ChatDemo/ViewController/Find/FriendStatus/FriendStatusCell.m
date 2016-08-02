@@ -17,6 +17,8 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 @interface FriendStatusCell()<MLLinkLabelDelegate,ACImageBrowseContainerView>
 
+@property (strong,nonatomic) FriendStatusBean *friendStatusBean;
+
 @property (strong,nonatomic) UIImageView *avatarImageView;
 @property (strong,nonatomic) MLLinkLabel *nameLabel;
 @property (strong,nonatomic) UILabel *contentLabel;
@@ -35,16 +37,16 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        [self addSubview:self.avatarImageView];
-        [self addSubview:self.nameLabel];
-        [self addSubview:self.contentLabel];
-        [self addSubview:self.acImageBrowse];
-        [self addSubview:self.spreadLabel];
-        [self addSubview:self.timestampLabel];
-        [self addSubview:self.moreButton];
-        [self addSubview:self.menuSliderView];
+        [self.contentView  addSubview:self.avatarImageView];
+        [self.contentView  addSubview:self.nameLabel];
+        [self.contentView  addSubview:self.contentLabel];
+        [self.contentView  addSubview:self.acImageBrowse];
+        [self.contentView  addSubview:self.spreadLabel];
+        [self.contentView  addSubview:self.timestampLabel];
+        [self.contentView  addSubview:self.moreButton];
+        [self.contentView  addSubview:self.menuSliderView];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveOperationButtonClickedNotification:) name:kOperationButtonClickedNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveOperationButtonClickedNotification:) name:kOperationButtonClickedNotification object:nil];
     }
     return self;
 }
@@ -104,7 +106,7 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 - (MenuSliderView *) menuSliderView {
     if(!_menuSliderView){
-        _menuSliderView = [[MenuSliderView alloc] initWithFrame:CGRectMake(0, 0, 100, BUTTON_HEIGHT * 0.8)];
+        _menuSliderView = [[MenuSliderView alloc] initWithFrame:CGRectMake(0, 0, 140, BUTTON_HEIGHT * 0.8)];
     }
     return _menuSliderView;
 }
@@ -112,6 +114,8 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 #pragma mark - setter
 
 - (void) setFriendStatus:(FriendStatusBean *) friendStatusBean{
+    
+    _friendStatusBean = friendStatusBean;
     
     [self.avatarImageView setImage:[UIImage imageNamed:friendStatusBean.avatarUrl]];
     
@@ -151,7 +155,18 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     
     [[self.menuSliderView layer] setMasksToBounds:YES];
     [[self.menuSliderView layer] setCornerRadius:5.0];
-//    self.menuSliderView.show = NO;
+    self.menuSliderView.show = friendStatusBean.isCommentStatus;
+    
+    __weak typeof(self) weakSelf = self;
+    self.menuSliderView.onClickToCommentBlock = ^(){
+    
+        weakSelf.returnTableViewCellBlock(false,weakSelf.indexPath);
+    };
+    
+    self.menuSliderView.onClickToGiveLikeBlock = ^(){
+        
+        weakSelf.returnTableViewCellBlock(false,weakSelf.indexPath);
+    };
     
     [self layoutSubviews];
 }
@@ -219,9 +234,14 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     [self.moreButton setRight:self.contentLabel.right];
     [self.moreButton setTop:self.timestampLabel.top - 5.0];
     
-//    [self.menuSliderView setLeft:self.moreButton.left - self.menuSliderView.width];
+    
     [self.menuSliderView setRight:self.moreButton.left];
     [self.menuSliderView setCenterY:self.moreButton.centerY];
+    [UIView animateWithDuration:0.2f animations:^{
+        CGFloat width = self.menuSliderView.show? 140.0:0.0;
+        [self.menuSliderView setWidth:width];
+        [self.menuSliderView setRight:self.moreButton.left];
+    }];
 }
 
 #pragma mark - 生成富文本
@@ -241,14 +261,11 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 - (void) onClickToShowMoreOperater:(UIButton *) button {
 
-    [self postOperationButtonClickedNotification];
+//    [self postOperationButtonClickedNotification];
 //    
-//    __weak typeof(self) weakSelf = self;
-//    self.menuSliderView.updateTableViewCellBlock = ^(){
-//        [weakSelf layoutSubviews];
-//    };
+//    self.menuSliderView.show = !self.menuSliderView.show;
     
-    self.menuSliderView.show = !self.menuSliderView.show;
+    self.returnTableViewCellBlock(true,self.indexPath);
 }
 
 #pragma mark - UILabel点击事件
@@ -320,10 +337,9 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 #pragma mark - touch方法
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [super touchesBegan:touches withEvent:event];
-    [self postOperationButtonClickedNotification];
+    self.returnTableViewCellBlock(false,self.indexPath);
 }
 
 #pragma mark - 系统方法

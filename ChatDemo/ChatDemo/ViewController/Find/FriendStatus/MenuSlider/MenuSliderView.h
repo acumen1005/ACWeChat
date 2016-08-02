@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 typedef void (^UpdateTableViewCellBlock)();
+typedef void (^OnClickToGiveLikeBlock)();
+typedef void (^OnClickToCommentBlock)();
 
 @interface MenuSliderView : UIView
 
@@ -17,5 +19,7 @@ typedef void (^UpdateTableViewCellBlock)();
 - (BOOL) show;
 
 @property (copy,nonatomic) UpdateTableViewCellBlock updateTableViewCellBlock;
+@property (copy,nonatomic) OnClickToGiveLikeBlock onClickToGiveLikeBlock;
+@property (copy,nonatomic) OnClickToCommentBlock onClickToCommentBlock;
 
 @end

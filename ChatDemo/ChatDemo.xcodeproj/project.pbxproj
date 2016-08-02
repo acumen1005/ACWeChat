@@ -252,6 +252,7 @@
 		4CADD9201D48B4EC008AF597 /* CommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CADD91F1D48B4EC008AF597 /* CommonCell.m */; };
 		4CADD9231D48B7AE008AF597 /* FindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CADD9221D48B7AE008AF597 /* FindCell.m */; };
 		4CADD9261D48D764008AF597 /* HeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CADD9251D48D764008AF597 /* HeaderFooterView.m */; };
+		4CB3889F1D509EE200E0560A /* CommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB3889E1D509EE200E0560A /* CommentView.m */; };
 		4CBC99B71CD53C5300E6E807 /* AddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC99B61CD53C5300E6E807 /* AddFriendsViewController.m */; };
 		4CBC99BA1CD53ECD00E6E807 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC99B91CD53ECD00E6E807 /* RegisterViewController.m */; };
 		4CE302EB1D49EFA5008C1CC7 /* FriendStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE302EA1D49EFA5008C1CC7 /* FriendStatusViewController.m */; };
@@ -782,6 +783,8 @@
 		4CADD9221D48B7AE008AF597 /* FindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindCell.m; sourceTree = "<group>"; };
 		4CADD9241D48D764008AF597 /* HeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderFooterView.h; sourceTree = "<group>"; };
 		4CADD9251D48D764008AF597 /* HeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderFooterView.m; sourceTree = "<group>"; };
+		4CB3889D1D509EE200E0560A /* CommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentView.h; sourceTree = "<group>"; };
+		4CB3889E1D509EE200E0560A /* CommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentView.m; sourceTree = "<group>"; };
 		4CBC99B51CD53C5300E6E807 /* AddFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendsViewController.h; sourceTree = "<group>"; };
 		4CBC99B61CD53C5300E6E807 /* AddFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendsViewController.m; sourceTree = "<group>"; };
 		4CBC99B81CD53ECD00E6E807 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -2265,9 +2268,19 @@
 			path = CommonCell;
 			sourceTree = "<group>";
 		};
+		4CB3889C1D509EC900E0560A /* CommentView */ = {
+			isa = PBXGroup;
+			children = (
+				4CB3889D1D509EE200E0560A /* CommentView.h */,
+				4CB3889E1D509EE200E0560A /* CommentView.m */,
+			);
+			path = CommentView;
+			sourceTree = "<group>";
+		};
 		4CE302E81D49ECB6008C1CC7 /* FriendStatus */ = {
 			isa = PBXGroup;
 			children = (
+				4CB3889C1D509EC900E0560A /* CommentView */,
 				4C8492A91D4EFA4900D2BBA6 /* MenuSlider */,
 				4C4275C41D4C928400D4A789 /* Category */,
 				4C4275B51D4C83E600D4A789 /* ACImageBrowse */,
@@ -2502,6 +2515,7 @@
 				4C7FF7D31CD0CC91000E995A /* XMPPRoster.m in Sources */,
 				4C7FF8421CD0CC91000E995A /* YTKNetworkConfig.m in Sources */,
 				4CE302F71D4A2B75008C1CC7 /* FriendStatusRefreshHeaderView.m in Sources */,
+				4CB3889F1D509EE200E0560A /* CommentView.m in Sources */,
 				4C4275AA1D4C81BB00D4A789 /* MLLinkLabel.m in Sources */,
 				4C7FF84E1CD0CF6A000E995A /* LoginViewController.m in Sources */,
 				4C7FF8371CD0CC91000E995A /* DDXMLDocument.m in Sources */,

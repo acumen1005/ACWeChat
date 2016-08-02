@@ -12,7 +12,7 @@
 extern NSString *const kNSNotificationNameForLikeOrCommentView;
 
 typedef void (^ReturnClickLabelBlock)(id indexPath);
-typedef void (^ReturnTableViewCellBlock)(NSIndexPath *indexPath);
+typedef void (^ReturnTableViewCellBlock)(BOOL type,NSIndexPath *indexPath);
 
 @interface FriendStatusCell : UITableViewCell
 

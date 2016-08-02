@@ -156,12 +156,12 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //forIndexPath:indexPath
+    FriendStatusCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendStatusCell"];
     
-    FriendStatusCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendStatusCell" forIndexPath:indexPath];
-    
-    if(!cell) {
-        cell = [[FriendStatusCell alloc] init];
-    }
+//    if(!cell) {
+//        cell = [[FriendStatusCell alloc] init];
+//    }
     
     [cell setFriendStatus:self.friendStatuses[indexPath.row]];
     cell.indexPath = indexPath;
@@ -176,16 +176,19 @@
         };
     }
     
-    __weak typeof(FriendStatusCell *) weakCell = cell;
     if(!cell.returnTableViewCellBlock) {
-        cell.returnTableViewCellBlock = ^(NSIndexPath *indexPath){
+        cell.returnTableViewCellBlock = ^(BOOL type,NSIndexPath *indexPath){
             
             FriendStatusBean *friendStatusBean = weakSelf.friendStatuses[indexPath.row];
             //初始化
             for (FriendStatusBean *tmp in weakSelf.friendStatuses) {
+                if(type && tmp == friendStatusBean) continue;
                 tmp.isCommentStatus = NO;
             }
-            friendStatusBean.isCommentStatus = YES;
+            if(type){
+                friendStatusBean.isCommentStatus = !friendStatusBean.isCommentStatus;
+            }
+            [weakSelf.tableView reloadData];
         };
     }
     
