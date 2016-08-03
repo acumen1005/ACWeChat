@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^ReturnLayoutBlock)();
+
 @interface CommentView : UIView
+
+@property (copy,nonatomic) ReturnLayoutBlock returnLayoutBlock;
+@property (strong,nonatomic) NSArray *userBeans;
+
+- (void) setLikeItems:(NSArray *) likeItems;
 
 @end

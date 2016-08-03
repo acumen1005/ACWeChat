@@ -10,8 +10,11 @@
 #import "ACImageBrowseContainerView.h"
 #import "MLLinkLabel.h"
 #import "MenuSliderView.h"
+#import "CommentView.h"
+#import "userBean.h"
 
 #define INDENT 10.0
+#define WIDTH kScreenWidth/2.2
 
 NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedNotification";
 
@@ -27,6 +30,7 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 @property (strong,nonatomic) UILabel *timestampLabel;
 @property (strong,nonatomic) UIButton *moreButton;
 @property (strong,nonatomic) MenuSliderView *menuSliderView;
+@property (strong,nonatomic) CommentView *commentView;
 
 @end
 
@@ -37,14 +41,15 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        [self.contentView  addSubview:self.avatarImageView];
-        [self.contentView  addSubview:self.nameLabel];
-        [self.contentView  addSubview:self.contentLabel];
-        [self.contentView  addSubview:self.acImageBrowse];
-        [self.contentView  addSubview:self.spreadLabel];
-        [self.contentView  addSubview:self.timestampLabel];
-        [self.contentView  addSubview:self.moreButton];
-        [self.contentView  addSubview:self.menuSliderView];
+        [self.contentView addSubview:self.avatarImageView];
+        [self.contentView addSubview:self.nameLabel];
+        [self.contentView addSubview:self.contentLabel];
+        [self.contentView addSubview:self.acImageBrowse];
+        [self.contentView addSubview:self.spreadLabel];
+        [self.contentView addSubview:self.timestampLabel];
+        [self.contentView addSubview:self.moreButton];
+        [self.contentView addSubview:self.menuSliderView];
+        [self.contentView addSubview:self.commentView];
         
 //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveOperationButtonClickedNotification:) name:kOperationButtonClickedNotification object:nil];
     }
@@ -106,9 +111,16 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 - (MenuSliderView *) menuSliderView {
     if(!_menuSliderView){
-        _menuSliderView = [[MenuSliderView alloc] initWithFrame:CGRectMake(0, 0, 140, BUTTON_HEIGHT * 0.8)];
+        _menuSliderView = [[MenuSliderView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, BUTTON_HEIGHT * 0.8)];
     }
     return _menuSliderView;
+}
+
+- (CommentView *) commentView {
+    if(!_commentView) {
+        _commentView = [[CommentView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 50 - INDENT * 3, 35)];
+    }
+    return _commentView;
 }
 
 #pragma mark - setter
@@ -158,15 +170,32 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     self.menuSliderView.show = friendStatusBean.isCommentStatus;
     
     __weak typeof(self) weakSelf = self;
+    
     self.menuSliderView.onClickToCommentBlock = ^(){
     
         weakSelf.returnTableViewCellBlock(false,weakSelf.indexPath);
     };
     
-    self.menuSliderView.onClickToGiveLikeBlock = ^(){
+    self.menuSliderView.onClickToGiveLikeBlock = ^(BOOL isClick){
         
-        weakSelf.returnTableViewCellBlock(false,weakSelf.indexPath);
+        if([weakSelf.delegate respondsToSelector:@selector(onClickToGivenLike:IsClicked:)]){
+            [weakSelf.delegate onClickToGivenLike:weakSelf.indexPath IsClicked:isClick];
+        }
+        
+        if(weakSelf.returnTableViewCellBlock){
+            weakSelf.returnTableViewCellBlock(false,weakSelf.indexPath);
+        }
     };
+    
+//    self.commentView.userBeans =
+    
+    self.commentView.returnLayoutBlock = ^(){
+        
+        NSLog(@"11111111");
+//        weakSelf.returnTableViewCellBlock(false,weakSelf.indexPath);
+    };
+    
+    [self.commentView setLikeItems:friendStatusBean.likes];
     
     [self layoutSubviews];
 }
@@ -238,10 +267,14 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     [self.menuSliderView setRight:self.moreButton.left];
     [self.menuSliderView setCenterY:self.moreButton.centerY];
     [UIView animateWithDuration:0.2f animations:^{
-        CGFloat width = self.menuSliderView.show? 140.0:0.0;
+        CGFloat width = self.menuSliderView.show? WIDTH:0.0;
         [self.menuSliderView setWidth:width];
         [self.menuSliderView setRight:self.moreButton.left];
     }];
+    
+    [self.commentView setLeft:self.nameLabel.left];
+    [self.commentView setRight:self.moreButton.right];
+    [self.commentView setTop:self.timestampLabel.bottom + 3.0];
 }
 
 #pragma mark - 生成富文本
@@ -298,6 +331,12 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     }
     height += (kScreenWidth - 50.0 - INDENT * 3)/3.0 * ([friendStatusBean.statusPics count]/3 + ([friendStatusBean.statusPics count]%3 != 0));
     
+    //commentView;
+    NSAttributedString *attibutedString = [self generateAttributedStringWithUserBeans:friendStatusBean.likes];
+    
+    size = [FriendStatusCell sizeWithString:attibutedString.string font:[UIFont systemFontOfSize:13.0] maxSize:CGSizeMake(kScreenWidth - 50.0 - INDENT * 4, CGFLOAT_MAX)];
+    height += ([friendStatusBean.likes count] == 0? 0:size.height + 16);
+    
     return MAX(height + INDENT, INDENT + 50 + INDENT);
 }
 
@@ -306,6 +345,30 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     NSDictionary *dict = @{NSFontAttributeName : font};
     CGSize size =  [str boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
     return size;
+}
+
++ (NSAttributedString *) generateAttributedStringWithUserBeans:(NSArray *) userBeans {
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] init];
+    
+    NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
+    attachment.image = [UIImage imageNamed:@"Like"];
+    attachment.bounds = CGRectMake(0, -4, 16, 16);
+    
+    [attributedString appendAttributedString:[NSAttributedString attributedStringWithAttachment:attachment]];
+    
+    BOOL flag = true;
+    for (UserBean *userBean in userBeans) {
+        NSString *string = @"";
+        
+        string = flag? [NSString stringWithFormat:@" %@",userBean.userName]:[NSString stringWithFormat:@", %@",userBean.userName];
+        NSMutableAttributedString *tmp = [[NSMutableAttributedString alloc] initWithString:string];
+        
+        [attributedString appendAttributedString:tmp];
+        
+        flag = false;
+    }
+    return attributedString;
 }
 
 #pragma mark - 通知方法

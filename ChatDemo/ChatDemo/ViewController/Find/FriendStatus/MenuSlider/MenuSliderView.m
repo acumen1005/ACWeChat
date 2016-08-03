@@ -15,6 +15,8 @@
     UIButton *_likeButton;
     UIButton *_commentButton;
     BOOL _show;
+    BOOL _likeClicked;
+    BOOL _commentClicked;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -28,6 +30,8 @@
 
 - (void) setup {
     _show = NO;
+    _likeClicked = NO;
+    _commentClicked = NO;
     [self setBackgroundColor:COLOR_RGBA(76, 81, 84, 1.0)];
     
     _likeButton = [[UIButton alloc] init];
@@ -74,8 +78,17 @@
 
 - (void) onClickToGiveLike:(UIButton *) button {
 
+    _likeClicked = !_likeClicked;
+    
+    if(!_likeClicked){
+        [button setAttributedTitle:[self generateAttributedStringWithImage:@"AlbumLike" Title:@"点赞"] forState:UIControlStateNormal];
+    }
+    else {
+        [button setAttributedTitle:[self generateAttributedStringWithImage:@"AlbumLike" Title:@"取消"] forState:UIControlStateNormal];
+    }
+    
     if(self.onClickToGiveLikeBlock){
-        self.onClickToGiveLikeBlock();
+        self.onClickToGiveLikeBlock(_likeClicked);
     }
 }
 

@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "FriendStatusBean.h"
 
+@protocol FriendStatusCellDelegate <NSObject>
+
+- (void) onClickToGivenLike:(NSIndexPath *) indexPath IsClicked:(BOOL) click;
+
+@end
+
 extern NSString *const kNSNotificationNameForLikeOrCommentView;
 
 typedef void (^ReturnClickLabelBlock)(id indexPath);
@@ -21,6 +27,7 @@ typedef void (^ReturnTableViewCellBlock)(BOOL type,NSIndexPath *indexPath);
 - (void) dismissMenuSilderView;
 - (void) setFriendStatus:(FriendStatusBean *) friendStatusBean;
 
+@property (weak,nonatomic) id<FriendStatusCellDelegate> delegate;
 @property (copy,nonatomic) ReturnClickLabelBlock returnClickLabelBlock;
 @property (copy,nonatomic) ReturnTableViewCellBlock returnTableViewCellBlock;
 @property (strong,nonatomic) NSIndexPath *indexPath;

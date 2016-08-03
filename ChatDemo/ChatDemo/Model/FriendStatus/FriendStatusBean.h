@@ -14,6 +14,7 @@
 @property (strong,nonatomic) NSString *userName;
 @property (strong,nonatomic) NSString *content;
 @property (strong,nonatomic) NSArray *statusPics;
+@property (strong,nonatomic) NSMutableArray *likes;
 @property (assign,nonatomic) BOOL isOpen;
 @property (assign,nonatomic) BOOL isCommentStatus;
 

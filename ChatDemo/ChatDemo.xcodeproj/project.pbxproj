@@ -28,6 +28,7 @@
 		4C4275C71D4C932200D4A789 /* UILabel+Spread.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275C61D4C932200D4A789 /* UILabel+Spread.m */; };
 		4C50C7E91CD4EDE400119079 /* XMPPMessage+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C50C7E81CD4EDE400119079 /* XMPPMessage+Tools.m */; };
 		4C50C7EC1CD4F06800119079 /* NSFileManager+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C50C7EB1CD4F06800119079 /* NSFileManager+Tools.m */; };
+		4C69C42A1D51A1AF00470675 /* UserBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C69C4291D51A1AF00470675 /* UserBean.m */; };
 		4C7CB3421CD5DBCC001BA0CF /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7CB3411CD5DBCC001BA0CF /* MainTabBarController.m */; };
 		4C7CB3461CD5DDC5001BA0CF /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7CB3451CD5DDC5001BA0CF /* MessageViewController.m */; };
 		4C7CB3491CD5E41D001BA0CF /* AddRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7CB3481CD5E41D001BA0CF /* AddRoomViewController.m */; };
@@ -320,6 +321,8 @@
 		4C50C7E81CD4EDE400119079 /* XMPPMessage+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XMPPMessage+Tools.m"; sourceTree = "<group>"; };
 		4C50C7EA1CD4F06800119079 /* NSFileManager+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Tools.h"; sourceTree = "<group>"; };
 		4C50C7EB1CD4F06800119079 /* NSFileManager+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Tools.m"; sourceTree = "<group>"; };
+		4C69C4281D51A1AF00470675 /* UserBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBean.h; sourceTree = "<group>"; };
+		4C69C4291D51A1AF00470675 /* UserBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBean.m; sourceTree = "<group>"; };
 		4C7CB3401CD5DBCC001BA0CF /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		4C7CB3411CD5DBCC001BA0CF /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		4C7CB3441CD5DDC5001BA0CF /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
@@ -912,6 +915,7 @@
 		4C4275BC1D4C875000D4A789 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4C69C4271D51A1A000470675 /* User */,
 				4C4275BD1D4C877300D4A789 /* FriendStatus */,
 				4C4275C11D4C8AC300D4A789 /* ModelHelper.h */,
 				4C4275C21D4C8AC300D4A789 /* ModelHelper.m */,
@@ -935,6 +939,15 @@
 				4C4275C61D4C932200D4A789 /* UILabel+Spread.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		4C69C4271D51A1A000470675 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				4C69C4281D51A1AF00470675 /* UserBean.h */,
+				4C69C4291D51A1AF00470675 /* UserBean.m */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		4C7CB33F1CD5DB9B001BA0CF /* Main */ = {
@@ -2664,6 +2677,7 @@
 				4C4275A11D4C81BB00D4A789 /* NSAttributedString+MLLabel.m in Sources */,
 				4C7FF7C51CD0CC91000E995A /* XMPPFileTransfer.m in Sources */,
 				4C7FF82E1CD0CC91000E995A /* DDASLLogger.m in Sources */,
+				4C69C42A1D51A1AF00470675 /* UserBean.m in Sources */,
 				4C7FF8071CD0CC91000E995A /* XMPPCapsResourceCoreDataStorageObject.m in Sources */,
 				4C7FF7B61CD0CC91000E995A /* XMPPXOAuth2Google.m in Sources */,
 				4C7FF81A1CD0CC91000E995A /* XMPPTime.m in Sources */,

@@ -10,11 +10,12 @@
 #import "FriendStatusRefreshHeaderView.h"
 #import "FriendStatusCell.h"
 #import "ModelHelper.h"
+#import "UserBean.h"
 #import "MenuSliderView.h"
 
 #define LOADING_Y  110
 
-@interface FriendStatusViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface FriendStatusViewController ()<UITableViewDataSource,UITableViewDelegate,FriendStatusCellDelegate>
 
 @property (strong,nonatomic) UITableView *tableView;
 @property (strong,nonatomic) UIView *headerView;
@@ -138,9 +139,27 @@
     return _tableView;
 }
 
-#pragma mark - 通知方法
+#pragma mark - FriendStatusCellDelegate
 
-
+- (void) onClickToGivenLike:(NSIndexPath *) indexPath IsClicked:(BOOL)click{
+    
+    FriendStatusBean *friendStatusBean = [self.friendStatuses objectAtIndex:indexPath.row];
+    
+    if(click) {
+        
+        UserBean *userBean = [[UserBean alloc] init];
+        userBean.userName = @"acumen";
+        userBean.userId = [NSNumber numberWithInt:1];
+        [friendStatusBean.likes addObject:userBean];
+    }
+    else {
+        for (UserBean *tmp in friendStatusBean.likes) {
+            if([tmp.userId isEqualToNumber:@1]){
+                [friendStatusBean.likes removeObject:tmp];
+            }
+        }
+    }
+}
 
 #pragma mark - Table view data source
 
@@ -165,6 +184,7 @@
     
     [cell setFriendStatus:self.friendStatuses[indexPath.row]];
     cell.indexPath = indexPath;
+    cell.delegate = self;
     __weak typeof(self) weakSelf = self;
     if (!cell.returnClickLabelBlock) {
         cell.returnClickLabelBlock = ^(id indexPath){

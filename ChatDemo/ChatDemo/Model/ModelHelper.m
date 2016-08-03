@@ -8,6 +8,7 @@
 
 #import "ModelHelper.h"
 #import "FriendStatusBean.h"
+#import "UserBean.h"
 
 @implementation ModelHelper
 
@@ -55,7 +56,7 @@
                                      @"pic7.jpg",
                                      @"pic8.jpg"
                                      ];
-    
+
     
     for (int i = 0; i < count; i++) {
         FriendStatusBean *friendStatusBean = [[FriendStatusBean alloc] init];
@@ -77,6 +78,21 @@
             [pics addObject:[avatarArray objectAtIndex:index]];
         }
         friendStatusBean.statusPics = pics;
+        
+        random = arc4random_uniform(4);
+        friendStatusBean.likes = [[NSMutableArray alloc] init];
+        for (int j = 0; j < random; j++) {
+            int index = arc4random_uniform([namesArray count]);
+            UserBean *userBean = [[UserBean alloc] init];
+            userBean.userName = [namesArray objectAtIndex:index];
+            if(j == 0) {
+                j = j + 1;
+            }
+            userBean.userId = [NSNumber numberWithInt:j + 1];
+            
+            [friendStatusBean.likes addObject:userBean];
+        }
+        
         
         [results addObject:friendStatusBean];
     }

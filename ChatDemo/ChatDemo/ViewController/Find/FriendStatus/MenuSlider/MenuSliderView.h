@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef void (^UpdateTableViewCellBlock)();
-typedef void (^OnClickToGiveLikeBlock)();
+typedef void (^OnClickToGiveLikeBlock)(BOOL isClick);
 typedef void (^OnClickToCommentBlock)();
 
 @interface MenuSliderView : UIView
