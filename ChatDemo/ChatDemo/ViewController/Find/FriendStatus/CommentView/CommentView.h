@@ -15,6 +15,6 @@ typedef void (^ReturnLayoutBlock)();
 @property (copy,nonatomic) ReturnLayoutBlock returnLayoutBlock;
 @property (strong,nonatomic) NSArray *userBeans;
 
-- (void) setLikeItems:(NSArray *) likeItems;
+- (void) setLikeItems:(NSArray *) likeItems CommentItems:(NSArray *) commentItems;
 
 @end

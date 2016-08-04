@@ -12,6 +12,7 @@
 #import "ModelHelper.h"
 #import "UserBean.h"
 #import "MenuSliderView.h"
+#import "CommentBean.h"
 
 #define LOADING_Y  110
 
@@ -140,6 +141,19 @@
 }
 
 #pragma mark - FriendStatusCellDelegate
+
+- (void) onClickToComment:(NSIndexPath *) indexPath{
+    
+    FriendStatusBean *friendStatusBean = [self.friendStatuses objectAtIndex:indexPath.row];
+    
+    friendStatusBean.comments = [[NSMutableArray alloc] init];
+    CommentBean *commentBean = [[CommentBean alloc] init];
+    commentBean.fromUserName = @"acumen";
+    commentBean.toUserName = @"sherry";
+    commentBean.commentContent = @"你好啊你好啊你好啊你好啊";
+    
+    [friendStatusBean.comments addObject:commentBean];
+}
 
 - (void) onClickToGivenLike:(NSIndexPath *) indexPath IsClicked:(BOOL)click{
     

@@ -12,6 +12,7 @@
 @protocol FriendStatusCellDelegate <NSObject>
 
 - (void) onClickToGivenLike:(NSIndexPath *) indexPath IsClicked:(BOOL) click;
+- (void) onClickToComment:(NSIndexPath *) indexPath;
 
 @end
 

@@ -9,6 +9,7 @@
 #import "ModelHelper.h"
 #import "FriendStatusBean.h"
 #import "UserBean.h"
+#import "CommentBean.h"
 
 @implementation ModelHelper
 
@@ -93,6 +94,15 @@
             [friendStatusBean.likes addObject:userBean];
         }
         
+        random = arc4random_uniform(4);
+        friendStatusBean.comments = [[NSMutableArray alloc] init];
+        for (int j = 0; j < random; j++) {
+            CommentBean *tmp = [[CommentBean alloc] init];
+            tmp.fromUserName = @"acumen";
+            tmp.toUserName = @"sherry";
+            tmp.commentContent = @"哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈";
+            [friendStatusBean.comments addObject:tmp];
+        }
         
         [results addObject:friendStatusBean];
     }

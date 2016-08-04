@@ -29,6 +29,7 @@
 		4C50C7E91CD4EDE400119079 /* XMPPMessage+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C50C7E81CD4EDE400119079 /* XMPPMessage+Tools.m */; };
 		4C50C7EC1CD4F06800119079 /* NSFileManager+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C50C7EB1CD4F06800119079 /* NSFileManager+Tools.m */; };
 		4C69C42A1D51A1AF00470675 /* UserBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C69C4291D51A1AF00470675 /* UserBean.m */; };
+		4C69C42E1D53260300470675 /* CommentBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C69C42D1D53260300470675 /* CommentBean.m */; };
 		4C7CB3421CD5DBCC001BA0CF /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7CB3411CD5DBCC001BA0CF /* MainTabBarController.m */; };
 		4C7CB3461CD5DDC5001BA0CF /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7CB3451CD5DDC5001BA0CF /* MessageViewController.m */; };
 		4C7CB3491CD5E41D001BA0CF /* AddRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7CB3481CD5E41D001BA0CF /* AddRoomViewController.m */; };
@@ -323,6 +324,8 @@
 		4C50C7EB1CD4F06800119079 /* NSFileManager+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Tools.m"; sourceTree = "<group>"; };
 		4C69C4281D51A1AF00470675 /* UserBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBean.h; sourceTree = "<group>"; };
 		4C69C4291D51A1AF00470675 /* UserBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBean.m; sourceTree = "<group>"; };
+		4C69C42C1D53260300470675 /* CommentBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentBean.h; sourceTree = "<group>"; };
+		4C69C42D1D53260300470675 /* CommentBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentBean.m; sourceTree = "<group>"; };
 		4C7CB3401CD5DBCC001BA0CF /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		4C7CB3411CD5DBCC001BA0CF /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		4C7CB3441CD5DDC5001BA0CF /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
@@ -915,6 +918,7 @@
 		4C4275BC1D4C875000D4A789 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4C69C42B1D5325F400470675 /* Comment */,
 				4C69C4271D51A1A000470675 /* User */,
 				4C4275BD1D4C877300D4A789 /* FriendStatus */,
 				4C4275C11D4C8AC300D4A789 /* ModelHelper.h */,
@@ -948,6 +952,15 @@
 				4C69C4291D51A1AF00470675 /* UserBean.m */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		4C69C42B1D5325F400470675 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				4C69C42C1D53260300470675 /* CommentBean.h */,
+				4C69C42D1D53260300470675 /* CommentBean.m */,
+			);
+			path = Comment;
 			sourceTree = "<group>";
 		};
 		4C7CB33F1CD5DB9B001BA0CF /* Main */ = {
@@ -2644,6 +2657,7 @@
 				4C7FF7B31CD0CC91000E995A /* XMPPPlainAuthentication.m in Sources */,
 				4C7FF80D1CD0CC91000E995A /* XMPPMessageArchiving.m in Sources */,
 				4C7FF80A1CD0CC91000E995A /* XMPPMessageArchiving_Contact_CoreDataObject.m in Sources */,
+				4C69C42E1D53260300470675 /* CommentBean.m in Sources */,
 				4C7FF7921CD0CC91000E995A /* MJConst.m in Sources */,
 				4C7FF78F1CD0CC91000E995A /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				4C4275A51D4C81BB00D4A789 /* MLTextAttachment.m in Sources */,

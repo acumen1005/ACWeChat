@@ -12,6 +12,7 @@
 #import "MenuSliderView.h"
 #import "CommentView.h"
 #import "userBean.h"
+#import "CommentBean.h"
 
 #define INDENT 10.0
 #define WIDTH kScreenWidth/2.2
@@ -50,6 +51,7 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
         [self.contentView addSubview:self.moreButton];
         [self.contentView addSubview:self.menuSliderView];
         [self.contentView addSubview:self.commentView];
+        [self.contentView bringSubviewToFront:self.menuSliderView];
         
 //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveOperationButtonClickedNotification:) name:kOperationButtonClickedNotification object:nil];
     }
@@ -173,6 +175,10 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     
     self.menuSliderView.onClickToCommentBlock = ^(){
     
+        if([weakSelf.delegate respondsToSelector:@selector(onClickToComment:)]){
+            [weakSelf.delegate onClickToComment:weakSelf.indexPath];
+        }
+        
         weakSelf.returnTableViewCellBlock(false,weakSelf.indexPath);
     };
     
@@ -195,7 +201,7 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 //        weakSelf.returnTableViewCellBlock(false,weakSelf.indexPath);
     };
     
-    [self.commentView setLikeItems:friendStatusBean.likes];
+    [self.commentView setLikeItems:friendStatusBean.likes CommentItems:friendStatusBean.comments];
     
     [self layoutSubviews];
 }
@@ -258,11 +264,10 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     [self.timestampLabel setTop:self.acImageBrowse.bottom + 2.0];
     [self.timestampLabel setLeft:self.acImageBrowse.left];
     
-    [self.moreButton setWidth:25];
-    [self.moreButton setHeight:23];
+    [self.moreButton setWidth:28];
+    [self.moreButton setHeight:26];
     [self.moreButton setRight:self.contentLabel.right];
     [self.moreButton setTop:self.timestampLabel.top - 5.0];
-    
     
     [self.menuSliderView setRight:self.moreButton.left];
     [self.menuSliderView setCenterY:self.moreButton.centerY];
@@ -322,8 +327,7 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     CGFloat height = friendStatusBean.isOpen == NO? 51:size.height;
     
     if(size.height < 51){
-        
-        height += INDENT + 17.0 * 2 + 2.0 + 5 * 4;
+        height += INDENT + 17.0 * 2 + 2.0 + 5 + INDENT;
     }
     else {
         
@@ -334,8 +338,17 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     //commentView;
     NSAttributedString *attibutedString = [self generateAttributedStringWithUserBeans:friendStatusBean.likes];
     
-    size = [FriendStatusCell sizeWithString:attibutedString.string font:[UIFont systemFontOfSize:13.0] maxSize:CGSizeMake(kScreenWidth - 50.0 - INDENT * 4, CGFLOAT_MAX)];
-    height += ([friendStatusBean.likes count] == 0? 0:size.height + 16);
+    size = [FriendStatusCell sizeWithString:attibutedString.string font:[UIFont systemFontOfSize:13.5] maxSize:CGSizeMake(kScreenWidth - 50.0 - INDENT * 4, CGFLOAT_MAX)];
+    height += ([friendStatusBean.likes count] == 0? 0:size.height + 3);
+    
+    height += INDENT * 2;
+    for (CommentBean *tmp in friendStatusBean.comments) {
+        
+        NSString *string = [NSString stringWithFormat:@"%@回复%@：%@",tmp.fromUserName,tmp.toUserName,tmp.commentContent];
+        
+        CGFloat tmp = [FriendStatusCell sizeWithString:string font:[UIFont systemFontOfSize:13.5] maxSize:CGSizeMake(kScreenWidth - 50.0 - INDENT * 4, CGFLOAT_MAX)].height;
+        height += tmp;
+    }
     
     return MAX(height + INDENT, INDENT + 50 + INDENT);
 }
