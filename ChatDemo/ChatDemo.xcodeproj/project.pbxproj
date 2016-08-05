@@ -30,6 +30,8 @@
 		4C50C7EC1CD4F06800119079 /* NSFileManager+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C50C7EB1CD4F06800119079 /* NSFileManager+Tools.m */; };
 		4C69C42A1D51A1AF00470675 /* UserBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C69C4291D51A1AF00470675 /* UserBean.m */; };
 		4C69C42E1D53260300470675 /* CommentBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C69C42D1D53260300470675 /* CommentBean.m */; };
+		4C7372021D546BB3000EBF18 /* AccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7372011D546BB3000EBF18 /* AccessoryView.m */; };
+		4C7372061D548689000EBF18 /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7372051D548689000EBF18 /* GCPlaceholderTextView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4C7CB3421CD5DBCC001BA0CF /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7CB3411CD5DBCC001BA0CF /* MainTabBarController.m */; };
 		4C7CB3461CD5DDC5001BA0CF /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7CB3451CD5DDC5001BA0CF /* MessageViewController.m */; };
 		4C7CB3491CD5E41D001BA0CF /* AddRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7CB3481CD5E41D001BA0CF /* AddRoomViewController.m */; };
@@ -326,6 +328,10 @@
 		4C69C4291D51A1AF00470675 /* UserBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBean.m; sourceTree = "<group>"; };
 		4C69C42C1D53260300470675 /* CommentBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentBean.h; sourceTree = "<group>"; };
 		4C69C42D1D53260300470675 /* CommentBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentBean.m; sourceTree = "<group>"; };
+		4C7372001D546BB3000EBF18 /* AccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessoryView.h; sourceTree = "<group>"; };
+		4C7372011D546BB3000EBF18 /* AccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessoryView.m; sourceTree = "<group>"; };
+		4C7372041D548689000EBF18 /* GCPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlaceholderTextView.h; sourceTree = "<group>"; };
+		4C7372051D548689000EBF18 /* GCPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPlaceholderTextView.m; sourceTree = "<group>"; };
 		4C7CB3401CD5DBCC001BA0CF /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		4C7CB3411CD5DBCC001BA0CF /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		4C7CB3441CD5DDC5001BA0CF /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
@@ -963,6 +969,24 @@
 			path = Comment;
 			sourceTree = "<group>";
 		};
+		4C7371FF1D546B94000EBF18 /* AccessoryView */ = {
+			isa = PBXGroup;
+			children = (
+				4C7372001D546BB3000EBF18 /* AccessoryView.h */,
+				4C7372011D546BB3000EBF18 /* AccessoryView.m */,
+			);
+			path = AccessoryView;
+			sourceTree = "<group>";
+		};
+		4C7372031D548689000EBF18 /* GCPlaceholderTextView */ = {
+			isa = PBXGroup;
+			children = (
+				4C7372041D548689000EBF18 /* GCPlaceholderTextView.h */,
+				4C7372051D548689000EBF18 /* GCPlaceholderTextView.m */,
+			);
+			path = GCPlaceholderTextView;
+			sourceTree = "<group>";
+		};
 		4C7CB33F1CD5DB9B001BA0CF /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -1060,6 +1084,7 @@
 		4C7FF5551CD0CC28000E995A /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				4C7372031D548689000EBF18 /* GCPlaceholderTextView */,
 				4C4275821D4C81BB00D4A789 /* MLLabel */,
 				4C42759E1D4C81BB00D4A789 /* TTTAttributedLabel */,
 				4C7FF5571CD0CC90000E995A /* AFNetworking */,
@@ -2306,6 +2331,7 @@
 		4CE302E81D49ECB6008C1CC7 /* FriendStatus */ = {
 			isa = PBXGroup;
 			children = (
+				4C7371FF1D546B94000EBF18 /* AccessoryView */,
 				4CB3889C1D509EC900E0560A /* CommentView */,
 				4C8492A91D4EFA4900D2BBA6 /* MenuSlider */,
 				4C4275C41D4C928400D4A789 /* Category */,
@@ -2567,12 +2593,14 @@
 				4C7FF7721CD0CC91000E995A /* AFHTTPRequestOperationManager.m in Sources */,
 				4CADD9231D48B7AE008AF597 /* FindCell.m in Sources */,
 				4C7FF7C81CD0CC91000E995A /* XMPPGoogleSharedStatus.m in Sources */,
+				4C7372021D546BB3000EBF18 /* AccessoryView.m in Sources */,
 				4C7FF7BF1CD0CC91000E995A /* XMPPModule.m in Sources */,
 				4C7FF7AC1CD0CC91000E995A /* SVProgressHUD.m in Sources */,
 				4C7FF7BC1CD0CC91000E995A /* XMPPIQ.m in Sources */,
 				4CBC99BA1CD53ECD00E6E807 /* RegisterViewController.m in Sources */,
 				4CE302EB1D49EFA5008C1CC7 /* FriendStatusViewController.m in Sources */,
 				4C7FF7DE1CD0CC91000E995A /* XMPPRoomOccupantCoreDataStorageObject.m in Sources */,
+				4C7372061D548689000EBF18 /* GCPlaceholderTextView.m in Sources */,
 				4C4275A61D4C81BB00D4A789 /* NSAttributedString+MLExpression.m in Sources */,
 				4C7FF78A1CD0CC91000E995A /* IQTextView.m in Sources */,
 				4C7FF7B71CD0CC91000E995A /* NSData+XMPP.m in Sources */,

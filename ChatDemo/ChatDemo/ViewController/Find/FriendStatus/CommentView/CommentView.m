@@ -127,6 +127,7 @@
         
         MLLinkLabel *tmpLinkLabel = [_commenLabels objectAtIndex:i];
         CommentBean *commentBean = [_commenItems objectAtIndex:i];
+        
         NSAttributedString *string = [self generateAttributedStringWithCommentBean:commentBean];
         [tmpLinkLabel setAttributedText:string];
         [tmpLinkLabel setFont:[UIFont systemFontOfSize:13.5]];
@@ -162,11 +163,12 @@
     [self setHeight:_likeHeight + CONTENT_TOP];
     
     [_line setWidth:self.width];
-    [_line setTop:_likeLabel.bottom - _line.height + 3.0];
+    [_line setTop:_likeLabel.bottom - _line.height + 2.0];
     [_line setLeft:0.0];
     
     if(_preLabel) {
         [_likeViewBg setHeight:_preLabel.bottom + 3.0];
+        [self setHeight:_preLabel.bottom + 3.0];
     }
 }
 

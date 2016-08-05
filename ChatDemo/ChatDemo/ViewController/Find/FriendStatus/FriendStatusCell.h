@@ -20,6 +20,7 @@ extern NSString *const kNSNotificationNameForLikeOrCommentView;
 
 typedef void (^ReturnClickLabelBlock)(id indexPath);
 typedef void (^ReturnTableViewCellBlock)(BOOL type,NSIndexPath *indexPath);
+typedef void (^ReturnSelectedCellBlock)();
 
 @interface FriendStatusCell : UITableViewCell
 
@@ -31,6 +32,8 @@ typedef void (^ReturnTableViewCellBlock)(BOOL type,NSIndexPath *indexPath);
 @property (weak,nonatomic) id<FriendStatusCellDelegate> delegate;
 @property (copy,nonatomic) ReturnClickLabelBlock returnClickLabelBlock;
 @property (copy,nonatomic) ReturnTableViewCellBlock returnTableViewCellBlock;
+@property (copy,nonatomic) ReturnSelectedCellBlock returnSelectedCellBlock;
+
 @property (strong,nonatomic) NSIndexPath *indexPath;
 
 @end

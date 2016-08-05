@@ -271,6 +271,7 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     
     [self.menuSliderView setRight:self.moreButton.left];
     [self.menuSliderView setCenterY:self.moreButton.centerY];
+    
     [UIView animateWithDuration:0.2f animations:^{
         CGFloat width = self.menuSliderView.show? WIDTH:0.0;
         [self.menuSliderView setWidth:width];
@@ -415,7 +416,13 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [super touchesBegan:touches withEvent:event];
-    self.returnTableViewCellBlock(false,self.indexPath);
+    
+    if (!self.menuSliderView.show) {
+        self.returnSelectedCellBlock();
+    }
+    else {
+        self.returnTableViewCellBlock(false,self.indexPath);
+    }
 }
 
 #pragma mark - 系统方法

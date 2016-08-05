@@ -8,11 +8,14 @@
 
 #import "FriendStatusViewController.h"
 #import "FriendStatusRefreshHeaderView.h"
+#import "KeyboardManager.h"
 #import "FriendStatusCell.h"
 #import "ModelHelper.h"
 #import "UserBean.h"
 #import "MenuSliderView.h"
 #import "CommentBean.h"
+#import "AccessoryView.h"
+#import "AppDelegate.h"
 
 #define LOADING_Y  110
 
@@ -23,6 +26,9 @@
 @property (strong,nonatomic) UIImageView *avatarImageView;
 @property (strong,nonatomic) UIView *bgAvatarView;
 @property (strong,nonatomic) UILabel *nameLabel;
+@property (strong,nonatomic) AccessoryView *accessoryView;
+
+@property (strong,nonatomic) UIWindow *singleWindow;
 
 @property (strong,nonatomic) NSArray *friendStatuses;
 @property (strong,nonatomic) NSIndexPath *focuseIndexPath;
@@ -40,6 +46,11 @@
     
     [self.view addSubview:self.tableView];
     [self initHeaderView];
+    
+    [self initAccessoryView];
+    [self configNotification];
+    
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     
     self.friendStatuses = [ModelHelper getFriendStatusWithCount:6];
 }
@@ -71,8 +82,15 @@
 
 }
 
+- (void) viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    
+    
+}
+
 - (void) dealloc {
     
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,6 +99,40 @@
 }
 
 #pragma mark - init
+
+- (void) configNotification{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void) initAccessoryView {
+    
+    [self.singleWindow addSubview:self.accessoryView];
+    
+    __weak typeof(self) weakSelf = self;
+    self.accessoryView.returnTextViewContentBlock = ^(NSString *content, NSIndexPath *indexPath){
+    
+        if(indexPath == nil){
+            return ;
+        }
+
+        FriendStatusBean *friendStatusBean = [weakSelf.friendStatuses objectAtIndex:indexPath.row];
+        
+        CommentBean *commentBean = [[CommentBean alloc] init];
+        commentBean.fromUserName = @"acumen";
+        commentBean.toUserName = friendStatusBean.userName;
+        commentBean.commentContent = content;
+        
+        [friendStatusBean.comments addObject:commentBean];
+        
+        [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        
+        weakSelf.accessoryView.commentTextView.text = @"";
+        [weakSelf.accessoryView.commentTextView resignFirstResponder];
+        
+    };
+}
 
 - (void) initHeaderView {
 
@@ -128,6 +180,21 @@
 
 #pragma mark - getter
 
+- (UIWindow *) singleWindow {
+    if(!_singleWindow){
+        _singleWindow = [[UIApplication sharedApplication] keyWindow];
+    }
+    return _singleWindow;
+}
+
+- (AccessoryView *) accessoryView {
+    if(!_accessoryView){
+        _accessoryView = [[AccessoryView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, BUTTON_HEIGHT)];
+        [_accessoryView setBackgroundColor:COLOR_RGBA(240, 240, 240, 1.0)];
+    }
+    return _accessoryView;
+}
+
 - (UITableView *) tableView {
     
     if(!_tableView) {
@@ -140,19 +207,47 @@
     return _tableView;
 }
 
+#pragma mark - UIKeyboardDidShowNotification
+
+- (void) keyboardWillChangeFrame:(NSNotification *) notification {
+
+    // 获取键盘基本信息（动画时长与键盘高度）
+    NSDictionary *userInfo = [notification userInfo];
+    CGRect rect = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat keyboardHeight = CGRectGetHeight(rect);
+    CGFloat keyboardDuration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    [self.accessoryView setBottom:kScreenHeight - keyboardHeight];
+    
+    // 更新约束
+    [UIView animateWithDuration:keyboardDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
+- (void) keyboardWillHide:(NSNotification *) notification {
+    
+    // 获得键盘动画时长
+    NSDictionary *userInfo = [notification userInfo];
+    CGFloat keyboardDuration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    [self.accessoryView setTop:kScreenHeight];
+    
+    // 更新约束
+    [UIView animateWithDuration:keyboardDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    
+}
+
 #pragma mark - FriendStatusCellDelegate
 
 - (void) onClickToComment:(NSIndexPath *) indexPath{
     
-    FriendStatusBean *friendStatusBean = [self.friendStatuses objectAtIndex:indexPath.row];
+    self.accessoryView.indexPath = indexPath;
+    [self.accessoryView.commentTextView becomeFirstResponder];
     
-    friendStatusBean.comments = [[NSMutableArray alloc] init];
-    CommentBean *commentBean = [[CommentBean alloc] init];
-    commentBean.fromUserName = @"acumen";
-    commentBean.toUserName = @"sherry";
-    commentBean.commentContent = @"你好啊你好啊你好啊你好啊";
-    
-    [friendStatusBean.comments addObject:commentBean];
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 - (void) onClickToGivenLike:(NSIndexPath *) indexPath IsClicked:(BOOL)click{
@@ -175,6 +270,17 @@
     }
 }
 
+#pragma mark - touch
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    //    [super touchesBegan:touches withEvent:event];
+    
+}
+
+#pragma mark - UITextFieldDelegate
+
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -191,10 +297,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //forIndexPath:indexPath
     FriendStatusCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendStatusCell"];
-    
-//    if(!cell) {
-//        cell = [[FriendStatusCell alloc] init];
-//    }
     
     [cell setFriendStatus:self.friendStatuses[indexPath.row]];
     cell.indexPath = indexPath;
@@ -215,14 +317,24 @@
             
             FriendStatusBean *friendStatusBean = weakSelf.friendStatuses[indexPath.row];
             //初始化
+            BOOL needUpdate = false;
             for (FriendStatusBean *tmp in weakSelf.friendStatuses) {
-                if(type && tmp == friendStatusBean) continue;
+                if(type && tmp == friendStatusBean) {
+                    needUpdate = true;
+                    continue;
+                }
                 tmp.isCommentStatus = NO;
             }
             if(type){
                 friendStatusBean.isCommentStatus = !friendStatusBean.isCommentStatus;
             }
             [weakSelf.tableView reloadData];
+        };
+    }
+    
+    if(!cell.returnSelectedCellBlock){
+        cell.returnSelectedCellBlock = ^(){
+            [weakSelf.singleWindow endEditing:YES];
         };
     }
     
@@ -234,11 +346,6 @@
     CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:self.friendStatuses[indexPath.row]];
     
     return height;
-}
-
-
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
-
 }
 
 
