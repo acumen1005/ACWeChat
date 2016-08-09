@@ -89,7 +89,7 @@
 {
     if (_bottomLine == nil) {
         _bottomLine = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5f)];
-        [_topLine setHeight:0.5f];
+        [_bottomLine setHeight:0.5f];
         [_bottomLine setBackgroundColor:[UIColor grayColor]];
         [_bottomLine setAlpha:0.4];
         [self.contentView addSubview:_bottomLine];
