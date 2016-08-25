@@ -9,14 +9,18 @@
 #import "FriendsViewController.h"
 #import "SingleViewController.h"
 #import "AddFriendsViewController.h"
+#import "ResultsViewController.h"
 #import "FriendsCell.h"
 
 @interface FriendsViewController ()<UITableViewDelegate,UITableViewDataSource,NSFetchedResultsControllerDelegate>
 
+@property (strong,nonatomic) ResultsViewController *resultsController;
 @property (strong,nonatomic) UITableView *tableView;
 @property (strong,nonatomic) NSMutableArray *dataArray;
 /** 结果调度器 */
 @property(nonatomic,strong) NSFetchedResultsController *fetchedResultsController;
+
+@property (strong,nonatomic) UISearchController *searchController;
 
 @end
 
@@ -24,31 +28,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController.navigationBar setHidden:NO];
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"好友列表";
     
     [self initData];
     [self initView];
-    // 查询数据
-    [self.fetchedResultsController performFetch:NULL];
     
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, 40.0, 40.0)];
     [backButton setTitle:@"注销" forState:UIControlStateNormal];
-    [backButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(onClickToBack) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     
     UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, 40.0, 40.0)];
     [addButton setBackgroundImage:[UIImage imageNamed:@"chat_bottom_up_press"] forState:UIControlStateNormal];
-    [addButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(onClickToAdd) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
+    
+    // 查询数据
+    [self.fetchedResultsController performFetch:NULL];
     
     [[XMPPTool sharedXMPPTool] getAllRegisteredUsers];
 }
 
 #pragma mark - lazy load
+
+- (ResultsViewController *) resultsController {
+    if(!_resultsController) {
+        _resultsController = [[ResultsViewController alloc] init];
+    }
+    return  _resultsController;
+}
+
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
@@ -71,7 +82,6 @@
     
     // 添加上下文
     NSManagedObjectContext *ctx = [XMPPTool sharedXMPPTool].xmppRosterCoreDataStorage.mainThreadManagedObjectContext;
-//    NSManagedObjectContext *ctx = [XMPPTool sharedXMPPTool].;
     
     // 实例化结果控制器
     _fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:ctx sectionNameKeyPath:nil cacheName:nil];
@@ -84,9 +94,10 @@
 
 - (UITableView *) tableView{
     if(!_tableView){
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64)];
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        [_tableView registerClass:[FriendsCell class] forCellReuseIdentifier:@"FriendsCell"];
     }
     return _tableView;
 }
@@ -94,11 +105,27 @@
 #pragma mark - init
 
 - (void) initData{
-    _dataArray = [[NSMutableArray alloc] init];
+//    _dataArray = [[NSMutableArray alloc] init];
 }
 
 - (void) initView{
-    [self.view addSubview:self.tableView];
+    
+    NSMutableArray *mArray = [[NSMutableArray alloc] init];
+    for (XMPPUserCoreDataStorageObject *user in self.fetchedResultsController.fetchedObjects) {
+        
+        [mArray addObject:user.jid.user];
+    }
+    self.resultsController.dataSource = mArray;
+    
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:self.resultsController];
+    
+    self.searchController.searchResultsUpdater = self.resultsController;
+    [self.searchController.searchBar sizeToFit];
+    
+    [self.view addSubview: self.tableView];
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    self.definesPresentationContext = YES;
+    self.searchController.hidesNavigationBarDuringPresentation = NO;
 }
 
 #pragma mark - Table view data source
@@ -110,24 +137,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-//    NSLog(@"%d",self.fetchedResultsController.fetchedObjects.count);
-    
     return self.fetchedResultsController.fetchedObjects.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *ID = @"ContactCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    FriendsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsCell"];
     
     if(!cell){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell = [[FriendsCell alloc] init];
     }
     
     XMPPUserCoreDataStorageObject *user = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-//    NSLog(@"%@ %zd %@ %@ ", user.jidStr,user.section, user.sectionName, user.sectionNum);
     
     // subscription
     // 如果是none表示对方还没有确认
@@ -135,14 +157,22 @@
     // from 对方关注我
     // both 互粉
     
-    NSString *str = [user.jidStr stringByAppendingFormat:@" | %@",user.subscription];
+//    NSString *str = [user.jidStr stringByAppendingFormat:@" | %@",user.subscription];
+//    
+//    NSLog(@"%@ - 状态： %@",user.jid.user ,[self userStatusWithSection:user.section]);
     
-    NSLog(@"%@ - 状态： %@",user.jid.user ,[self userStatusWithSection:user.section]);
+    [cell setNameLabelWithString:user.jid.user AvatarImageView:@"3"];
     
-    cell.textLabel.text = [[self userStatusWithSection:user.section] stringByAppendingFormat:@"   %@",str];
-    cell.textLabel.font = [UIFont systemFontOfSize:12.0];
+//    [cell setNameLabelWithString:self.dataArray[indexPath.row] AvatarImageView:@"1"];
+    
+//    cell.textLabel.text = self.dataArray[indexPath.row];
     
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return BUTTON_HEIGHT + 10.0;
 }
 
 - (NSString *)userStatusWithSection:(NSInteger)section {
@@ -165,6 +195,13 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
+//    NSMutableArray *mArray = [[NSMutableArray alloc] init];
+//    for (XMPPUserCoreDataStorageObject *user in controller) {
+//        
+//        [mArray addObject:user.jid.user];
+//    }
+//    self.resultsController.dataSource = mArray;
+    
     NSLog(@"上下文改变");
     [self.tableView reloadData];
 }
@@ -180,8 +217,6 @@
     XMPPUserCoreDataStorageObject *user = [self.fetchedResultsController objectAtIndexPath:indexpath];
     
     singleVC.jid = user.jid;
-    NSLog(@"%@...",[NSString stringWithFormat:@"%@@%@",@"user9",LOCAL_HOST]);
-    singleVC.jid = [XMPPJID jidWithString:[NSString stringWithFormat:@"%@@%@",@"user9",LOCAL_HOST]];
     
     [singleVC setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:singleVC animated:YES];
@@ -192,9 +227,9 @@
 
 - (void) onClickToAdd{
 
-//    AddFriendsViewController *addFriendsVC = [[AddFriendsViewController alloc] init];
-//    
-//    [self.navigationController pushViewController:addFriendsVC animated:YES];
+    AddFriendsViewController *addFriendsVC = [[AddFriendsViewController alloc] init];
+    
+    [self.navigationController pushViewController:addFriendsVC animated:YES];
     
 }
 

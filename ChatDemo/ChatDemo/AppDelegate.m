@@ -27,11 +27,9 @@
     self.window.rootViewController = nav;
     
     [[UINavigationBar appearance] setBarTintColor:COLOR_RGBA(0,0,0,1.0)];
-    [[UINavigationBar appearance] setTranslucent:YES];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
     
     return YES;
 }
@@ -39,7 +37,7 @@
 - (void)notificationToChange:(NSNotification *)notification{
     
     id isChange = notification.object;
-    if(isChange == @(YES)){
+    if([isChange  isEqual: @(YES)]){
         MainTabBarController *mainTB = [[MainTabBarController alloc] init];
         self.window.rootViewController = mainTB;
     }

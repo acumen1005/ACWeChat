@@ -10,8 +10,7 @@
 
 @interface FriendsCell : UITableViewCell
 
-@property (strong,nonatomic) UILabel *nameLabel;
-
-- (void) setNameLabel:(NSString *)name;
+- (void) setNameLabelWithString:(NSString *) name
+                AvatarImageView:(NSString *) imageName;
 
 @end

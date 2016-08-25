@@ -18,7 +18,7 @@
 #import "MLLabel.h"
 //192.168.66.102
 //192.168.0.9
-#define XMPP_DOMAIN @"192.168.0.5"
+#define XMPP_DOMAIN @"192.168.77.117"
 #define LOCAL_HOST @"acumendemacbook-pro.local"
 
 #define kScreenWidth [[UIScreen mainScreen] bounds].size.width

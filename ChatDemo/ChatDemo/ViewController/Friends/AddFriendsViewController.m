@@ -26,7 +26,6 @@
     
     UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, 40.0, 40.0)];
     [addButton setTitle:@"添加" forState:UIControlStateNormal];
-    [addButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(onClickToAdd) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
 }
@@ -35,13 +34,26 @@
 
 - (void) initView{
 
+    UIView *blankView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, BUTTON_HEIGHT)];
+    
     _nameText = [[UITextField alloc] initWithFrame:CGRectMake(0, 80.0, kScreenWidth, 40.0)];
+    _nameText.leftViewMode = UITextFieldViewModeAlways;
+    _nameText.leftView = blankView;
     _nameText.backgroundColor = [UIColor whiteColor];
     _nameText.placeholder = @"添加好友名字";
     
     [self.view addSubview:_nameText];
 }
 
+
+#pragma mark - touch 
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    [super touchesBegan:touches withEvent:event];
+    
+    [self.view endEditing:YES];
+}
 
 #pragma mark - button action
 
