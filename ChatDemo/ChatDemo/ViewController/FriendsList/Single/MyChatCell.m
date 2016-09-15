@@ -8,7 +8,6 @@
 
 #import "MyChatCell.h"
 
-
 #define indent 10.0
 #define FONTSIZE 14.0
 #define AVATARSIZE 40.0

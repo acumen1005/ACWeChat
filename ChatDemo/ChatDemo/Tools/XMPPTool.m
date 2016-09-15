@@ -35,7 +35,7 @@ NSString *const ResultNotification = @"ResultNotification";
 - (XMPPStream *)xmppStream
 {
     if (_xmppStream == nil) {
-        _xmppStream = [[XMPPStream alloc]init];
+        _xmppStream = [[XMPPStream alloc] init];
         
         // 实例化
         _xmppReconnect = [[XMPPReconnect alloc]init];
