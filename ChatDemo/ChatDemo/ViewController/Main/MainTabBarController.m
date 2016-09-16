@@ -30,6 +30,14 @@
     [self initView];
 }
 
+#pragma mark - setter
+
+- (void) setLoginType:(FriendsViewControllerLoginType)loginType {
+    _loginType = loginType;
+    
+    self.friendsVC.loginType = loginType;
+}
+
 #pragma mark - getter
 
 - (FindViewController *) findVC {
@@ -90,7 +98,6 @@
     childVc.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     [childVc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:123/255.0 green:123/255.0 blue:123/255.0 alpha:1.0]} forState:UIControlStateNormal];
-//    [childVc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor orangeColor]} forState:UIControlStateSelected];
     
     UINavigationController *navigationVc = [[UINavigationController alloc] initWithRootViewController:childVc];
     [self addChildViewController:navigationVc];

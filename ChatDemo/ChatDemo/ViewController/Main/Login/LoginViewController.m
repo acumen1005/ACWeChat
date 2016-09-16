@@ -37,6 +37,10 @@
     
     [self initData];
     [self initView];
+    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    [self.navigationItem setBackBarButtonItem:backItem];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -164,9 +168,10 @@
 
     // 在主线程利用通知发送广播
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:ResultNotification object:@(YES)];
+        [[NSNotificationCenter defaultCenter] postNotificationName:ResultNotification object:
+                    @{DICT_KEY_LOGIN_TYPE:@(0),
+                      DICT_KEY_LOGIN_STATUS:@(YES)}];
     });
-    
 }
 
 - (void) onClick2Register{

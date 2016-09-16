@@ -12,6 +12,7 @@
 
 @property (strong,nonatomic) UITextField *userText;
 @property (strong,nonatomic) UITextField *pwdText;
+@property (strong,nonatomic) UIButton *registerBtn;
 
 @end
 
@@ -26,37 +27,68 @@
     [self initView];
 }
 
+#pragma mark - getter 
+
+- (UITextField *) userText {
+    if(!_userText) {
+        _userText = [[UITextField alloc] init];
+        _userText.placeholder = @"用户名";
+        _userText.layer.masksToBounds = YES;
+        _userText.layer.cornerRadius = 5.0;
+        _userText.layer.borderWidth = 1.0f;
+        _userText.layer.borderColor = [UIColor colorWithRed:205/255.0 green:205/255.0 blue:205/255.0 alpha:1].CGColor;
+        UIView *blankView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10.0, 40.0)];
+        _userText.leftView = blankView1;
+        _userText.leftViewMode = UITextFieldViewModeAlways;
+        _userText.clearButtonMode = UITextFieldViewModeWhileEditing;
+    }
+    return _userText;
+}
+
+- (UITextField *) pwdText {
+    if(!_pwdText) {
+        _pwdText = [[UITextField alloc] init];
+        _pwdText.placeholder = @"密码";
+        _pwdText.layer.masksToBounds = YES;
+        _pwdText.layer.cornerRadius = 5.0;
+        _pwdText.layer.borderWidth = 1.0f;
+        _pwdText.layer.borderColor = [UIColor colorWithRed:205/255.0 green:205/255.0 blue:205/255.0 alpha:1].CGColor;
+        UIView *blankView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10.0, 40.0)];
+        _pwdText.leftView = blankView2;
+        _pwdText.leftViewMode = UITextFieldViewModeAlways;
+        _pwdText.clearButtonMode = UITextFieldViewModeWhileEditing;
+    }
+    return _pwdText;
+}
+
+- (UIButton *) registerBtn{
+    if(!_registerBtn) {
+        _registerBtn = [[UIButton alloc] init];
+        [_registerBtn setTitle:@"完成" forState:UIControlStateNormal];
+        [_registerBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        _registerBtn.layer.masksToBounds = YES;
+        _registerBtn.layer.cornerRadius = 5.0;
+        _registerBtn.layer.borderWidth = 1.0f;
+        _registerBtn.layer.borderColor = [UIColor colorWithRed:205/255.0 green:205/255.0 blue:205/255.0 alpha:1].CGColor;
+    }
+    return _registerBtn;
+}
+
 #pragma mark - init
 
 - (void) initView{
 
-    _userText = [[UITextField alloc] initWithFrame:CGRectMake(kScreenWidth * 0.15, kScreenHeight * 0.3, kScreenWidth * 0.7, 40.0)];
-    _userText.placeholder = @"用户名";
-    _userText.layer.masksToBounds = YES;
-    _userText.layer.cornerRadius = 5.0;
-    _userText.layer.borderWidth = 1.0f;
-    _userText.layer.borderColor = [UIColor colorWithRed:205/255.0 green:205/255.0 blue:205/255.0 alpha:1].CGColor;
+    [self.view addSubview:self.userText];
+    [self.view addSubview:self.pwdText];
+    [self.view addSubview:self.registerBtn];
     
-    _pwdText = [[UITextField alloc] initWithFrame:CGRectMake(_userText.x, _userText.bottom + 10.0, _userText.width, _userText.height)];
-    _pwdText.placeholder = @"密码";
-    _pwdText.layer.masksToBounds = YES;
-    _pwdText.layer.cornerRadius = 5.0;
-    _pwdText.layer.borderWidth = 1.0f;
-    _pwdText.layer.borderColor = [UIColor colorWithRed:205/255.0 green:205/255.0 blue:205/255.0 alpha:1].CGColor;
+    [self.registerBtn addTarget:self action:@selector(actionToRegister) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *registerBtn = [[UIButton alloc] initWithFrame:CGRectMake(_pwdText.x, _pwdText.bottom + 20.0, _pwdText.width, _pwdText.height)];
-    [registerBtn setTitle:@"注册" forState:UIControlStateNormal];
-    [registerBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    registerBtn.layer.masksToBounds = YES;
-    registerBtn.layer.cornerRadius = 5.0;
-    registerBtn.layer.borderWidth = 1.0f;
-    registerBtn.layer.borderColor = [UIColor colorWithRed:205/255.0 green:205/255.0 blue:205/255.0 alpha:1].CGColor;
-    [registerBtn addTarget:self action:@selector(actionToRegister) forControlEvents:UIControlEventTouchUpInside];
+    [self.userText setFrame:CGRectMake(kScreenWidth * 0.15, kScreenHeight * 0.3, kScreenWidth * 0.7, 40.0)];
     
+    [self.pwdText setFrame:CGRectMake(_userText.x, _userText.bottom + 10.0, _userText.width, _userText.height)];
     
-    [self.view addSubview:_userText];
-    [self.view addSubview:_pwdText];
-    [self.view addSubview:registerBtn];
+    [self.registerBtn setFrame:CGRectMake(_pwdText.x, _pwdText.bottom + 20.0, _pwdText.width, _pwdText.height)];
 }
 
 - (void) actionToRegister{
@@ -75,7 +107,15 @@
     [[XMPPTool sharedXMPPTool] connectionWithFailed:^(NSString *errorMessage) {
         [[[UIAlertView alloc] initWithTitle:@"提示" message:errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
     }];
+}
 
+#pragma mark - touch 
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    [super touchesBegan:touches withEvent:event];
+    
+    [self.view endEditing:YES];
 }
 
 #pragma mark - system action

@@ -65,12 +65,66 @@ static NSString * BROWSE_IDENTIFIER = @"ACBrowseCell";
     return _collectionView;
 }
 
+#pragma mark - layout 
+
+- (void) layoutSubviews {
+    
+    [super layoutSubviews];
+    
+    self.horizontalSpacing = 5.0;
+    self.verticalSpacing = 5.0;
+    
+    float currentX = 0.0;
+    float currentY = 0.0;
+    float nextLine = 0.0;
+    
+    float currentWidth = 0.0;
+    float currentHeight = 0.0;
+    
+    for (int i = 0; i < self.localImages.count; i++) {
+        UIImageView *imageview = self.localImages[i];
+        
+        currentWidth = imageview.width;
+        currentHeight = imageview.height;
+        
+        float needsHorizontalSpacing = 0.0;
+        
+        if(currentX == 0){
+            needsHorizontalSpacing = 0.0;
+        }
+        else {
+            needsHorizontalSpacing = self.horizontalSpacing;
+        }
+        
+        if((currentX + currentWidth + needsHorizontalSpacing) <= self.width){
+            
+            [imageview setX:currentX];
+            [imageview setY:currentY];
+            
+            currentX = imageview.right + self.horizontalSpacing;
+            nextLine = imageview.bottom;
+        }
+        else {
+            currentY = nextLine + self.verticalSpacing;
+            
+            [imageview setX:0.0];
+            [imageview setY:currentY];
+            
+            currentX = imageview.right + self.horizontalSpacing;
+            nextLine = imageview.bottom;
+        }
+        
+        self.viewHeight = imageview.bottom + self.verticalSpacing;
+    }
+    
+    [self setHeight:self.viewHeight];
+}
+
 #pragma mark - 图片绘制
 
 - (void) generateLocalImages{
 
     [self.localImages removeAllObjects];
-    
     for (UIView *view in self.subviews) {
         [view removeFromSuperview];
     }
@@ -83,7 +137,8 @@ static NSString * BROWSE_IDENTIFIER = @"ACBrowseCell";
         NSString *imageName = self.imageNames[i];
         
         UIImageView *imageview = [[UIImageView alloc] init];
-        [imageview setImage:[UIImage imageNamed:imageName]];
+        UIImage *image = [UIImage imageNamed:imageName];
+        [imageview setImage:image];
         
         [imageview setWidth:self.acWidth];
         [imageview setHeight:self.acHeight];
@@ -100,6 +155,8 @@ static NSString * BROWSE_IDENTIFIER = @"ACBrowseCell";
         
         [self.myDelegate addMaskViewInImageView:imageview ImageName:imageName];
     }
+    
+    [self layoutSubviews];
 }
 
 - (void) drawImagesLayout {

@@ -25,6 +25,14 @@
 #define kScreenHeight [[UIScreen mainScreen] bounds].size.height
 
 
+typedef NS_ENUM(NSInteger,FriendsViewControllerLoginType) {
+    FriendsViewControllerNeed2Login = 0,
+    FriendsViewControllerNoLogin    = 1,
+};
+
+// Notification
+#define DICT_KEY_LOGIN_TYPE @"login_type"
+#define DICT_KEY_LOGIN_STATUS @"login_status"
 //颜色
 #define COLOR_RGBA(a,b,c,d) [UIColor colorWithRed:a/255.0 green:b/255.0 blue:c/255.0 alpha:d]
 #define BG_GREEN [UIColor colorWithRed:50.0/255 green:189.0/255 blue:114.0/255 alpha:1.0]

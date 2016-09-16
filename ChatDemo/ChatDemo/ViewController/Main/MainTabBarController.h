@@ -10,4 +10,6 @@
 
 @interface MainTabBarController : UITabBarController
 
+@property (assign, nonatomic) FriendsViewControllerLoginType loginType;
+
 @end

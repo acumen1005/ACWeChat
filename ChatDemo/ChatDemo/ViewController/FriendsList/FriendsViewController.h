@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "XMPP.h"
 
 @interface FriendsViewController : UIViewController
 
-@property (strong,nonatomic) NSMutableArray *rosterArray;
+@property (assign, nonatomic) FriendsViewControllerLoginType loginType;
+
+@property (strong, nonatomic) NSMutableArray *rosterArray;
 @property (strong, nonatomic) XMPPStream * xmppStream;
 
 @end

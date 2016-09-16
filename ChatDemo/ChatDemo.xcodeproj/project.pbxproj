@@ -2943,6 +2943,7 @@
 				FRAMEWORK_SEARCH_PATHS = /usr/lib/libxml2.dylib;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ChatDemo/Config/PrefixHeader.pch";
 				INFOPLIST_FILE = ChatDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2963,6 +2964,7 @@
 				FRAMEWORK_SEARCH_PATHS = /usr/lib/libxml2.dylib;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ChatDemo/Config/PrefixHeader.pch";
 				INFOPLIST_FILE = ChatDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

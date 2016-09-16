@@ -33,22 +33,6 @@
     
     [self initData];
     [self initView];
-    
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, 40.0, 40.0)];
-    [backButton setTitle:@"注销" forState:UIControlStateNormal];
-    [backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(onClickToBack) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    
-    UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, 40.0, 40.0)];
-    [addButton setBackgroundImage:[UIImage imageNamed:@"chat_bottom_up_press"] forState:UIControlStateNormal];
-    [addButton addTarget:self action:@selector(onClickToAdd) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
-    
-    // 查询数据
-    [self.fetchedResultsController performFetch:NULL];
-    
-    [[XMPPTool sharedXMPPTool] getAllRegisteredUsers];
 }
 
 #pragma mark - lazy load
@@ -110,12 +94,18 @@
 
 - (void) initView{
     
-    NSMutableArray *mArray = [[NSMutableArray alloc] init];
-    for (XMPPUserCoreDataStorageObject *user in self.fetchedResultsController.fetchedObjects) {
+    if(self.loginType == FriendsViewControllerNeed2Login) {
         
-        [mArray addObject:user.jid.user];
+        NSMutableArray *mArray = [[NSMutableArray alloc] init];
+        for (XMPPUserCoreDataStorageObject *user in self.fetchedResultsController.fetchedObjects) {
+            
+            [mArray addObject:user.jid.user];
+        }
+        self.resultsController.dataSource = mArray;
+        // 查询数据
+        [self.fetchedResultsController performFetch:NULL];
+        [[XMPPTool sharedXMPPTool] getAllRegisteredUsers];
     }
-    self.resultsController.dataSource = mArray;
     
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:self.resultsController];
     
@@ -126,6 +116,18 @@
     self.tableView.tableHeaderView = self.searchController.searchBar;
     self.definesPresentationContext = YES;
     self.searchController.hidesNavigationBarDuringPresentation = NO;
+    
+    
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, 40.0, 40.0)];
+    [backButton setTitle:@"注销" forState:UIControlStateNormal];
+    [backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(onClickToBack) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    
+    UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, 40.0, 40.0)];
+    [addButton setBackgroundImage:[UIImage imageNamed:@"chat_bottom_up_press"] forState:UIControlStateNormal];
+    [addButton addTarget:self action:@selector(onClickToAdd) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
 }
 
 #pragma mark - Table view data source
@@ -137,7 +139,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return self.fetchedResultsController.fetchedObjects.count;
+    if(self.loginType == FriendsViewControllerNeed2Login) {
+        return self.fetchedResultsController.fetchedObjects.count;
+    }
+    else {
+        return 0;
+    }
 }
 
 

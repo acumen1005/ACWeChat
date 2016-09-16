@@ -37,8 +37,17 @@
 - (void)notificationToChange:(NSNotification *)notification{
     
     id isChange = notification.object;
-    if([isChange  isEqual: @(YES)]){
+    NSDictionary *dict = (NSDictionary *)isChange;
+    
+    if([[dict objectForKey:DICT_KEY_LOGIN_STATUS] isEqual: @(YES)]){
         MainTabBarController *mainTB = [[MainTabBarController alloc] init];
+        
+        if([[dict objectForKey:DICT_KEY_LOGIN_TYPE] isEqual:@(1)]){
+            mainTB.loginType = FriendsViewControllerNeed2Login;
+        }
+        else {
+            mainTB.loginType = FriendsViewControllerNoLogin;
+        }
         self.window.rootViewController = mainTB;
     }
     else {

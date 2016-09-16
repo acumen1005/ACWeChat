@@ -134,7 +134,9 @@ NSString *const ResultNotification = @"ResultNotification";
     
     // 在主线程利用通知发送广播
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:ResultNotification object:@(NO)];
+        [[NSNotificationCenter defaultCenter] postNotificationName:ResultNotification object:
+            @{DICT_KEY_LOGIN_TYPE:@(1),
+              DICT_KEY_LOGIN_STATUS:@(NO)}];
     });
 }
 
@@ -179,7 +181,9 @@ NSString *const ResultNotification = @"ResultNotification";
     
     // 在主线程利用通知发送广播
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:ResultNotification object:@(YES)];
+        [[NSNotificationCenter defaultCenter] postNotificationName:ResultNotification object:
+         @{DICT_KEY_LOGIN_TYPE:@(1),
+           DICT_KEY_LOGIN_STATUS:@(YES)}];
     });
 }
 

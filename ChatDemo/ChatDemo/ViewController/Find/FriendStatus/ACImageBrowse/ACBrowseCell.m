@@ -30,7 +30,6 @@
         
         [self addSubview:self.image];
         [self addSubview:_numberLabel];
-        
     }
     return self;
 }

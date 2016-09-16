@@ -18,7 +18,7 @@
 
     NSMutableArray *results = [[NSMutableArray alloc] init];
     
-    NSArray *avatarArray = @[@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8"];
+    NSArray *avatarArray = @[@"avatar-1", @"avatar-2", @"avatar-3", @"avatar-4", @"avatar-5", @"avatar-6", @"avatar-7", @"avatar-9", @"avatar-9"];
     
     NSArray *namesArray = @[@"acumen",
                             @"风口上的猪",
