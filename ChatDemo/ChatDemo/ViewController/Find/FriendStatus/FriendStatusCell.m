@@ -193,8 +193,6 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
         }
     };
     
-//    self.commentView.userBeans =
-    
     self.commentView.returnLayoutBlock = ^(){
         
         NSLog(@"11111111");
