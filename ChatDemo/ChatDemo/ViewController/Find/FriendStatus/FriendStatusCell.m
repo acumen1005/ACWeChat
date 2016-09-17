@@ -297,10 +297,6 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 #pragma mark - 按钮事件
 
 - (void) onClickToShowMoreOperater:(UIButton *) button {
-
-//    [self postOperationButtonClickedNotification];
-//    
-//    self.menuSliderView.show = !self.menuSliderView.show;
     
     self.returnTableViewCellBlock(true,self.indexPath);
 }
