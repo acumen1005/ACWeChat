@@ -149,6 +149,7 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     
     [self.acImageBrowse setFrame:CGRectMake(0, 0, kScreenWidth - 50 - INDENT * 3, (kScreenWidth - 50 - INDENT * 3 - 10))];
     self.acImageBrowse.myDelegate = self;
+    
     //status_image
     self.acImageBrowse.imageNames = friendStatusBean.statusPics;
     self.acImageBrowse.acWidth = (kScreenWidth - 50 - INDENT * 3 - 20) / 3.0;
