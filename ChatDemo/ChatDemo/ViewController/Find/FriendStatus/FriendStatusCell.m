@@ -155,10 +155,8 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     self.acImageBrowse.acHeight = self.acImageBrowse.acWidth;
     self.acImageBrowse.horizontalSpacing = 5.0;
     self.acImageBrowse.verticalSpacing = 5.0;
-//    [self.acImageBrowse setBackgroundColor:[UIColor greenColor]];
     
     [self.acImageBrowse generateLocalImages];
-//    [self.acImageBrowse drawImagesLayout];
     
     [self.timestampLabel setText:[NSString stringWithFormat:@"%@分钟前",@"1"]];
     [self.timestampLabel setFont:[UIFont systemFontOfSize:12.0]];
