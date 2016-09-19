@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		4C0CB9731CD473E30061C4CB /* XMPPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0CB9721CD473E30061C4CB /* XMPPTool.m */; };
+		4C1CF2F51D8FD0E700E81E2A /* AddRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1CF2F41D8FD0E700E81E2A /* AddRoomViewController.m */; };
+		4C1CF2F91D8FD3D100E81E2A /* FriendStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1CF2F81D8FD3D100E81E2A /* FriendStatusCell.m */; };
+		4C1CF3041D8FD41E00E81E2A /* MyChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1CF2FC1D8FD41E00E81E2A /* MyChatCell.m */; };
+		4C1CF3051D8FD41E00E81E2A /* OtherChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1CF2FE1D8FD41E00E81E2A /* OtherChatCell.m */; };
+		4C1CF3061D8FD41E00E81E2A /* NSFileManager+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1CF3011D8FD41E00E81E2A /* NSFileManager+Tools.m */; };
+		4C1CF3071D8FD41E00E81E2A /* XMPPMessage+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1CF3031D8FD41E00E81E2A /* XMPPMessage+Tools.m */; };
 		4C4275A11D4C81BB00D4A789 /* NSAttributedString+MLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275861D4C81BB00D4A789 /* NSAttributedString+MLLabel.m */; };
 		4C4275A21D4C81BB00D4A789 /* NSMutableAttributedString+MLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275881D4C81BB00D4A789 /* NSMutableAttributedString+MLLabel.m */; };
 		4C4275A31D4C81BB00D4A789 /* NSString+MLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42758A1D4C81BB00D4A789 /* NSString+MLLabel.m */; };
@@ -248,20 +254,14 @@
 		4CD270641D8AA99100780A35 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD270621D8AA99100780A35 /* RegisterViewController.m */; };
 		4CD270731D8AAA2C00780A35 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2706D1D8AAA2C00780A35 /* FriendsViewController.m */; };
 		4CD270741D8AAA2C00780A35 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD270701D8AAA2C00780A35 /* ResultsViewController.m */; };
-		4CD270871D8AAAB100780A35 /* AddRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD270771D8AAAB100780A35 /* AddRoomViewController.m */; };
 		4CD270881D8AAAB100780A35 /* RoomChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD270791D8AAAB100780A35 /* RoomChatViewController.m */; };
 		4CD270891D8AAAB100780A35 /* RoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2707B1D8AAAB100780A35 /* RoomViewController.m */; };
-		4CD2708A1D8AAAB100780A35 /* MyChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2707E1D8AAAB100780A35 /* MyChatCell.m */; };
-		4CD2708B1D8AAAB100780A35 /* NSFileManager+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD270801D8AAAB100780A35 /* NSFileManager+Tools.m */; };
-		4CD2708C1D8AAAB100780A35 /* OtherChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD270821D8AAAB100780A35 /* OtherChatCell.m */; };
 		4CD2708D1D8AAAB100780A35 /* SingleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD270841D8AAAB100780A35 /* SingleViewController.m */; };
-		4CD2708E1D8AAAB100780A35 /* XMPPMessage+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD270861D8AAAB100780A35 /* XMPPMessage+Tools.m */; };
 		4CD270911D8AAACC00780A35 /* AddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD270901D8AAACC00780A35 /* AddFriendsViewController.m */; };
 		4CD270941D8AAAE100780A35 /* FriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD270931D8AAAE100780A35 /* FriendsCell.m */; };
 		4CD2709B1D8AAB1600780A35 /* FindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD270971D8AAB1600780A35 /* FindCell.m */; };
 		4CD2709C1D8AAB1600780A35 /* HeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2709A1D8AAB1600780A35 /* HeaderFooterView.m */; };
 		4CE302EB1D49EFA5008C1CC7 /* FriendStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE302EA1D49EFA5008C1CC7 /* FriendStatusViewController.m */; };
-		4CE302EE1D4A2146008C1CC7 /* FriendStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE302ED1D4A2146008C1CC7 /* FriendStatusCell.m */; };
 		4CE302F41D4A2974008C1CC7 /* CommonRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE302F31D4A2974008C1CC7 /* CommonRefreshView.m */; };
 		4CE302F71D4A2B75008C1CC7 /* FriendStatusRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE302F61D4A2B75008C1CC7 /* FriendStatusRefreshHeaderView.m */; };
 /* End PBXBuildFile section */
@@ -286,6 +286,18 @@
 /* Begin PBXFileReference section */
 		4C0CB9711CD473E30061C4CB /* XMPPTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPTool.h; sourceTree = "<group>"; };
 		4C0CB9721CD473E30061C4CB /* XMPPTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPTool.m; sourceTree = "<group>"; };
+		4C1CF2F31D8FD0E700E81E2A /* AddRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRoomViewController.h; sourceTree = "<group>"; };
+		4C1CF2F41D8FD0E700E81E2A /* AddRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRoomViewController.m; sourceTree = "<group>"; };
+		4C1CF2F71D8FD3D100E81E2A /* FriendStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendStatusCell.h; sourceTree = "<group>"; };
+		4C1CF2F81D8FD3D100E81E2A /* FriendStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendStatusCell.m; sourceTree = "<group>"; };
+		4C1CF2FB1D8FD41E00E81E2A /* MyChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyChatCell.h; sourceTree = "<group>"; };
+		4C1CF2FC1D8FD41E00E81E2A /* MyChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyChatCell.m; sourceTree = "<group>"; };
+		4C1CF2FD1D8FD41E00E81E2A /* OtherChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherChatCell.h; sourceTree = "<group>"; };
+		4C1CF2FE1D8FD41E00E81E2A /* OtherChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherChatCell.m; sourceTree = "<group>"; };
+		4C1CF3001D8FD41E00E81E2A /* NSFileManager+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Tools.h"; sourceTree = "<group>"; };
+		4C1CF3011D8FD41E00E81E2A /* NSFileManager+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Tools.m"; sourceTree = "<group>"; };
+		4C1CF3021D8FD41E00E81E2A /* XMPPMessage+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XMPPMessage+Tools.h"; sourceTree = "<group>"; };
+		4C1CF3031D8FD41E00E81E2A /* XMPPMessage+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XMPPMessage+Tools.m"; sourceTree = "<group>"; };
 		4C4275851D4C81BB00D4A789 /* NSAttributedString+MLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+MLLabel.h"; sourceTree = "<group>"; };
 		4C4275861D4C81BB00D4A789 /* NSAttributedString+MLLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+MLLabel.m"; sourceTree = "<group>"; };
 		4C4275871D4C81BB00D4A789 /* NSMutableAttributedString+MLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+MLLabel.h"; sourceTree = "<group>"; };
@@ -780,22 +792,12 @@
 		4CD2706D1D8AAA2C00780A35 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		4CD2706F1D8AAA2C00780A35 /* ResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
 		4CD270701D8AAA2C00780A35 /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
-		4CD270761D8AAAB100780A35 /* AddRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRoomViewController.h; sourceTree = "<group>"; };
-		4CD270771D8AAAB100780A35 /* AddRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRoomViewController.m; sourceTree = "<group>"; };
 		4CD270781D8AAAB100780A35 /* RoomChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomChatViewController.h; sourceTree = "<group>"; };
 		4CD270791D8AAAB100780A35 /* RoomChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomChatViewController.m; sourceTree = "<group>"; };
 		4CD2707A1D8AAAB100780A35 /* RoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomViewController.h; sourceTree = "<group>"; };
 		4CD2707B1D8AAAB100780A35 /* RoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomViewController.m; sourceTree = "<group>"; };
-		4CD2707D1D8AAAB100780A35 /* MyChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyChatCell.h; sourceTree = "<group>"; };
-		4CD2707E1D8AAAB100780A35 /* MyChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyChatCell.m; sourceTree = "<group>"; };
-		4CD2707F1D8AAAB100780A35 /* NSFileManager+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Tools.h"; sourceTree = "<group>"; };
-		4CD270801D8AAAB100780A35 /* NSFileManager+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Tools.m"; sourceTree = "<group>"; };
-		4CD270811D8AAAB100780A35 /* OtherChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherChatCell.h; sourceTree = "<group>"; };
-		4CD270821D8AAAB100780A35 /* OtherChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherChatCell.m; sourceTree = "<group>"; };
 		4CD270831D8AAAB100780A35 /* SingleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleViewController.h; sourceTree = "<group>"; };
 		4CD270841D8AAAB100780A35 /* SingleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleViewController.m; sourceTree = "<group>"; };
-		4CD270851D8AAAB100780A35 /* XMPPMessage+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XMPPMessage+Tools.h"; sourceTree = "<group>"; };
-		4CD270861D8AAAB100780A35 /* XMPPMessage+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XMPPMessage+Tools.m"; sourceTree = "<group>"; };
 		4CD2708F1D8AAACC00780A35 /* AddFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendsViewController.h; sourceTree = "<group>"; };
 		4CD270901D8AAACC00780A35 /* AddFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendsViewController.m; sourceTree = "<group>"; };
 		4CD270921D8AAAE100780A35 /* FriendsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsCell.h; sourceTree = "<group>"; };
@@ -806,8 +808,6 @@
 		4CD2709A1D8AAB1600780A35 /* HeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderFooterView.m; sourceTree = "<group>"; };
 		4CE302E91D49EFA5008C1CC7 /* FriendStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendStatusViewController.h; sourceTree = "<group>"; };
 		4CE302EA1D49EFA5008C1CC7 /* FriendStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendStatusViewController.m; sourceTree = "<group>"; };
-		4CE302EC1D4A2146008C1CC7 /* FriendStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendStatusCell.h; sourceTree = "<group>"; };
-		4CE302ED1D4A2146008C1CC7 /* FriendStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendStatusCell.m; sourceTree = "<group>"; };
 		4CE302F21D4A2974008C1CC7 /* CommonRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonRefreshView.h; sourceTree = "<group>"; };
 		4CE302F31D4A2974008C1CC7 /* CommonRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonRefreshView.m; sourceTree = "<group>"; };
 		4CE302F51D4A2B75008C1CC7 /* FriendStatusRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendStatusRefreshHeaderView.h; sourceTree = "<group>"; };
@@ -842,6 +842,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C1CF2F21D8FD0E700E81E2A /* AddRoom */ = {
+			isa = PBXGroup;
+			children = (
+				4C1CF2F31D8FD0E700E81E2A /* AddRoomViewController.h */,
+				4C1CF2F41D8FD0E700E81E2A /* AddRoomViewController.m */,
+			);
+			path = AddRoom;
+			sourceTree = "<group>";
+		};
+		4C1CF2F61D8FD3D100E81E2A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4C1CF2F71D8FD3D100E81E2A /* FriendStatusCell.h */,
+				4C1CF2F81D8FD3D100E81E2A /* FriendStatusCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		4C1CF2FA1D8FD41E00E81E2A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4C1CF2FB1D8FD41E00E81E2A /* MyChatCell.h */,
+				4C1CF2FC1D8FD41E00E81E2A /* MyChatCell.m */,
+				4C1CF2FD1D8FD41E00E81E2A /* OtherChatCell.h */,
+				4C1CF2FE1D8FD41E00E81E2A /* OtherChatCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		4C1CF2FF1D8FD41E00E81E2A /* Extend */ = {
+			isa = PBXGroup;
+			children = (
+				4C1CF3001D8FD41E00E81E2A /* NSFileManager+Tools.h */,
+				4C1CF3011D8FD41E00E81E2A /* NSFileManager+Tools.m */,
+				4C1CF3021D8FD41E00E81E2A /* XMPPMessage+Tools.h */,
+				4C1CF3031D8FD41E00E81E2A /* XMPPMessage+Tools.m */,
+			);
+			path = Extend;
+			sourceTree = "<group>";
+		};
 		4C4275821D4C81BB00D4A789 /* MLLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -2336,8 +2376,7 @@
 		4CD270751D8AAAB100780A35 /* Room */ = {
 			isa = PBXGroup;
 			children = (
-				4CD270761D8AAAB100780A35 /* AddRoomViewController.h */,
-				4CD270771D8AAAB100780A35 /* AddRoomViewController.m */,
+				4C1CF2F21D8FD0E700E81E2A /* AddRoom */,
 				4CD270781D8AAAB100780A35 /* RoomChatViewController.h */,
 				4CD270791D8AAAB100780A35 /* RoomChatViewController.m */,
 				4CD2707A1D8AAAB100780A35 /* RoomViewController.h */,
@@ -2349,16 +2388,10 @@
 		4CD2707C1D8AAAB100780A35 /* Single */ = {
 			isa = PBXGroup;
 			children = (
-				4CD2707D1D8AAAB100780A35 /* MyChatCell.h */,
-				4CD2707E1D8AAAB100780A35 /* MyChatCell.m */,
-				4CD2707F1D8AAAB100780A35 /* NSFileManager+Tools.h */,
-				4CD270801D8AAAB100780A35 /* NSFileManager+Tools.m */,
-				4CD270811D8AAAB100780A35 /* OtherChatCell.h */,
-				4CD270821D8AAAB100780A35 /* OtherChatCell.m */,
+				4C1CF2FA1D8FD41E00E81E2A /* Cell */,
+				4C1CF2FF1D8FD41E00E81E2A /* Extend */,
 				4CD270831D8AAAB100780A35 /* SingleViewController.h */,
 				4CD270841D8AAAB100780A35 /* SingleViewController.m */,
-				4CD270851D8AAAB100780A35 /* XMPPMessage+Tools.h */,
-				4CD270861D8AAAB100780A35 /* XMPPMessage+Tools.m */,
 			);
 			path = Single;
 			sourceTree = "<group>";
@@ -2384,6 +2417,7 @@
 		4CE302E81D49ECB6008C1CC7 /* FriendStatus */ = {
 			isa = PBXGroup;
 			children = (
+				4C1CF2F61D8FD3D100E81E2A /* Cell */,
 				4C7371FF1D546B94000EBF18 /* AccessoryView */,
 				4CB3889C1D509EC900E0560A /* CommentView */,
 				4C8492A91D4EFA4900D2BBA6 /* MenuSlider */,
@@ -2392,8 +2426,6 @@
 				4CE302EF1D4A2687008C1CC7 /* RefreshHeaderView */,
 				4CE302E91D49EFA5008C1CC7 /* FriendStatusViewController.h */,
 				4CE302EA1D49EFA5008C1CC7 /* FriendStatusViewController.m */,
-				4CE302EC1D4A2146008C1CC7 /* FriendStatusCell.h */,
-				4CE302ED1D4A2146008C1CC7 /* FriendStatusCell.m */,
 			);
 			path = FriendStatus;
 			sourceTree = "<group>";
@@ -2595,7 +2627,7 @@
 				4C7FF8051CD0CC91000E995A /* XMPPCapabilitiesCoreDataStorage.m in Sources */,
 				4C7FF8241CD0CC91000E995A /* NSXMLElement+XEP_0335.m in Sources */,
 				4C7FF7B51CD0CC91000E995A /* XMPPXFacebookPlatformAuthentication.m in Sources */,
-				4CD2708E1D8AAAB100780A35 /* XMPPMessage+Tools.m in Sources */,
+				4C1CF3071D8FD41E00E81E2A /* XMPPMessage+Tools.m in Sources */,
 				4C7FF77C1CD0CC91000E995A /* UIAlertView+AFNetworking.m in Sources */,
 				4C4275BB1D4C83E600D4A789 /* ACImageBrowseContainerView.m in Sources */,
 				4C7FF7BE1CD0CC91000E995A /* XMPPMessage.m in Sources */,
@@ -2606,6 +2638,7 @@
 				4C7FF7FC1CD0CC91000E995A /* XMPPMessage+XEP_0066.m in Sources */,
 				4C7FF7AE1CD0CC91000E995A /* UIViewExt.m in Sources */,
 				4C7FF8081CD0CC91000E995A /* XMPPCapabilities.m in Sources */,
+				4C1CF2F51D8FD0E700E81E2A /* AddRoomViewController.m in Sources */,
 				4C7FF8281CD0CC91000E995A /* XMPPIDTracker.m in Sources */,
 				4C7FF7891CD0CC91000E995A /* IQKeyboardReturnKeyHandler.m in Sources */,
 				4C7FF7751CD0CC91000E995A /* AFSecurityPolicy.m in Sources */,
@@ -2624,7 +2657,6 @@
 				4C4275AA1D4C81BB00D4A789 /* MLLinkLabel.m in Sources */,
 				4C7FF8371CD0CC91000E995A /* DDXMLDocument.m in Sources */,
 				4C7FF81C1CD0CC91000E995A /* XEP_0223.m in Sources */,
-				4CE302EE1D4A2146008C1CC7 /* FriendStatusCell.m in Sources */,
 				4C7FF8101CD0CC91000E995A /* XMPPPresence+XEP_0172.m in Sources */,
 				4C7FF8171CD0CC91000E995A /* XMPPAutoPing.m in Sources */,
 				4C7FF7881CD0CC91000E995A /* IQKeyboardManager.m in Sources */,
@@ -2636,16 +2668,19 @@
 				4C7FF7F61CD0CC91000E995A /* NSXMLElement+XEP_0059.m in Sources */,
 				4C7FF8161CD0CC91000E995A /* XMPPStreamManagement.m in Sources */,
 				4C7FF7AD1CD0CC91000E995A /* SVRadialGradientLayer.m in Sources */,
+				4C1CF2F91D8FD3D100E81E2A /* FriendStatusCell.m in Sources */,
 				4C7FF81F1CD0CC91000E995A /* XMPPMessage+XEP_0280.m in Sources */,
 				4C7FF8261CD0CC91000E995A /* GCDMulticastDelegate.m in Sources */,
 				4C4275A41D4C81BB00D4A789 /* MLExpressionManager.m in Sources */,
 				4C7FF7E81CD0CC91000E995A /* XMPPRoom.m in Sources */,
 				4C7FF8271CD0CC91000E995A /* RFImageToDataTransformer.m in Sources */,
+				4C1CF3061D8FD41E00E81E2A /* NSFileManager+Tools.m in Sources */,
 				4C7FF7721CD0CC91000E995A /* AFHTTPRequestOperationManager.m in Sources */,
 				4C7FF7C81CD0CC91000E995A /* XMPPGoogleSharedStatus.m in Sources */,
 				4C7372021D546BB3000EBF18 /* AccessoryView.m in Sources */,
 				4CD270731D8AAA2C00780A35 /* FriendsViewController.m in Sources */,
 				4C7FF7BF1CD0CC91000E995A /* XMPPModule.m in Sources */,
+				4C1CF3041D8FD41E00E81E2A /* MyChatCell.m in Sources */,
 				4C7FF7AC1CD0CC91000E995A /* SVProgressHUD.m in Sources */,
 				4CD270641D8AA99100780A35 /* RegisterViewController.m in Sources */,
 				4C7FF7BC1CD0CC91000E995A /* XMPPIQ.m in Sources */,
@@ -2692,7 +2727,6 @@
 				4CD270741D8AAA2C00780A35 /* ResultsViewController.m in Sources */,
 				4C7CB3421CD5DBCC001BA0CF /* MainTabBarController.m in Sources */,
 				4C7FF80F1CD0CC91000E995A /* XMPPMessage+XEP_0172.m in Sources */,
-				4CD2708A1D8AAAB100780A35 /* MyChatCell.m in Sources */,
 				4C7FF7731CD0CC91000E995A /* AFHTTPSessionManager.m in Sources */,
 				4C7FF7DB1CD0CC91000E995A /* XMPPRoom.xcdatamodeld in Sources */,
 				4C7FF7D01CD0CC91000E995A /* XMPPResourceMemoryStorageObject.m in Sources */,
@@ -2709,7 +2743,6 @@
 				4C7FF7871CD0CC91000E995A /* IQUIWindow+Hierarchy.m in Sources */,
 				4C7FF80B1CD0CC91000E995A /* XMPPMessageArchiving_Message_CoreDataObject.m in Sources */,
 				4C7FF7781CD0CC91000E995A /* AFURLResponseSerialization.m in Sources */,
-				4CD270871D8AAAB100780A35 /* AddRoomViewController.m in Sources */,
 				4C7FF7941CD0CC91000E995A /* MJIvar.m in Sources */,
 				4C7FF7C71CD0CC91000E995A /* XMPPOutgoingFileTransfer.m in Sources */,
 				4C7FF7F21CD0CC91000E995A /* XMPPvCardTempEmail.m in Sources */,
@@ -2756,7 +2789,6 @@
 				4C7FF77A1CD0CC91000E995A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				4C7FF7ED1CD0CC91000E995A /* XMPPvCardTempCoreDataStorageObject.m in Sources */,
 				4C4275A21D4C81BB00D4A789 /* NSMutableAttributedString+MLLabel.m in Sources */,
-				4CD2708B1D8AAAB100780A35 /* NSFileManager+Tools.m in Sources */,
 				4C7FF7B21CD0CC91000E995A /* XMPPDigestMD5Authentication.m in Sources */,
 				4CD270911D8AAACC00780A35 /* AddFriendsViewController.m in Sources */,
 				4C7FF7DD1CD0CC91000E995A /* XMPPRoomMessageCoreDataStorageObject.m in Sources */,
@@ -2793,7 +2825,7 @@
 				4CADD91C1D48B44F008AF597 /* FindViewController.m in Sources */,
 				4C7FF7B01CD0CC91000E995A /* XMPPDeprecatedDigestAuthentication.m in Sources */,
 				4CD270891D8AAAB100780A35 /* RoomViewController.m in Sources */,
-				4CD2708C1D8AAAB100780A35 /* OtherChatCell.m in Sources */,
+				4C1CF3051D8FD41E00E81E2A /* OtherChatCell.m in Sources */,
 				4C7FF7FB1CD0CC91000E995A /* XMPPIQ+XEP_0066.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

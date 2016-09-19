@@ -164,16 +164,8 @@
     // from 对方关注我
     // both 互粉
     
-//    NSString *str = [user.jidStr stringByAppendingFormat:@" | %@",user.subscription];
-//    
-//    NSLog(@"%@ - 状态： %@",user.jid.user ,[self userStatusWithSection:user.section]);
-    
     [cell setNameLabelWithString:user.jid.user AvatarImageView:@"3"];
-    
-//    [cell setNameLabelWithString:self.dataArray[indexPath.row] AvatarImageView:@"1"];
-    
-//    cell.textLabel.text = self.dataArray[indexPath.row];
-    
+
     return cell;
 }
 
@@ -201,14 +193,7 @@
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-//    NSMutableArray *mArray = [[NSMutableArray alloc] init];
-//    for (XMPPUserCoreDataStorageObject *user in controller) {
-//        
-//        [mArray addObject:user.jid.user];
-//    }
-//    self.resultsController.dataSource = mArray;
-    
+{    
     NSLog(@"上下文改变");
     [self.tableView reloadData];
 }

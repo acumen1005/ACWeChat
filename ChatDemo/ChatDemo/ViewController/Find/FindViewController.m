@@ -27,15 +27,7 @@
     [self.tableView registerClass:[HeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"HeaderFooterView"];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 
-    
-    self.data = [NSArray arrayWithObjects:
-                 @[@{@"title":@"朋友圈",@"pic":@"ff_IconShowAlbum"}],
-                 @[@{@"title":@"扫一扫",@"pic":@"ff_IconQRCode"},
-                   @{@"title":@"摇一摇",@"pic":@"ff_IconShake"}],
-                 @[@{@"title":@"附近的人",@"pic":@"ff_IconLocationService"},
-                   @{@"title":@"漂流瓶",@"pic":@"ff_IconBottle"}],
-                 @[@{@"title":@"购物",@"pic":@"CreditCard_ShoppingBag"},
-                   @{@"title":@"游戏",@"pic":@"MoreGame"}],nil];
+    [self initData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,7 +38,17 @@
 
 #pragma mark - init
 
-
+- (void) initData {
+    
+    self.data = [NSArray arrayWithObjects:
+                 @[@{@"title":@"朋友圈",@"pic":@"ff_IconShowAlbum"}],
+                 @[@{@"title":@"扫一扫",@"pic":@"ff_IconQRCode"},
+                   @{@"title":@"摇一摇",@"pic":@"ff_IconShake"}],
+                 @[@{@"title":@"附近的人",@"pic":@"ff_IconLocationService"},
+                   @{@"title":@"漂流瓶",@"pic":@"ff_IconBottle"}],
+                 @[@{@"title":@"购物",@"pic":@"CreditCard_ShoppingBag"},
+                   @{@"title":@"游戏",@"pic":@"MoreGame"}],nil];
+}
 
 #pragma mark - Table view data source
 
@@ -109,40 +111,24 @@
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     HeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"HeaderFooterView"];
-    if (_data && _data.count > section) {
-//        TLSettingGrounp *group = [_data objectAtIndex:section];
-//        [view setText:group.headerTitle];
-    }
     return view;
 }
 
 - (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     HeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"HeaderFooterView"];
-    if (_data && _data.count > section) {
-//        TLSettingGrounp *group = [_data objectAtIndex:section];
-//        [view setText:group.footerTitle];
-    }
     return view;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (_data && _data.count > indexPath.section) {
-//        TLSettingGrounp *group = [_data objectAtIndex:indexPath.section];
-//        TLSettingItem *item = [group itemAtIndex:indexPath.row];
-        return BUTTON_HEIGHT;
-    }
+
     return BUTTON_HEIGHT;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (_data && _data.count > section) {
-//        TLSettingGrounp *group = [_data objectAtIndex:section];
-//        if (group.headerTitle == nil) {
-//            return section == 0 ? 15.0f : 10.0f;
-//        }
         return section == 0 ? 15.0f : 10.0f;
     }
     return 10.0f;
@@ -151,10 +137,6 @@
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     if (_data && _data.count > section) {
-//        TLSettingGrounp *group = [_data objectAtIndex:section];
-//        if (group.footerTitle == nil) {
-//            return section == _data.count - 1 ? 30.0f : 10.0f;
-//        }
         return section == _data.count - 1 ? 30.0f : 10.0f;
     }
     return 10.0f;
