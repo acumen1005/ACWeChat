@@ -10,6 +10,7 @@
 
 @interface FriendStatusBean : NSObject
 
+@property (strong,nonatomic) NSNumber *userId;
 @property (strong,nonatomic) NSString *avatarUrl;
 @property (strong,nonatomic) NSString *userName;
 @property (strong,nonatomic) NSString *content;

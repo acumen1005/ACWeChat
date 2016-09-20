@@ -35,6 +35,8 @@
 
 @property (strong,nonatomic) FriendStatusRefreshHeaderView *headerRefreshView;
 
+@property (strong,nonatomic) NSMutableDictionary *cacheHeigtsDict;
+
 @end
 
 @implementation FriendStatusViewController
@@ -53,6 +55,8 @@
     [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     
     self.friendStatuses = [ModelHelper getFriendStatusWithCount:6];
+    
+    [self initData];
 }
 
 - (void) viewDidAppear:(BOOL)animated{
@@ -65,11 +69,13 @@
         __weak typeof(_headerRefreshView) weakHeader = _headerRefreshView;
         __weak typeof(self) weakSelf = self;
         [_headerRefreshView setRefreshingBlock:^{
+            
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
                 weakSelf.friendStatuses = [ModelHelper getFriendStatusWithCount:6];
                 
                 [weakHeader endRefreshing];
+                
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.tableView reloadData];
                 });
@@ -99,6 +105,12 @@
 }
 
 #pragma mark - init
+
+- (void) initData {
+    
+    self.cacheHeigtsDict = [[NSMutableDictionary alloc] init];
+    
+}
 
 - (void) configNotification{
     
@@ -130,40 +142,35 @@
         
         weakSelf.accessoryView.commentTextView.text = @"";
         [weakSelf.accessoryView.commentTextView resignFirstResponder];
-        
     };
 }
 
 - (void) initHeaderView {
-
-    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, kScreenWidth * 0.9)];
-    _avatarImageView = [[UIImageView alloc] init];
-    _bgAvatarView = [[UIView alloc] init];
-    _nameLabel = [[UILabel alloc] init];
+    
     UIImageView *imageView = [[UIImageView alloc] init];
 
-    self.tableView.tableHeaderView = _headerView;
-    [_headerView addSubview:_avatarImageView];
-    [_headerView addSubview:_bgAvatarView];
-    [_headerView addSubview:_nameLabel];
-    [_headerView addSubview:imageView];
-    [_headerView sendSubviewToBack:imageView];
-    [_headerView bringSubviewToFront:_avatarImageView];
+    self.tableView.tableHeaderView = self.headerView;
+    [self.headerView addSubview:self.avatarImageView];
+    [self.headerView addSubview:self.bgAvatarView];
+    [self.headerView addSubview:self.nameLabel];
+    [self.headerView addSubview:imageView];
+    [self.headerView sendSubviewToBack:imageView];
+    [self.headerView bringSubviewToFront:self.avatarImageView];
     
-    [_headerView setBackgroundColor:[UIColor whiteColor]];
+    [self.headerView setBackgroundColor:[UIColor whiteColor]];
 
-    [_bgAvatarView setBackgroundColor:[UIColor whiteColor]];
-    [[_bgAvatarView layer] setBorderWidth:0.5];
-    [[_bgAvatarView layer] setBorderColor:[[UIColor lightGrayColor] CGColor]];
+    [self.bgAvatarView setBackgroundColor:[UIColor whiteColor]];
+    [[self.bgAvatarView layer] setBorderWidth:0.5];
+    [[self.bgAvatarView layer] setBorderColor:[[UIColor lightGrayColor] CGColor]];
     
-    [_avatarImageView setImage:[UIImage imageNamed:@"2"]];
+    [self.avatarImageView setImage:[UIImage imageNamed:@"2"]];
     
-    [_nameLabel setText:@"acumen"];
-    [_nameLabel setTextColor:[UIColor whiteColor]];
-    [_nameLabel setShadowColor:[UIColor grayColor]];
-    [_nameLabel setShadowOffset:CGSizeMake(1.5, 1.5)];
-    [_nameLabel setFont:[UIFont boldSystemFontOfSize:18.0]];
-    [_nameLabel sizeToFit];
+    [self.nameLabel setText:@"acumen"];
+    [self.nameLabel setTextColor:[UIColor whiteColor]];
+    [self.nameLabel setShadowColor:[UIColor grayColor]];
+    [self.nameLabel setShadowOffset:CGSizeMake(1.5, 1.5)];
+    [self.nameLabel setFont:[UIFont boldSystemFontOfSize:18.0]];
+    [self.nameLabel sizeToFit];
     
     [imageView setImage:[UIImage imageNamed:@"bottleBkg"]];
     
@@ -171,14 +178,42 @@
     CGFloat avatarSize = kScreenWidth/5.0;
     
     [imageView setFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth * 0.8)];
-    [_bgAvatarView setFrame:CGRectMake(kScreenWidth - avatarSize * 0.3 - avatarSize, imageView.bottom - avatarSize * 0.7, avatarSize, avatarSize)];
-    [_avatarImageView setFrame:CGRectMake(_bgAvatarView.x + space,_bgAvatarView.y + space, avatarSize - space * 2, avatarSize - space * 2)];
+    [self.bgAvatarView setFrame:CGRectMake(kScreenWidth - avatarSize * 0.3 - avatarSize, imageView.bottom - avatarSize * 0.7, avatarSize, avatarSize)];
+    [self.avatarImageView setFrame:CGRectMake(self.bgAvatarView.x + space,self.bgAvatarView.y + space, avatarSize - space * 2, avatarSize - space * 2)];
     
-    [_nameLabel setRight:_bgAvatarView.x - 10.0];
-    [_nameLabel setBottom:imageView.bottom - 10.0];
+    [self.nameLabel setRight:self.bgAvatarView.x - 10.0];
+    [self.nameLabel setBottom:imageView.bottom - 10.0];
 }
 
 #pragma mark - getter
+
+- (UILabel *) nameLabel {
+    if(!_nameLabel) {
+        _nameLabel = [[UILabel alloc] init];;
+    }
+    return _nameLabel;
+}
+
+- (UIView *) bgAvatarView {
+    if(!_bgAvatarView) {
+        _bgAvatarView = [[UIView alloc] init];
+    }
+    return  _bgAvatarView;
+}
+
+- (UIImageView *) avatarImageView {
+    if(!_avatarImageView) {
+        _avatarImageView = [[UIImageView alloc] init];
+    }
+    return _avatarImageView;
+}
+
+- (UIView *) headerView {
+    if(!_headerView) {
+        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, kScreenWidth * 0.9)];
+    }
+    return _headerView;
+}
 
 - (UIWindow *) singleWindow {
     if(!_singleWindow){
@@ -219,7 +254,6 @@
     
     [self.accessoryView setBottom:kScreenHeight - keyboardHeight];
     
-    // 更新约束
     [UIView animateWithDuration:keyboardDuration animations:^{
         [self.view layoutIfNeeded];
     }];
@@ -233,7 +267,6 @@
     
     [self.accessoryView setTop:kScreenHeight];
     
-    // 更新约束
     [UIView animateWithDuration:keyboardDuration animations:^{
         [self.view layoutIfNeeded];
     }];
@@ -342,6 +375,8 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
     
     CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:self.friendStatuses[indexPath.row]];
     

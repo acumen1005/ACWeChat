@@ -132,6 +132,9 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     _friendStatusBean = friendStatusBean;
     
     [self.avatarImageView setImage:[UIImage imageNamed:friendStatusBean.avatarUrl]];
+    [self.avatarImageView setUserInteractionEnabled:YES];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onClickToPushPersional:)];
+    [self.avatarImageView addGestureRecognizer:tap];
     
     [self.nameLabel setAttributedText:[self getAttributedStringWithName:friendStatusBean.userName LinkAttributeName:@"name"]];
     [self.nameLabel setTextColor:COLOR_RGBA(0, 0, 0, 1.0)];
@@ -313,7 +316,7 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     
 }
 
-#pragma mark - caloc height
+#pragma mark - 计算高度
 
 + (CGFloat) calocCellHeightWithFriendStatus:(FriendStatusBean *) friendStatusBean {
     
@@ -407,6 +410,11 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 }
 
 #pragma mark - touch方法
+
+- (void) onClickToPushPersional:(UITapGestureRecognizer *) tap {
+    
+    NSLog(@"点击用户头像 － ");
+}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [super touchesBegan:touches withEvent:event];

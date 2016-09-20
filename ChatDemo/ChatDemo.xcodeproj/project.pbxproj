@@ -14,6 +14,7 @@
 		4C1CF3051D8FD41E00E81E2A /* OtherChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1CF2FE1D8FD41E00E81E2A /* OtherChatCell.m */; };
 		4C1CF3061D8FD41E00E81E2A /* NSFileManager+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1CF3011D8FD41E00E81E2A /* NSFileManager+Tools.m */; };
 		4C1CF3071D8FD41E00E81E2A /* XMPPMessage+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1CF3031D8FD41E00E81E2A /* XMPPMessage+Tools.m */; };
+		4C1CF3111D91718600E81E2A /* UserData.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C1CF3101D91718600E81E2A /* UserData.strings */; };
 		4C4275A11D4C81BB00D4A789 /* NSAttributedString+MLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275861D4C81BB00D4A789 /* NSAttributedString+MLLabel.m */; };
 		4C4275A21D4C81BB00D4A789 /* NSMutableAttributedString+MLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275881D4C81BB00D4A789 /* NSMutableAttributedString+MLLabel.m */; };
 		4C4275A31D4C81BB00D4A789 /* NSString+MLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42758A1D4C81BB00D4A789 /* NSString+MLLabel.m */; };
@@ -298,6 +299,7 @@
 		4C1CF3011D8FD41E00E81E2A /* NSFileManager+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Tools.m"; sourceTree = "<group>"; };
 		4C1CF3021D8FD41E00E81E2A /* XMPPMessage+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XMPPMessage+Tools.h"; sourceTree = "<group>"; };
 		4C1CF3031D8FD41E00E81E2A /* XMPPMessage+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XMPPMessage+Tools.m"; sourceTree = "<group>"; };
+		4C1CF3101D91718600E81E2A /* UserData.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = UserData.strings; sourceTree = "<group>"; };
 		4C4275851D4C81BB00D4A789 /* NSAttributedString+MLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+MLLabel.h"; sourceTree = "<group>"; };
 		4C4275861D4C81BB00D4A789 /* NSAttributedString+MLLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+MLLabel.m"; sourceTree = "<group>"; };
 		4C4275871D4C81BB00D4A789 /* NSMutableAttributedString+MLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+MLLabel.h"; sourceTree = "<group>"; };
@@ -882,6 +884,21 @@
 			path = Extend;
 			sourceTree = "<group>";
 		};
+		4C1CF30E1D91706100E81E2A /* Persion */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Persion;
+			sourceTree = "<group>";
+		};
+		4C1CF30F1D91714900E81E2A /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				4C1CF3101D91718600E81E2A /* UserData.strings */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		4C4275821D4C81BB00D4A789 /* MLLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1075,6 +1092,7 @@
 		4C7FF5201CD0CBE8000E995A /* ChatDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4C1CF30F1D91714900E81E2A /* Resource */,
 				4C4275BC1D4C875000D4A789 /* Model */,
 				4C7FF5541CD0CC28000E995A /* Config */,
 				4C7FF5551CD0CC28000E995A /* Tools */,
@@ -2268,6 +2286,7 @@
 		4CADD90E1D489392008AF597 /* Find */ = {
 			isa = PBXGroup;
 			children = (
+				4C1CF30E1D91706100E81E2A /* Persion */,
 				4CD270951D8AAB1600780A35 /* Cell */,
 				4CD270981D8AAB1600780A35 /* HeaderFooterView */,
 				4CE302E81D49ECB6008C1CC7 /* FriendStatus */,
@@ -2553,6 +2572,7 @@
 			files = (
 				4C7FF83A1CD0CC91000E995A /* build-libidn.sh in Resources */,
 				4C7FF7AB1CD0CC91000E995A /* SVProgressHUD.bundle in Resources */,
+				4C1CF3111D91718600E81E2A /* UserData.strings in Resources */,
 				4C4275AB1D4C81BB00D4A789 /* LICENSE in Resources */,
 				4C7FF5311CD0CBE8000E995A /* LaunchScreen.storyboard in Resources */,
 				4C7FF52E1CD0CBE8000E995A /* Assets.xcassets in Resources */,

@@ -62,20 +62,20 @@
     for (int i = 0; i < count; i++) {
         FriendStatusBean *friendStatusBean = [[FriendStatusBean alloc] init];
         
-        int random = arc4random_uniform([avatarArray count]);
+        int random = arc4random_uniform((int)[avatarArray count]);
         friendStatusBean.avatarUrl = [avatarArray objectAtIndex:random];
         
-        random = arc4random_uniform([namesArray count]);
+        random = arc4random_uniform((int)[namesArray count]);
         friendStatusBean.userName = [namesArray objectAtIndex:random];
         
-        random = arc4random_uniform([textArray count]);
+        random = arc4random_uniform((int)[textArray count]);
         friendStatusBean.content = [textArray objectAtIndex:random];
         
         NSMutableArray *pics = [[NSMutableArray alloc] init];
         random = arc4random_uniform(9);
         
         for (int j = 0; j < random; j++) {
-            int index = arc4random_uniform([avatarArray count]);
+            int index = arc4random_uniform((int)[avatarArray count]);
             [pics addObject:[avatarArray objectAtIndex:index]];
         }
         friendStatusBean.statusPics = pics;
@@ -83,7 +83,7 @@
         random = arc4random_uniform(4);
         friendStatusBean.likes = [[NSMutableArray alloc] init];
         for (int j = 0; j < random; j++) {
-            int index = arc4random_uniform([namesArray count]);
+            int index = arc4random_uniform((int)[namesArray count]);
             UserBean *userBean = [[UserBean alloc] init];
             userBean.userName = [namesArray objectAtIndex:index];
             if(j == 0) {

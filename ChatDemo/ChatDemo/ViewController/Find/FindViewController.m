@@ -77,7 +77,6 @@
         [cell setRightImageViewWithImageName:@"login_avatar_default"];
     }
     
-    
     if(indexPath.row == 0){
         [cell setTopLineStyle:SegmentationLineFill];
         if(indexPath.row == ([self.data[indexPath.section] count] - 1)){
