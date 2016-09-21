@@ -7,7 +7,6 @@
 //
 
 #import "LoginViewController.h"
-#import "SVProgressHUD.h"
 #import "XMPPMessage+Tools.h"
 #import "FriendsViewController.h"
 #import "RoomViewController.h"

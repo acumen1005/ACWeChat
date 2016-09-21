@@ -132,7 +132,7 @@ static CGFloat originHeight;
     if ([text isEqualToString:@"\n"]){
         
         if([textView.text isEqualToString:@""]){
-            [SVProgressHUD showInfoWithStatus:@"评论为空"];
+//            [SVProgressHUD showInfoWithStatus:@"评论为空"];
             return NO;
         }
         

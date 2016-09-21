@@ -12,8 +12,12 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
+//定义返回请求数据的block类型
+typedef void (^ReturnValueBlock) (id returnValue);//服务器调用成功block
+typedef void (^ErrorCodeBlock) (id errorCode);//服务器错误block
+typedef void (^FailureBlock)();//网络错误block
+
 #import "UIViewExt.h"
-#import "SVProgressHUD.h"
 #import "XMPPTool.h"
 #import "MLLabel.h"
 //192.168.66.102
@@ -23,6 +27,15 @@
 
 #define kScreenWidth [[UIScreen mainScreen] bounds].size.width
 #define kScreenHeight [[UIScreen mainScreen] bounds].size.height
+
+//http返回json状态
+#define HTTP_REPSONE @"isSuccess"
+#define HTTP_RESULT @"msg"
+#define HTTP_SUCCESS @"1"
+#define HTTP_EMPTY @"-1"
+#define HTTP_FAILUER @"-1"
+#define HTTP_MSG @"data"
+#define SESSION_TIMEOUT @"sessionTimeOut"
 
 
 typedef NS_ENUM(NSInteger,FriendsViewControllerLoginType) {

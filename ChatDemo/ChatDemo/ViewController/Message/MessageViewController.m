@@ -7,6 +7,7 @@
 //
 
 #import "MessageViewController.h"
+#import "FindViewModel.h"
 
 @interface MessageViewController ()
 
@@ -18,12 +19,28 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    FindViewModel *findViewModel = [[FindViewModel alloc] init];
+    
+    [findViewModel setBlockWithReturnBlock:^(id returnValue){
+        
+        
+    } WithErrorBlock:^(id errorBlock){
+        
+    } WithFailureBlock:^(id failureBlock){
+        
+    }];
+    
+    [findViewModel getFindStatus];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
 
 /*
 #pragma mark - Navigation

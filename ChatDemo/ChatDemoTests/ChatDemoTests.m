@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "FindViewModel.h"
 
 @interface ChatDemoTests : XCTestCase
 

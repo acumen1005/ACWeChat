@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 #import "XMPPMessageArchivingCoreDataStorage.h"
-#import "SVProgressHUD.h"
 #import "RoomViewController.h"
 #import "XMPPRoomMemoryStorage.h"
 #import "XMPPFramework.h"

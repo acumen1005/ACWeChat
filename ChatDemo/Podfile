@@ -1,0 +1,8 @@
+
+platform :ios, '8.1'
+target 'ChatDemo' do
+pod 'AFNetworking','~> 3.0'
+pod 'SDWebImage','~> 3.7.3'
+
+end
+
