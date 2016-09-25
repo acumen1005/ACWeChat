@@ -19,8 +19,9 @@
     self.failureBlock = failureBlock;
 }
 
-//与接口衔接好
+//与接口衔接好,这里先处理成直接返回。
 -(void)fetchSuccessResult:(NSDictionary *)message{
+    
 //    if ([message[HTTP_RESULT] isEqualToString:HTTP_SUCCESS]) {
         self.returnBlock(message[HTTP_MSG]);
 //    }else{

@@ -89,6 +89,7 @@
 #pragma mark - init
 
 - (void) initData{
+    
 //    _dataArray = [[NSMutableArray alloc] init];
 }
 
@@ -203,7 +204,6 @@
 
     SingleViewController *singleVC = [[SingleViewController alloc] init];
     
-    // 也可以直接用点语法
     NSIndexPath *indexpath = [self.tableView indexPathForSelectedRow];
     
     XMPPUserCoreDataStorageObject *user = [self.fetchedResultsController objectAtIndexPath:indexpath];
