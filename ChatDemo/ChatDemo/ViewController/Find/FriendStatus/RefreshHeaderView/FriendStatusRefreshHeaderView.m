@@ -102,6 +102,8 @@ static const CGFloat criticalY = -60.0f;
     
     [self updateRefreshHeaderWithOffsetY:self.scrollView.contentOffset.y + 64];
 }
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

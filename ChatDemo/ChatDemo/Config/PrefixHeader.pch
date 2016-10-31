@@ -20,6 +20,9 @@ typedef void (^FailureBlock)();//网络错误block
 #import "UIViewExt.h"
 #import "XMPPTool.h"
 #import "MLLabel.h"
+
+#import "UIViewController+hook.h"
+
 //192.168.66.102
 //192.168.0.9
 #define XMPP_DOMAIN @"192.168.77.117"

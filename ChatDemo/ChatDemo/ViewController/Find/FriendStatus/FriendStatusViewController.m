@@ -56,6 +56,16 @@
     
     self.friendStatuses = [ModelHelper getFriendStatusWithCount:6];
     
+    {
+        int count = 0;
+        for (FriendStatusBean *fsb in self.friendStatuses) {
+            [self.cacheHeigtsDict removeAllObjects];
+            CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:fsb];
+            [self.cacheHeigtsDict setObject:@(height) forKey:[NSIndexPath indexPathForRow:count inSection:0]];
+        }
+    }
+    
+    
     [self initData];
 }
 
@@ -73,6 +83,17 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
                 weakSelf.friendStatuses = [ModelHelper getFriendStatusWithCount:6];
+                
+                {
+                    int count = 0;
+                    
+                    [weakSelf.cacheHeigtsDict removeAllObjects];
+                    for (FriendStatusBean *fsb in weakSelf.friendStatuses) {
+                        CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:fsb];
+                        [weakSelf.cacheHeigtsDict setObject:@(height) forKey:[NSIndexPath indexPathForRow:count inSection:0]];
+                        count++;
+                    }
+                }
                 
                 [weakHeader endRefreshing];
                 
@@ -137,6 +158,10 @@
         commentBean.commentContent = content;
         
         [friendStatusBean.comments addObject:commentBean];
+        
+        // 计算
+        CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:friendStatusBean];
+        [weakSelf.cacheHeigtsDict setObject:@(height) forKey:indexPath];
         
         [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         
@@ -270,7 +295,6 @@
     [UIView animateWithDuration:keyboardDuration animations:^{
         [self.view layoutIfNeeded];
     }];
-    
 }
 
 #pragma mark - FriendStatusCellDelegate
@@ -341,6 +365,11 @@
             
             FriendStatusBean *friendStatusBean = weakSelf.friendStatuses[tmp.row];
             friendStatusBean.isOpen = !friendStatusBean.isOpen;
+            
+            // 重新计算
+            CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:friendStatusBean];
+            [self.cacheHeigtsDict setObject:@(height) forKey:indexPath];
+            
             [weakSelf.tableView reloadData];
         };
     }
@@ -361,6 +390,10 @@
             if(type){
                 friendStatusBean.isCommentStatus = !friendStatusBean.isCommentStatus;
             }
+            
+            CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:friendStatusBean];
+            [self.cacheHeigtsDict setObject:@(height) forKey:indexPath];
+            
             [weakSelf.tableView reloadData];
         };
     }
@@ -376,11 +409,14 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    id value = [self.cacheHeigtsDict objectForKey:indexPath];
     
+    if(!value){
+        CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:self.friendStatuses[indexPath.row]];
+        [self.cacheHeigtsDict setObject:@(height) forKey:indexPath];
+    }
     
-    CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:self.friendStatuses[indexPath.row]];
-    
-    return height;
+    return [[self.cacheHeigtsDict objectForKey:indexPath] floatValue];
 }
 
 
