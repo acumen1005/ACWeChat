@@ -97,11 +97,10 @@
 
     if (indexPath.row == 0 && indexPath.section == 0) {
         FriendStatusViewController *friendStatusVC = [[FriendStatusViewController alloc] init];
-        [self setHidesBottomBarWhenPushed:YES];
+        
+        [friendStatusVC setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:friendStatusVC animated:YES];
-        [self setHidesBottomBarWhenPushed:NO];
     }
-    
     
 }
 

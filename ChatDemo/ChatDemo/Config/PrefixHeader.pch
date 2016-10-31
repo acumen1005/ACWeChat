@@ -22,6 +22,7 @@ typedef void (^FailureBlock)();//网络错误block
 #import "MLLabel.h"
 
 #import "UIViewController+hook.h"
+#import "UserManager.h"
 
 //192.168.66.102
 //192.168.0.9

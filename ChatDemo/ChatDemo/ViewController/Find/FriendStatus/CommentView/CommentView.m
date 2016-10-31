@@ -137,6 +137,7 @@
         float height = [self sizeWithString:string.string font:[UIFont systemFontOfSize:13.5] maxSize:CGSizeMake(self.width -  10.0, CGFLOAT_MAX)].height;
         [tmpLinkLabel setWidth:self.width - 7];
         [tmpLinkLabel setHeight:height];
+        tmpLinkLabel.delegate = self;
         
         if(i == 0){
             if (_likeLabel.hidden) {
@@ -177,6 +178,10 @@
 -(void)didClickLink:(MLLink *)link linkText:(NSString *)linkText linkLabel:(MLLinkLabel *)linkLabel{
     
     NSLog(@"%@",linkText);
+    
+    if([self.delegate respondsToSelector:@selector(onClickToLabelPushUserInfo:)]) {
+        [self.delegate onClickToLabelPushUserInfo:linkText];
+    }
 }
 
 #pragma mark - 计算文字高度

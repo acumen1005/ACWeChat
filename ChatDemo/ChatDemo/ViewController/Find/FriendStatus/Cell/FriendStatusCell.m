@@ -19,7 +19,7 @@
 
 NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedNotification";
 
-@interface FriendStatusCell()<MLLinkLabelDelegate,ACImageBrowseContainerView>
+@interface FriendStatusCell()<MLLinkLabelDelegate,ACImageBrowseContainerView,CommentViewDelegate>
 
 @property (strong,nonatomic) FriendStatusBean *friendStatusBean;
 
@@ -121,6 +121,7 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 - (CommentView *) commentView {
     if(!_commentView) {
         _commentView = [[CommentView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 50 - INDENT * 3, 35)];
+        _commentView.delegate = self;
     }
     return _commentView;
 }
@@ -315,6 +316,18 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 - (void)didClickLink:(MLLink*)link linkText:(NSString*)linkText linkLabel:(MLLinkLabel*)linkLabel{
     
+    if([self.delegate respondsToSelector:@selector(onClickToPushUserInfo:)]){
+        [self.delegate onClickToPushUserInfo:self.indexPath];
+    }
+}
+
+#pragma mark - CommentViewDelegate
+
+- (void)onClickToLabelPushUserInfo:(NSString *)userName {
+    
+    if([self.delegate respondsToSelector:@selector(onClickToPushUserInfoWithUserName:)]){
+        [self.delegate onClickToPushUserInfoWithUserName:userName];
+    }
 }
 
 #pragma mark - 计算高度
@@ -415,6 +428,10 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 - (void) onClickToPushPersional:(UITapGestureRecognizer *) tap {
     
     NSLog(@"点击用户头像 － ");
+    
+    if([self.delegate respondsToSelector:@selector(onClickToPushUserInfo:)]){
+        [self.delegate onClickToPushUserInfo:self.indexPath];
+    }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

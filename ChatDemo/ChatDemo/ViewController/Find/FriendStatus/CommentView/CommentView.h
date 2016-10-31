@@ -10,7 +10,15 @@
 
 typedef void (^ReturnLayoutBlock)();
 
+@protocol CommentViewDelegate <NSObject>
+
+- (void) onClickToLabelPushUserInfo:(NSString *) userName;
+
+@end
+
 @interface CommentView : UIView
+
+@property (weak,nonatomic) id<CommentViewDelegate> delegate;
 
 @property (copy,nonatomic) ReturnLayoutBlock returnLayoutBlock;
 @property (strong,nonatomic) NSArray *userBeans;

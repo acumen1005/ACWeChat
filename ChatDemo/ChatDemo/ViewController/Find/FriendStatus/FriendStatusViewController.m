@@ -17,15 +17,14 @@
 #import "AccessoryView.h"
 #import "AppDelegate.h"
 
+#import "UserInfoViewController.h"
+//#import "LL_HeaderView.h"
+
 #define LOADING_Y  110
 
 @interface FriendStatusViewController ()<UITableViewDataSource,UITableViewDelegate,FriendStatusCellDelegate>
 
 @property (strong,nonatomic) UITableView *tableView;
-@property (strong,nonatomic) UIView *headerView;
-@property (strong,nonatomic) UIImageView *avatarImageView;
-@property (strong,nonatomic) UIView *bgAvatarView;
-@property (strong,nonatomic) UILabel *nameLabel;
 @property (strong,nonatomic) AccessoryView *accessoryView;
 
 @property (strong,nonatomic) UIWindow *singleWindow;
@@ -47,6 +46,8 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     [self.view addSubview:self.tableView];
+    
+    [self initData];
     [self initHeaderView];
     
     [self initAccessoryView];
@@ -54,23 +55,18 @@
     
     [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     
+    // 模拟获取数据
     self.friendStatuses = [ModelHelper getFriendStatusWithCount:6];
     
     {
         int count = 0;
+        [self.cacheHeigtsDict removeAllObjects];
         for (FriendStatusBean *fsb in self.friendStatuses) {
-            [self.cacheHeigtsDict removeAllObjects];
-            CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:fsb];
-            [self.cacheHeigtsDict setObject:@(height) forKey:[NSIndexPath indexPathForRow:count inSection:0]];
+            
+            [self ll_updateCellHeightWithIndexPath:[NSIndexPath indexPathForRow:count inSection:0] isWeak:NO friendStatus:fsb];
+            count++;
         }
     }
-    
-    
-    [self initData];
-}
-
-- (void) viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
     
     if (!_headerRefreshView.superview) {
         
@@ -84,13 +80,13 @@
                 
                 weakSelf.friendStatuses = [ModelHelper getFriendStatusWithCount:6];
                 
+                // 修改cell内容时要重新计算高度
                 {
                     int count = 0;
-                    
                     [weakSelf.cacheHeigtsDict removeAllObjects];
                     for (FriendStatusBean *fsb in weakSelf.friendStatuses) {
-                        CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:fsb];
-                        [weakSelf.cacheHeigtsDict setObject:@(height) forKey:[NSIndexPath indexPathForRow:count inSection:0]];
+                        
+                        [weakSelf ll_updateCellHeightWithIndexPath:[NSIndexPath indexPathForRow:count inSection:0] isWeak:YES friendStatus:fsb];
                         count++;
                     }
                 }
@@ -106,13 +102,14 @@
     } else {
         [self.tableView.superview bringSubviewToFront:_headerRefreshView];
     }
+}
 
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
 }
 
 - (void) viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    
-    
 }
 
 - (void) dealloc {
@@ -129,8 +126,9 @@
 
 - (void) initData {
     
-    self.cacheHeigtsDict = [[NSMutableDictionary alloc] init];
+    [UserManager shareUserManager].userBean = [ModelHelper getUserBean:@"acumen"];
     
+    self.cacheHeigtsDict = [[NSMutableDictionary alloc] init];
 }
 
 - (void) configNotification{
@@ -156,12 +154,10 @@
         commentBean.fromUserName = @"acumen";
         commentBean.toUserName = friendStatusBean.userName;
         commentBean.commentContent = content;
-        
         [friendStatusBean.comments addObject:commentBean];
         
-        // 计算
-        CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:friendStatusBean];
-        [weakSelf.cacheHeigtsDict setObject:@(height) forKey:indexPath];
+        // 重新计算
+        [weakSelf ll_updateCellHeightWithIndexPath:indexPath isWeak:YES friendStatus:friendStatusBean];
         
         [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         
@@ -172,73 +168,14 @@
 
 - (void) initHeaderView {
     
-    UIImageView *imageView = [[UIImageView alloc] init];
-
-    self.tableView.tableHeaderView = self.headerView;
-    [self.headerView addSubview:self.avatarImageView];
-    [self.headerView addSubview:self.bgAvatarView];
-    [self.headerView addSubview:self.nameLabel];
-    [self.headerView addSubview:imageView];
-    [self.headerView sendSubviewToBack:imageView];
-    [self.headerView bringSubviewToFront:self.avatarImageView];
+    UserBean *userBean = [UserManager shareUserManager].userBean;
     
-    [self.headerView setBackgroundColor:[UIColor whiteColor]];
-
-    [self.bgAvatarView setBackgroundColor:[UIColor whiteColor]];
-    [[self.bgAvatarView layer] setBorderWidth:0.5];
-    [[self.bgAvatarView layer] setBorderColor:[[UIColor lightGrayColor] CGColor]];
+    [self.ll_HeaderView setUserName:userBean.userName avatar:userBean.avatar backgroudImage:userBean.bottleBackgroud];
     
-    [self.avatarImageView setImage:[UIImage imageNamed:@"2"]];
-    
-    [self.nameLabel setText:@"acumen"];
-    [self.nameLabel setTextColor:[UIColor whiteColor]];
-    [self.nameLabel setShadowColor:[UIColor grayColor]];
-    [self.nameLabel setShadowOffset:CGSizeMake(1.5, 1.5)];
-    [self.nameLabel setFont:[UIFont boldSystemFontOfSize:18.0]];
-    [self.nameLabel sizeToFit];
-    
-    [imageView setImage:[UIImage imageNamed:@"bottleBkg"]];
-    
-    CGFloat space = 3.0;
-    CGFloat avatarSize = kScreenWidth/5.0;
-    
-    [imageView setFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth * 0.8)];
-    [self.bgAvatarView setFrame:CGRectMake(kScreenWidth - avatarSize * 0.3 - avatarSize, imageView.bottom - avatarSize * 0.7, avatarSize, avatarSize)];
-    [self.avatarImageView setFrame:CGRectMake(self.bgAvatarView.x + space,self.bgAvatarView.y + space, avatarSize - space * 2, avatarSize - space * 2)];
-    
-    [self.nameLabel setRight:self.bgAvatarView.x - 10.0];
-    [self.nameLabel setBottom:imageView.bottom - 10.0];
+    self.tableView.tableHeaderView = self.ll_HeaderView;
 }
 
 #pragma mark - getter
-
-- (UILabel *) nameLabel {
-    if(!_nameLabel) {
-        _nameLabel = [[UILabel alloc] init];;
-    }
-    return _nameLabel;
-}
-
-- (UIView *) bgAvatarView {
-    if(!_bgAvatarView) {
-        _bgAvatarView = [[UIView alloc] init];
-    }
-    return  _bgAvatarView;
-}
-
-- (UIImageView *) avatarImageView {
-    if(!_avatarImageView) {
-        _avatarImageView = [[UIImageView alloc] init];
-    }
-    return _avatarImageView;
-}
-
-- (UIView *) headerView {
-    if(!_headerView) {
-        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, kScreenWidth * 0.9)];
-    }
-    return _headerView;
-}
 
 - (UIWindow *) singleWindow {
     if(!_singleWindow){
@@ -327,6 +264,30 @@
     }
 }
 
+- (void) onClickToPushUserInfo:(NSIndexPath *)indexPath {
+
+    UserInfoViewController *userInfoVC = [[UserInfoViewController alloc] init];
+    
+    FriendStatusBean *friendStatusBean = [self.friendStatuses objectAtIndex:indexPath.row];
+    
+    userInfoVC.userBean = [ModelHelper getUserBean:friendStatusBean.userName];
+    
+    [userInfoVC setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:userInfoVC animated:YES];
+}
+
+
+- (void) onClickToPushUserInfoWithUserName:(NSString *) userName {
+
+    UserInfoViewController *userInfoVC = [[UserInfoViewController alloc] init];
+    
+    userInfoVC.userBean = [ModelHelper getUserBean:userName];
+    
+    [userInfoVC setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:userInfoVC animated:YES];
+    
+}
+
 #pragma mark - touch
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -334,9 +295,19 @@
     
 }
 
-#pragma mark - UITextFieldDelegate
+#pragma mark - 更新 cell 高度
 
-
+- (void) ll_updateCellHeightWithIndexPath:(NSIndexPath *) indexPath isWeak:(BOOL) weak friendStatus:(FriendStatusBean *) friendStatus {
+    
+    CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:friendStatus];
+    if(!weak){
+        [self.cacheHeigtsDict setObject:@(height) forKey:indexPath];
+    }
+    else {
+        __weak typeof(self) wSelf = self;
+        [wSelf.cacheHeigtsDict setObject:@(height) forKey:indexPath];
+    }
+}
 
 #pragma mark - Table view data source
 

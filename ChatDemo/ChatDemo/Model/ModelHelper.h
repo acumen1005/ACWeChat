@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UserBean.h"
 
 @interface ModelHelper : NSObject
 
 + (NSArray *) getFriendStatusWithCount:(NSInteger) count;
++ (UserBean *) getUserBean:(NSString *) userName;
+
 
 @end

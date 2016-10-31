@@ -12,5 +12,7 @@
 
 @property (strong,nonatomic) NSString *userName;
 @property (strong,nonatomic) NSNumber *userId;
+@property (strong,nonatomic) NSString *bottleBackgroud;
+@property (strong,nonatomic) NSString *avatar;
 
 @end

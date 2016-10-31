@@ -8,11 +8,43 @@
 
 #import "ModelHelper.h"
 #import "FriendStatusBean.h"
-#import "UserBean.h"
 #import "CommentBean.h"
 
 @implementation ModelHelper
 
++ (UserBean *) getUserBean:(NSString *) userName {
+    
+    NSArray *avatarArray = @[@"avatar-1", @"avatar-2", @"avatar-3", @"avatar-4", @"avatar-5", @"avatar-6", @"avatar-7", @"avatar-9", @"avatar-9"];
+    
+    NSArray *namesArray = @[@"acumen",
+                            @"风口上的猪",
+                            @"当今世界网名都不好起了",
+                            @"我叫郭德纲",
+                            @"sherryWanna"];
+    
+    int ans = 0;
+    
+    NSMutableArray *userBeans = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < [namesArray count]; i++) {
+        UserBean *userBean = [[UserBean alloc] init];
+        
+        userBean.userName = [namesArray objectAtIndex:i];
+        userBean.userId = @(i);
+        userBean.bottleBackgroud = i%2 == 0 ? @"bottleBkg":@"bottleNightBkg";
+        
+        int index = ((int)userBean.userName.length/2)%([avatarArray count]);
+        userBean.avatar = [avatarArray objectAtIndex:index];
+        
+        if([userBean.userName isEqualToString:userName]){
+            ans = i;
+        }
+        
+        [userBeans addObject:userBean];
+    }
+    
+    return [userBeans objectAtIndex:ans];
+}
 
 + (NSArray *) getFriendStatusWithCount:(NSInteger) count{
 
@@ -24,7 +56,8 @@
                             @"风口上的猪",
                             @"当今世界网名都不好起了",
                             @"我叫郭德纲",
-                            @"Hello Kitty"];
+                            @"sherryWanna"];//bottleNightBkg
+    
     
     NSArray *textArray = @[@"当你的 app 没有提供 3x 的 LaunchImage 时，系统默认进入兼容模式，https://github.com/gsdios/SDAutoLayout大屏幕一切按照 320 宽度渲染，屏幕宽度返回 320；然后等比例拉伸到大屏。这种情况下对界面不会产生任何影响，等于把小屏完全拉伸。",
                            
@@ -62,11 +95,11 @@
     for (int i = 0; i < count; i++) {
         FriendStatusBean *friendStatusBean = [[FriendStatusBean alloc] init];
         
-        int random = arc4random_uniform((int)[avatarArray count]);
-        friendStatusBean.avatarUrl = [avatarArray objectAtIndex:random];
-        
-        random = arc4random_uniform((int)[namesArray count]);
+        int random = arc4random_uniform((int)[namesArray count]);
         friendStatusBean.userName = [namesArray objectAtIndex:random];
+        
+        random = ((int)friendStatusBean.userName.length/2)%([avatarArray count]);
+        friendStatusBean.avatarUrl = [avatarArray objectAtIndex:random];
         
         random = arc4random_uniform((int)[textArray count]);
         friendStatusBean.content = [textArray objectAtIndex:random];
@@ -99,7 +132,7 @@
         for (int j = 0; j < random; j++) {
             CommentBean *tmp = [[CommentBean alloc] init];
             tmp.fromUserName = @"acumen";
-            tmp.toUserName = @"sherry";
+            tmp.toUserName = @"sherryWanna";
             tmp.commentContent = @"哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈";
             [friendStatusBean.comments addObject:tmp];
         }

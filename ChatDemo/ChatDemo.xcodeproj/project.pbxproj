@@ -45,7 +45,6 @@
 		4C7CB3421CD5DBCC001BA0CF /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7CB3411CD5DBCC001BA0CF /* MainTabBarController.m */; };
 		4C7CB3461CD5DDC5001BA0CF /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7CB3451CD5DDC5001BA0CF /* MessageViewController.m */; };
 		4C7FF5231CD0CBE8000E995A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FF5221CD0CBE8000E995A /* main.m */; };
-		4C7FF5261CD0CBE8000E995A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FF5251CD0CBE8000E995A /* AppDelegate.m */; };
 		4C7FF5291CD0CBE8000E995A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FF5281CD0CBE8000E995A /* ViewController.m */; };
 		4C7FF52C1CD0CBE8000E995A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C7FF52A1CD0CBE8000E995A /* Main.storyboard */; };
 		4C7FF52E1CD0CBE8000E995A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C7FF52D1CD0CBE8000E995A /* Assets.xcassets */; };
@@ -224,6 +223,11 @@
 		4CADD91C1D48B44F008AF597 /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CADD91B1D48B44F008AF597 /* FindViewController.m */; };
 		4CADD9201D48B4EC008AF597 /* CommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CADD91F1D48B4EC008AF597 /* CommonCell.m */; };
 		4CB3889F1D509EE200E0560A /* CommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB3889E1D509EE200E0560A /* CommentView.m */; };
+		4CB3A3C71DC761F20058A098 /* CommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB3A3C61DC761F20058A098 /* CommonViewController.m */; };
+		4CB3A3CF1DC762690058A098 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB3A3CE1DC762690058A098 /* UserInfoViewController.m */; };
+		4CB3A3D31DC762770058A098 /* LL_HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB3A3D21DC762770058A098 /* LL_HeaderView.m */; };
+		4CB3A3DB1DC76F320058A098 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB3A3DA1DC76F320058A098 /* AppDelegate.m */; };
+		4CB3A3E21DC76FB20058A098 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB3A3E11DC76FB20058A098 /* UserManager.m */; };
 		4CD270631D8AA99100780A35 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2705F1D8AA99100780A35 /* LoginViewController.m */; };
 		4CD270641D8AA99100780A35 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD270621D8AA99100780A35 /* RegisterViewController.m */; };
 		4CD270731D8AAA2C00780A35 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2706D1D8AAA2C00780A35 /* FriendsViewController.m */; };
@@ -333,8 +337,6 @@
 		4C7CB3451CD5DDC5001BA0CF /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		4C7FF51E1CD0CBE8000E995A /* ChatDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C7FF5221CD0CBE8000E995A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4C7FF5241CD0CBE8000E995A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		4C7FF5251CD0CBE8000E995A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4C7FF5271CD0CBE8000E995A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		4C7FF5281CD0CBE8000E995A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4C7FF52B1CD0CBE8000E995A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -704,6 +706,16 @@
 		4CADD91F1D48B4EC008AF597 /* CommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonCell.m; sourceTree = "<group>"; };
 		4CB3889D1D509EE200E0560A /* CommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentView.h; sourceTree = "<group>"; };
 		4CB3889E1D509EE200E0560A /* CommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentView.m; sourceTree = "<group>"; };
+		4CB3A3C51DC761F20058A098 /* CommonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonViewController.h; sourceTree = "<group>"; };
+		4CB3A3C61DC761F20058A098 /* CommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonViewController.m; sourceTree = "<group>"; };
+		4CB3A3CD1DC762690058A098 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		4CB3A3CE1DC762690058A098 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		4CB3A3D11DC762770058A098 /* LL_HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LL_HeaderView.h; sourceTree = "<group>"; };
+		4CB3A3D21DC762770058A098 /* LL_HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LL_HeaderView.m; sourceTree = "<group>"; };
+		4CB3A3D91DC76F320058A098 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4CB3A3DA1DC76F320058A098 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4CB3A3E01DC76FB20058A098 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		4CB3A3E11DC76FB20058A098 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		4CD2705E1D8AA99100780A35 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		4CD2705F1D8AA99100780A35 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		4CD270611D8AA99100780A35 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -951,6 +963,7 @@
 		4C4275BC1D4C875000D4A789 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4CB3A3DF1DC76FA60058A098 /* UserManager */,
 				4C69C42B1D5325F400470675 /* Comment */,
 				4C69C4271D51A1A000470675 /* User */,
 				4C4275BD1D4C877300D4A789 /* FriendStatus */,
@@ -1070,6 +1083,7 @@
 		4C7FF5201CD0CBE8000E995A /* ChatDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4CB3A3D81DC76F320058A098 /* AppDelegate */,
 				4C1A22F71D9D83F000D682A6 /* Category */,
 				4C0B624F1D9223E700AB6FBF /* Request */,
 				4C0B62471D92213600AB6FBF /* ViewModel */,
@@ -1078,8 +1092,6 @@
 				4C7FF5541CD0CC28000E995A /* Config */,
 				4C7FF5551CD0CC28000E995A /* Tools */,
 				4C7FF5561CD0CC28000E995A /* ViewController */,
-				4C7FF5241CD0CBE8000E995A /* AppDelegate.h */,
-				4C7FF5251CD0CBE8000E995A /* AppDelegate.m */,
 				4C7FF5271CD0CBE8000E995A /* ViewController.h */,
 				4C7FF5281CD0CBE8000E995A /* ViewController.m */,
 				4C7FF52A1CD0CBE8000E995A /* Main.storyboard */,
@@ -2167,6 +2179,7 @@
 		4CADD9151D48B141008AF597 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4CB3A3C41DC761DF0058A098 /* CommonViewController */,
 				4CE302F11D4A2958008C1CC7 /* CommonRefreshView */,
 				4CADD91D1D48B4CE008AF597 /* CommonCell */,
 				4CADD9161D48B37C008AF597 /* CommonTableView */,
@@ -2199,6 +2212,53 @@
 				4CB3889E1D509EE200E0560A /* CommentView.m */,
 			);
 			path = CommentView;
+			sourceTree = "<group>";
+		};
+		4CB3A3C41DC761DF0058A098 /* CommonViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4CB3A3D01DC762770058A098 /* HeaderView */,
+				4CB3A3C51DC761F20058A098 /* CommonViewController.h */,
+				4CB3A3C61DC761F20058A098 /* CommonViewController.m */,
+			);
+			path = CommonViewController;
+			sourceTree = "<group>";
+		};
+		4CB3A3CC1DC762690058A098 /* UserInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				4CB3A3CD1DC762690058A098 /* UserInfoViewController.h */,
+				4CB3A3CE1DC762690058A098 /* UserInfoViewController.m */,
+			);
+			name = UserInfoView;
+			path = ChatDemo/ViewController/Find/UserInfoView;
+			sourceTree = SOURCE_ROOT;
+		};
+		4CB3A3D01DC762770058A098 /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				4CB3A3D11DC762770058A098 /* LL_HeaderView.h */,
+				4CB3A3D21DC762770058A098 /* LL_HeaderView.m */,
+			);
+			path = HeaderView;
+			sourceTree = "<group>";
+		};
+		4CB3A3D81DC76F320058A098 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				4CB3A3D91DC76F320058A098 /* AppDelegate.h */,
+				4CB3A3DA1DC76F320058A098 /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		4CB3A3DF1DC76FA60058A098 /* UserManager */ = {
+			isa = PBXGroup;
+			children = (
+				4CB3A3E01DC76FB20058A098 /* UserManager.h */,
+				4CB3A3E11DC76FB20058A098 /* UserManager.m */,
+			);
+			path = UserManager;
 			sourceTree = "<group>";
 		};
 		4CD2705D1D8AA99100780A35 /* Login */ = {
@@ -2304,6 +2364,7 @@
 		4CE302E81D49ECB6008C1CC7 /* FriendStatus */ = {
 			isa = PBXGroup;
 			children = (
+				4CB3A3CC1DC762690058A098 /* UserInfoView */,
 				4C1CF2F61D8FD3D100E81E2A /* Cell */,
 				4C7371FF1D546B94000EBF18 /* AccessoryView */,
 				4CB3889C1D509EC900E0560A /* CommentView */,
@@ -2540,6 +2601,7 @@
 				4C4275A91D4C81BB00D4A789 /* MLLabel.m in Sources */,
 				4C7FF8131CD0CC91000E995A /* XMPPBlocking.m in Sources */,
 				4C7FF7F41CD0CC91000E995A /* XMPPvCardTempModule.m in Sources */,
+				4CB3A3E21DC76FB20058A098 /* UserManager.m in Sources */,
 				4C7FF8321CD0CC91000E995A /* DDContextFilterLogFormatter.m in Sources */,
 				4C7FF82B1CD0CC91000E995A /* XMPPTimer.m in Sources */,
 				4C7FF7BA1CD0CC91000E995A /* XMPPConstants.m in Sources */,
@@ -2650,7 +2712,6 @@
 				4C7FF7E11CD0CC91000E995A /* XMPPRoomMessageHybridCoreDataStorageObject.m in Sources */,
 				4C7FF7C91CD0CC91000E995A /* XMPPProcessOne.m in Sources */,
 				4C7FF7CC1CD0CC91000E995A /* XMPPResourceCoreDataStorageObject.m in Sources */,
-				4C7FF5261CD0CBE8000E995A /* AppDelegate.m in Sources */,
 				4C7FF8251CD0CC91000E995A /* DDList.m in Sources */,
 				4C7FF8091CD0CC91000E995A /* XMPPMessageArchiving.xcdatamodeld in Sources */,
 				4CD270741D8AAA2C00780A35 /* ResultsViewController.m in Sources */,
@@ -2681,20 +2742,24 @@
 				4C7FF8181CD0CC91000E995A /* XMPPPing.m in Sources */,
 				4C4275A31D4C81BB00D4A789 /* NSString+MLLabel.m in Sources */,
 				4C7FF8291CD0CC91000E995A /* XMPPSRVResolver.m in Sources */,
+				4CB3A3DB1DC76F320058A098 /* AppDelegate.m in Sources */,
 				4CD2708D1D8AAAB100780A35 /* SingleViewController.m in Sources */,
 				4C4275BA1D4C83E600D4A789 /* ACBrowseCell.m in Sources */,
 				4C7FF8341CD0CC91000E995A /* DDMultiFormatter.m in Sources */,
 				4C7FF7BB1CD0CC91000E995A /* XMPPElement.m in Sources */,
 				4C7FF7FD1CD0CC91000E995A /* XMPPRegistration.m in Sources */,
+				4CB3A3C71DC761F20058A098 /* CommonViewController.m in Sources */,
 				4C7FF7CA1CD0CC91000E995A /* XMPPReconnect.m in Sources */,
 				4CE302F41D4A2974008C1CC7 /* CommonRefreshView.m in Sources */,
 				4C7FF7B31CD0CC91000E995A /* XMPPPlainAuthentication.m in Sources */,
 				4C7FF80D1CD0CC91000E995A /* XMPPMessageArchiving.m in Sources */,
 				4C7FF80A1CD0CC91000E995A /* XMPPMessageArchiving_Contact_CoreDataObject.m in Sources */,
 				4C69C42E1D53260300470675 /* CommentBean.m in Sources */,
+				4CB3A3D31DC762770058A098 /* LL_HeaderView.m in Sources */,
 				4CD270881D8AAAB100780A35 /* RoomChatViewController.m in Sources */,
 				4CD2709B1D8AAB1600780A35 /* FindCell.m in Sources */,
 				4C7FF7921CD0CC91000E995A /* MJConst.m in Sources */,
+				4CB3A3CF1DC762690058A098 /* UserInfoViewController.m in Sources */,
 				4C7FF78F1CD0CC91000E995A /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				4C4275A51D4C81BB00D4A789 /* MLTextAttachment.m in Sources */,
 				4C7FF7E61CD0CC91000E995A /* XMPPMessage+XEP0045.m in Sources */,

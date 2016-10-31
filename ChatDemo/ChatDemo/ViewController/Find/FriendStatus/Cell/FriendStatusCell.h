@@ -13,6 +13,8 @@
 
 - (void) onClickToGivenLike:(NSIndexPath *) indexPath IsClicked:(BOOL) click;
 - (void) onClickToComment:(NSIndexPath *) indexPath;
+- (void) onClickToPushUserInfo:(NSIndexPath *) indexPath;
+- (void) onClickToPushUserInfoWithUserName:(NSString *) userName;
 
 @end
 

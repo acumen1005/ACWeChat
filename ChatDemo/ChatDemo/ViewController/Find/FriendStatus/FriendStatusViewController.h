@@ -6,8 +6,8 @@
 //  Copyright © 2016年 acumen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CommonViewController.h"
 
-@interface FriendStatusViewController : UIViewController
+@interface FriendStatusViewController : CommonViewController
 
 @end
