@@ -40,6 +40,8 @@
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
     [self.navigationItem setBackBarButtonItem:backItem];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
