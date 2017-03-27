@@ -12,21 +12,17 @@
 
 
 - (instancetype)init {
-    
     if(self = [super init]) {
-        
     }
     return self;
 }
 
 + (instancetype) shareUserManager {
-
     static UserManager *userManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         userManager = [[UserManager alloc] init];
     });
-    
     return userManager;
 }
 

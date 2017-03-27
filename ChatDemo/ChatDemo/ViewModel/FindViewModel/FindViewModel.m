@@ -14,20 +14,18 @@
 
 - (void) getFindStatus {
     
-    NSString *userId = @"T1348647853363";
-    
-    NSString *url = [NSString stringWithFormat:@"https://c.m.163.com/nc/article/headline/%@/10-20.html",userId];
+//    NSString *userId = @"280";
+    NSMutableDictionary *mDict = [[NSMutableDictionary alloc] init];
+//    [mDict setObject:userId forKey:@"id"];
+    //
+    //
+    NSString *url = [NSString stringWithFormat:@"http://app.dianzhiliao.com//dzl_getDetectorCount/get"];
     
     BaseRequest *request = [BaseRequest initBaseRequestWithUrl:url Type:BaseRequestPost];
     
     [request sendRequestWithReturnBlock:^(id returnValue) {
         
         NSLog(@"---- %@",returnValue);
-        
-        NSDictionary *dict = returnValue;
-        
-        NSDictionary *leaves = [dict objectForKey:userId];
-        
         
         [self fetchSuccessResult:returnValue];
         

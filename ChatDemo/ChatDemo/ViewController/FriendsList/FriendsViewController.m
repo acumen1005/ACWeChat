@@ -19,7 +19,6 @@
 @property (strong,nonatomic) NSMutableArray *dataArray;
 /** 结果调度器 */
 @property(nonatomic,strong) NSFetchedResultsController *fetchedResultsController;
-
 @property (strong,nonatomic) UISearchController *searchController;
 
 @end
@@ -88,9 +87,7 @@
 
 #pragma mark - init
 
-- (void) initData{
-    
-//    _dataArray = [[NSMutableArray alloc] init];
+- (void)initData {
 }
 
 - (void) initView{
@@ -217,10 +214,8 @@
 
 #pragma mark - logout 
 
-- (void) onClickToAdd{
-
+- (void)onClickToAdd {
     AddFriendsViewController *addFriendsVC = [[AddFriendsViewController alloc] init];
-    
     [self.navigationController pushViewController:addFriendsVC animated:YES];
     
 }

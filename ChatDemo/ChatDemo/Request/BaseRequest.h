@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 typedef NS_ENUM(NSInteger, BaseRequestType){
     BaseRequestPost     = 0,
     BaseRequestGet      = 1,

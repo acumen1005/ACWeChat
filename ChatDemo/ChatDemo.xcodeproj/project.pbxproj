@@ -37,7 +37,6 @@
 		4C4275C01D4C878A00D4A789 /* FriendStatusBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275BF1D4C878A00D4A789 /* FriendStatusBean.m */; };
 		4C4275C31D4C8AC300D4A789 /* ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275C21D4C8AC300D4A789 /* ModelHelper.m */; };
 		4C4275C71D4C932200D4A789 /* UILabel+Spread.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4275C61D4C932200D4A789 /* UILabel+Spread.m */; };
-		4C5ED6111D924707003D8D6F /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5ED6101D924707003D8D6F /* RequestManager.m */; };
 		4C69C42A1D51A1AF00470675 /* UserBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C69C4291D51A1AF00470675 /* UserBean.m */; };
 		4C69C42E1D53260300470675 /* CommentBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C69C42D1D53260300470675 /* CommentBean.m */; };
 		4C7372021D546BB3000EBF18 /* AccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7372011D546BB3000EBF18 /* AccessoryView.m */; };
@@ -219,6 +218,7 @@
 		4C7FF8471CD0CCFD000E995A /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C7FF8461CD0CCFD000E995A /* libresolv.tbd */; };
 		4C7FF84A1CD0CE30000E995A /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C7FF8481CD0CD08000E995A /* libxml2.tbd */; };
 		4C8492AC1D4EFA7000D2BBA6 /* MenuSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8492AB1D4EFA7000D2BBA6 /* MenuSliderView.m */; };
+		4CAB45AB1DE9AB8F00E0EAFD /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB45AA1DE9AB8F00E0EAFD /* RequestManager.m */; };
 		4CADD9191D48B39C008AF597 /* CommonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CADD9181D48B39C008AF597 /* CommonTableViewController.m */; };
 		4CADD91C1D48B44F008AF597 /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CADD91B1D48B44F008AF597 /* FindViewController.m */; };
 		4CADD9201D48B4EC008AF597 /* CommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CADD91F1D48B4EC008AF597 /* CommonCell.m */; };
@@ -242,6 +242,7 @@
 		4CE302EB1D49EFA5008C1CC7 /* FriendStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE302EA1D49EFA5008C1CC7 /* FriendStatusViewController.m */; };
 		4CE302F41D4A2974008C1CC7 /* CommonRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE302F31D4A2974008C1CC7 /* CommonRefreshView.m */; };
 		4CE302F71D4A2B75008C1CC7 /* FriendStatusRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE302F61D4A2B75008C1CC7 /* FriendStatusRefreshHeaderView.m */; };
+		4CE559051E88F09E008FF395 /* UITableViewCell+Register.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE559041E88F09E008FF395 /* UITableViewCell+Register.m */; };
 		B71A15435074FE15A793C8FC /* libPods-ChatDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA96481435AC5CB179AF7191 /* libPods-ChatDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -321,8 +322,6 @@
 		4C4275C21D4C8AC300D4A789 /* ModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelHelper.m; sourceTree = "<group>"; };
 		4C4275C51D4C932200D4A789 /* UILabel+Spread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Spread.h"; sourceTree = "<group>"; };
 		4C4275C61D4C932200D4A789 /* UILabel+Spread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Spread.m"; sourceTree = "<group>"; };
-		4C5ED60F1D924707003D8D6F /* RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManager.h; sourceTree = "<group>"; };
-		4C5ED6101D924707003D8D6F /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
 		4C69C4281D51A1AF00470675 /* UserBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBean.h; sourceTree = "<group>"; };
 		4C69C4291D51A1AF00470675 /* UserBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBean.m; sourceTree = "<group>"; };
 		4C69C42C1D53260300470675 /* CommentBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentBean.h; sourceTree = "<group>"; };
@@ -698,6 +697,8 @@
 		4C7FF84F1CD0CFA1000E995A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		4C8492AA1D4EFA7000D2BBA6 /* MenuSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuSliderView.h; sourceTree = "<group>"; };
 		4C8492AB1D4EFA7000D2BBA6 /* MenuSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuSliderView.m; sourceTree = "<group>"; };
+		4CAB45A91DE9AB8F00E0EAFD /* RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManager.h; sourceTree = "<group>"; };
+		4CAB45AA1DE9AB8F00E0EAFD /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
 		4CADD9171D48B39C008AF597 /* CommonTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTableViewController.h; sourceTree = "<group>"; };
 		4CADD9181D48B39C008AF597 /* CommonTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewController.m; sourceTree = "<group>"; };
 		4CADD91A1D48B44F008AF597 /* FindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindViewController.h; sourceTree = "<group>"; };
@@ -744,6 +745,8 @@
 		4CE302F31D4A2974008C1CC7 /* CommonRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonRefreshView.m; sourceTree = "<group>"; };
 		4CE302F51D4A2B75008C1CC7 /* FriendStatusRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendStatusRefreshHeaderView.h; sourceTree = "<group>"; };
 		4CE302F61D4A2B75008C1CC7 /* FriendStatusRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendStatusRefreshHeaderView.m; sourceTree = "<group>"; };
+		4CE559031E88F09E008FF395 /* UITableViewCell+Register.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Register.h"; sourceTree = "<group>"; };
+		4CE559041E88F09E008FF395 /* UITableViewCell+Register.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Register.m"; sourceTree = "<group>"; };
 		8C6CDE2779F687CBA20CB0B0 /* Pods-ChatDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChatDemo/Pods-ChatDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		97B1BA772CE397E005648630 /* Pods-ChatDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChatDemo/Pods-ChatDemo.release.xcconfig"; sourceTree = "<group>"; };
 		BA96481435AC5CB179AF7191 /* libPods-ChatDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ChatDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -808,6 +811,8 @@
 		4C0B624F1D9223E700AB6FBF /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				4CAB45A91DE9AB8F00E0EAFD /* RequestManager.h */,
+				4CAB45AA1DE9AB8F00E0EAFD /* RequestManager.m */,
 				4C0B62501D92240400AB6FBF /* BaseRequest.h */,
 				4C0B62511D92240400AB6FBF /* BaseRequest.m */,
 			);
@@ -991,15 +996,6 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		4C5ED60E1D9246DE003D8D6F /* RequestManager */ = {
-			isa = PBXGroup;
-			children = (
-				4C5ED60F1D924707003D8D6F /* RequestManager.h */,
-				4C5ED6101D924707003D8D6F /* RequestManager.m */,
-			);
-			path = RequestManager;
-			sourceTree = "<group>";
-		};
 		4C69C4271D51A1A000470675 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -1083,6 +1079,7 @@
 		4C7FF5201CD0CBE8000E995A /* ChatDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4CE558FC1E88EF89008FF395 /* Common */,
 				4CB3A3D81DC76F320058A098 /* AppDelegate */,
 				4C1A22F71D9D83F000D682A6 /* Category */,
 				4C0B624F1D9223E700AB6FBF /* Request */,
@@ -1140,7 +1137,6 @@
 		4C7FF5551CD0CC28000E995A /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				4C5ED60E1D9246DE003D8D6F /* RequestManager */,
 				4C7372031D548689000EBF18 /* GCPlaceholderTextView */,
 				4C4275821D4C81BB00D4A789 /* MLLabel */,
 				4C42759E1D4C81BB00D4A789 /* TTTAttributedLabel */,
@@ -2396,6 +2392,15 @@
 			path = CommonRefreshView;
 			sourceTree = "<group>";
 		};
+		4CE558FC1E88EF89008FF395 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4CE559031E88F09E008FF395 /* UITableViewCell+Register.h */,
+				4CE559041E88F09E008FF395 /* UITableViewCell+Register.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		D74C8E2BC2952A8FCEA4B916 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2710,6 +2715,7 @@
 				4C7FF8381CD0CC91000E995A /* DDXMLElement.m in Sources */,
 				4C7FF78B1CD0CC91000E995A /* IQBarButtonItem.m in Sources */,
 				4C7FF82D1CD0CC91000E995A /* DDAbstractDatabaseLogger.m in Sources */,
+				4CE559051E88F09E008FF395 /* UITableViewCell+Register.m in Sources */,
 				4C7FF7AF1CD0CC91000E995A /* XMPPAnonymousAuthentication.m in Sources */,
 				4C7FF7E11CD0CC91000E995A /* XMPPRoomMessageHybridCoreDataStorageObject.m in Sources */,
 				4C7FF7C91CD0CC91000E995A /* XMPPProcessOne.m in Sources */,
@@ -2734,6 +2740,7 @@
 				4C7FF7941CD0CC91000E995A /* MJIvar.m in Sources */,
 				4C7FF7C71CD0CC91000E995A /* XMPPOutgoingFileTransfer.m in Sources */,
 				4C7FF7F21CD0CC91000E995A /* XMPPvCardTempEmail.m in Sources */,
+				4CAB45AB1DE9AB8F00E0EAFD /* RequestManager.m in Sources */,
 				4C7FF7C31CD0CC91000E995A /* XMPPBandwidthMonitor.m in Sources */,
 				4C7FF8041CD0CC91000E995A /* XMPPCapabilities.xcdatamodel in Sources */,
 				4C7FF8001CD0CC91000E995A /* XMPPMessage+XEP_0085.m in Sources */,
@@ -2804,7 +2811,6 @@
 				4C7FF78D1CD0CC91000E995A /* IQTitleBarButtonItem.m in Sources */,
 				4C7FF5231CD0CBE8000E995A /* main.m in Sources */,
 				4C0CB9731CD473E30061C4CB /* XMPPTool.m in Sources */,
-				4C5ED6111D924707003D8D6F /* RequestManager.m in Sources */,
 				4C7FF7FA1CD0CC91000E995A /* TURNSocket.m in Sources */,
 				4C0B624A1D92220C00AB6FBF /* BaseViewModel.m in Sources */,
 				4C7FF7B41CD0CC91000E995A /* XMPPSCRAMSHA1Authentication.m in Sources */,

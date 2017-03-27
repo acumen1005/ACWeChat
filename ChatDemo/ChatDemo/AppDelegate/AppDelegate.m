@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "MainTabBarController.h"
+#import "BaseRequest.h"
 
 @interface AppDelegate ()
 
@@ -32,7 +33,36 @@
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
+    [self getFindStatusWithCompation:^(BOOL flag) {
+        
+    }];
+    
     return YES;
+}
+
+- (void) getFindStatusWithCompation:(void (^)(BOOL flag)) compation{
+    
+//    NSString *userId = @"280";
+    NSMutableDictionary *mDict = [[NSMutableDictionary alloc] init];
+//    [mDict setObject:userId forKey:@"id"];
+    
+    NSString *url = [NSString stringWithFormat:@"https://www.baidu.com"];
+    
+    BaseRequest *request = [BaseRequest initBaseRequestWithUrl:url Type:BaseRequestGet];
+    request.paramDict = mDict;
+    
+    [request sendRequestWithReturnBlock:^(id returnValue) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+           NSLog(@"---- %@",returnValue);
+        });
+        
+        compation(true);
+        
+    } WithFailureBlock:^{
+        NSLog(@"---- error");
+        compation(true);
+    }];
 }
 
 - (void)notificationToChange:(NSNotification *)notification{

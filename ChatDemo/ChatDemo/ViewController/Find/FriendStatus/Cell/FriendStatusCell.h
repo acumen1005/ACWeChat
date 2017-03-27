@@ -11,10 +11,16 @@
 
 @protocol FriendStatusCellDelegate <NSObject>
 
-- (void) onClickToGivenLike:(NSIndexPath *) indexPath IsClicked:(BOOL) click;
-- (void) onClickToComment:(NSIndexPath *) indexPath;
-- (void) onClickToPushUserInfo:(NSIndexPath *) indexPath;
-- (void) onClickToPushUserInfoWithUserName:(NSString *) userName;
+- (void)tableViewCell:(UITableViewCell *)friendStatusCell
+didClickLikeAtIndexPath:(NSIndexPath *)indexPath;
+- (void)tableViewCell:(UITableViewCell *)friendStatusCell
+dismissLikeAtIndexPath:(NSIndexPath *)indexPath;
+- (void)tableViewCell:(UITableViewCell *)friendStatusCell
+didClickCommentAtIndexPath:(NSIndexPath *)indexPath;
+- (void)tableViewCell:(UITableViewCell *)friendStatusCell
+didClickNameAtIndexPath:(NSIndexPath *)indexPath;
+
+- (void)onClickToPushUserInfoWithUserName:(NSString *) userName;
 
 @end
 
@@ -26,10 +32,10 @@ typedef void (^ReturnSelectedCellBlock)();
 
 @interface FriendStatusCell : UITableViewCell
 
-+ (CGFloat) calocCellHeightWithFriendStatus:(FriendStatusBean *) friendStatusBean;
++ (CGFloat)calocCellHeightWithFriendStatus:(FriendStatusBean *) friendStatusBean;
 
-- (void) dismissMenuSilderView;
-- (void) setFriendStatus:(FriendStatusBean *) friendStatusBean;
+- (void)dismissMenuSilderView;
+- (void)setFriendStatus:(FriendStatusBean *)friendStatusBean;
 
 @property (weak,nonatomic) id<FriendStatusCellDelegate> delegate;
 @property (copy,nonatomic) ReturnClickLabelBlock returnClickLabelBlock;

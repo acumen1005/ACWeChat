@@ -14,10 +14,10 @@
 @property (strong,nonatomic) UILabel *titleLabel;
 @property (strong,nonatomic) UIImageView *rightImageView;
 
-- (void) setImageWithImageName:(NSString *) image
-                         Title:(NSString *) title;
+- (void)setImageWithImageName:(NSString *)image
+                        title:(NSString *)title;
 
-- (void) setRightImageViewWithImageName:(NSString *)rightImageView;
-- (void) dismissRightImageView;
+- (void)setRightImageViewWithImageName:(NSString *)rightImageView;
+- (void)dismissRightImageView;
 
 @end

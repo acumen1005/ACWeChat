@@ -92,7 +92,7 @@
     }
 }
 
-- (void) onClickToComment:(UIButton *) button {
+- (void)onClickToComment:(UIButton *)button {
     
     if(self.onClickToCommentBlock){
         self.onClickToCommentBlock();
@@ -101,24 +101,14 @@
 
 #pragma mark - getter
 
-- (BOOL) show {
+- (BOOL)show {
     return _show;
 }
 
 #pragma mark - setter
 
-- (void) setShow:(BOOL) show {
-    
+- (void)setShow:(BOOL)show {
     _show = show;
-//    
-//    [UIView animateWithDuration:0.2 animations:^{
-//        if (!show) {
-//            [self setWidth:0.0];
-//        } else {
-//            [self setWidth:100.0];
-//        }
-//        [self.superview layoutIfNeeded];
-//    }];
 }
 
 /*

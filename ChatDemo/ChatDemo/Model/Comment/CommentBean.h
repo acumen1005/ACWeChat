@@ -14,4 +14,8 @@
 @property (strong,nonatomic) NSString *toUserName;
 @property (strong,nonatomic) NSString *commentContent;
 
+- (instancetype)initWithFromUserName:(NSString *)fromUserName
+                          toUserName:(NSString *)toUserName
+                      commentContent:(NSString *)commentContent;
+
 @end

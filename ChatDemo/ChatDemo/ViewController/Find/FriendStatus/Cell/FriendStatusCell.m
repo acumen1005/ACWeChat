@@ -52,8 +52,6 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
         [self.contentView addSubview:self.menuSliderView];
         [self.contentView addSubview:self.commentView];
         [self.contentView bringSubviewToFront:self.menuSliderView];
-        
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveOperationButtonClickedNotification:) name:kOperationButtonClickedNotification object:nil];
     }
     return self;
 }
@@ -176,35 +174,39 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     self.menuSliderView.show = friendStatusBean.isCommentStatus;
     
     __weak typeof(self) weakSelf = self;
-    
     self.menuSliderView.onClickToCommentBlock = ^(){
-    
-        if([weakSelf.delegate respondsToSelector:@selector(onClickToComment:)]){
-            [weakSelf.delegate onClickToComment:weakSelf.indexPath];
+        __strong typeof(self) strongSelf = weakSelf;
+        if([strongSelf.delegate respondsToSelector:@selector(tableViewCell:didClickCommentAtIndexPath:)]) {
+            [strongSelf.delegate tableViewCell:strongSelf
+                  didClickCommentAtIndexPath:strongSelf.indexPath];
         }
-        
-        weakSelf.returnTableViewCellBlock(false,weakSelf.indexPath);
+        strongSelf.returnTableViewCellBlock(false, strongSelf.indexPath);
     };
     
-    self.menuSliderView.onClickToGiveLikeBlock = ^(BOOL isClick){
-        
-        if([weakSelf.delegate respondsToSelector:@selector(onClickToGivenLike:IsClicked:)]){
-            [weakSelf.delegate onClickToGivenLike:weakSelf.indexPath IsClicked:isClick];
+    self.menuSliderView.onClickToGiveLikeBlock = ^(BOOL isClick) {
+        __strong typeof(self) strongSelf = weakSelf;
+        if (isClick) {
+            if([strongSelf.delegate respondsToSelector:@selector(tableViewCell:didClickLikeAtIndexPath:)]){
+                [strongSelf.delegate tableViewCell:strongSelf
+                         didClickLikeAtIndexPath:strongSelf.indexPath];
+            }
+        } else {
+            if([strongSelf.delegate respondsToSelector:@selector(tableViewCell:dismissLikeAtIndexPath:)]){
+                [strongSelf.delegate tableViewCell:strongSelf
+                         didClickLikeAtIndexPath:strongSelf.indexPath];
+            }
         }
         
-        if(weakSelf.returnTableViewCellBlock){
-            weakSelf.returnTableViewCellBlock(false,weakSelf.indexPath);
+        if(strongSelf.returnTableViewCellBlock) {
+            strongSelf.returnTableViewCellBlock(false, strongSelf.indexPath);
         }
     };
     
     self.commentView.returnLayoutBlock = ^(){
-        
         NSLog(@"11111111");
-//        weakSelf.returnTableViewCellBlock(false,weakSelf.indexPath);
     };
     
     [self.commentView setLikeItems:friendStatusBean.likes CommentItems:friendStatusBean.comments];
-    
     [self layoutSubviews];
 }
 
@@ -314,17 +316,19 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 #pragma mark - MLLinkLabelDelegate
 
-- (void)didClickLink:(MLLink*)link linkText:(NSString*)linkText linkLabel:(MLLinkLabel*)linkLabel{
+- (void)didClickLink:(MLLink*)link
+            linkText:(NSString*)linkText
+           linkLabel:(MLLinkLabel*)linkLabel{
     
-    if([self.delegate respondsToSelector:@selector(onClickToPushUserInfo:)]){
-        [self.delegate onClickToPushUserInfo:self.indexPath];
+    if([self.delegate respondsToSelector:@selector(tableViewCell:didClickNameAtIndexPath:)]){
+        [self.delegate tableViewCell:self
+             didClickNameAtIndexPath:self.indexPath];
     }
 }
 
 #pragma mark - CommentViewDelegate
 
 - (void)onClickToLabelPushUserInfo:(NSString *)userName {
-    
     if([self.delegate respondsToSelector:@selector(onClickToPushUserInfoWithUserName:)]){
         [self.delegate onClickToPushUserInfoWithUserName:userName];
     }
@@ -398,19 +402,9 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 #pragma mark - 通知方法
 
-- (void) receiveOperationButtonClickedNotification:(NSNotification *) notification {
-    
+- (void)receiveOperationButtonClickedNotification:(NSNotification *) notification {
     UIButton *btn = [notification object];
-    
-//    NSLog(@"nameLabel -- %@",self.nameLabel.text);
-    //除了点击按钮之外，其他按钮有显示的话，取消显示
     if (btn != self.moreButton && self.menuSliderView.show) {
-//        
-//        __weak typeof(self) weakSelf = self;
-//        self.menuSliderView.updateTableViewCellBlock = ^(){
-//            [weakSelf layoutSubviews];
-//        };
-
         self.menuSliderView.show = NO;
     }
     
@@ -418,43 +412,28 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 #pragma mark - dismiss菜单
 
-- (void) postOperationButtonClickedNotification{
+- (void)postOperationButtonClickedNotification {
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kOperationButtonClickedNotification object:self.moreButton];
 }
 
 #pragma mark - touch方法
 
-- (void) onClickToPushPersional:(UITapGestureRecognizer *) tap {
-    
-    NSLog(@"点击用户头像 － ");
-    
-    if([self.delegate respondsToSelector:@selector(onClickToPushUserInfo:)]){
-        [self.delegate onClickToPushUserInfo:self.indexPath];
+- (void)onClickToPushPersional:(UITapGestureRecognizer *)tap {
+    if([self.delegate respondsToSelector:@selector(tableViewCell:didClickNameAtIndexPath:)]){
+        [self.delegate tableViewCell:self
+             didClickNameAtIndexPath:self.indexPath];
     }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [super touchesBegan:touches withEvent:event];
-    
     if (!self.menuSliderView.show) {
         self.returnSelectedCellBlock();
     }
     else {
         self.returnTableViewCellBlock(false,self.indexPath);
     }
-}
-
-#pragma mark - 系统方法
-
-- (void)awakeFromNib {
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

@@ -11,21 +11,13 @@
 @implementation HeaderFooterView
 
 
-- (id) initWithReuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
         [self setUserInteractionEnabled:NO];
         [self setBackgroundView:[[UIView alloc] init]];
-//        [self.contentView setBackgroundColor:[UIColor whiteColor]];
     }
     return self;
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

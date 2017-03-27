@@ -10,10 +10,8 @@
 
 @implementation FindCell
 
-- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-    
         [self addSubview:self.iconImageView];
         [self addSubview:self.titleLabel];
         [self addSubview:self.rightImageView];
@@ -21,8 +19,7 @@
     return self;
 }
 
-- (void) layoutSubviews{
-
+- (void)layoutSubviews {
     [super layoutSubviews];
     
     [self.iconImageView setFrame:CGRectMake(15.0, self.height/2.0 - self.height/1.6/2.0, self.self.height/1.6, self.height/1.6)];
@@ -31,8 +28,8 @@
 }
 
 
-- (void) setImageWithImageName:(NSString *) image
-                         Title:(NSString *) title{
+- (void)setImageWithImageName:(NSString *)image
+                        title:(NSString *)title {
     [self.iconImageView setImage:[UIImage imageNamed:image]];
     
     [self.titleLabel setText:title];
@@ -43,7 +40,7 @@
     [self layoutSubviews];
 }
 
-- (void) setRightImageViewWithImageName:(NSString *)rightImageView{
+- (void)setRightImageViewWithImageName:(NSString *)rightImageView{
 
     [self.rightImageView setHidden:NO];
     [self.rightImageView setImage:[UIImage imageNamed:rightImageView]];
