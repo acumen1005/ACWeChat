@@ -1,6 +1,5 @@
-# XMPPDemoForIOS
-基于xmppframework 后台使用了openfire。简单的demo边学习边写的一个demo代码组织也不是很好。给初学者找点感觉吧。  
-
+# ACWechat
+基于xmppframework 后台使用了openfire。简单的demo边学习边写的一个demo代码组织也不是很好。给初学者找点感觉吧。  
 现在在完善项目，模仿微信部分功能，作为练手项目。
   
   
