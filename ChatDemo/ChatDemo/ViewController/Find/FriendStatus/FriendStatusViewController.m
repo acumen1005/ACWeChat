@@ -297,8 +297,6 @@ didClickNameAtIndexPath:(NSIndexPath *)indexPath {
             
             FriendStatusBean *friendStatusBean = weakSelf.friendStatuses[tmp.row];
             friendStatusBean.isOpen = !friendStatusBean.isOpen;
-            
-            // 重新计算
             CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:friendStatusBean];
             [self.cacheHeigtsDict setObject:@(height) forKey:indexPath];
             

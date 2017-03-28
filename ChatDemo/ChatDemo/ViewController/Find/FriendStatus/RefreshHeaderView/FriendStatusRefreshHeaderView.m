@@ -12,8 +12,7 @@ static const CGFloat criticalY = -60.0f;
 
 #define kFriendStatusRefreshHeaderRotateAnimationKey @"RotateAnimationKey"
 
-@implementation FriendStatusRefreshHeaderView
-{
+@implementation FriendStatusRefreshHeaderView {
     CABasicAnimation *_rotateAnimation;
 }
 
@@ -24,16 +23,14 @@ static const CGFloat criticalY = -60.0f;
     return header;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self setupView];
     }
     return self;
 }
 
-- (void) setupView {
-
+- (void)setupView {
     self.backgroundColor = [UIColor clearColor];
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"AlbumReflashIcon"]];
@@ -48,8 +45,7 @@ static const CGFloat criticalY = -60.0f;
     _rotateAnimation.repeatCount = MAXFLOAT;
 }
 
-- (void)setRefreshState:(CommonRefreshViewState) refreshState {
-    
+- (void)setRefreshState:(CommonRefreshViewState)refreshState {
     [super setRefreshState:refreshState];
     
     if (refreshState == CommonRefreshViewStateDidRefresh) {
@@ -58,7 +54,6 @@ static const CGFloat criticalY = -60.0f;
         }
         [self.layer addAnimation:_rotateAnimation forKey:kFriendStatusRefreshHeaderRotateAnimationKey];
     } else if (refreshState == CommonRefreshViewStateNormal) {
-        
         [self.layer removeAnimationForKey:kFriendStatusRefreshHeaderRotateAnimationKey];
     
         [UIView animateWithDuration:0.3f animations:^{
@@ -94,22 +89,11 @@ static const CGFloat criticalY = -60.0f;
     self.transform = transform;
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
-{
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if (keyPath != kCommonRefreshViewObserveKeyPath){
         return;
     }
-    
     [self updateRefreshHeaderWithOffsetY:self.scrollView.contentOffset.y + 64];
 }
-
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

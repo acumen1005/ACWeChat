@@ -10,8 +10,7 @@
 
 #define SLIDER_WIDTH 140.0
 
-@implementation MenuSliderView{
-    
+@implementation MenuSliderView {
     UIButton *_likeButton;
     UIButton *_commentButton;
     BOOL _show;
@@ -19,8 +18,7 @@
     BOOL _commentClicked;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self setup];
     }
@@ -28,7 +26,7 @@
 }
 
 
-- (void) setup {
+- (void)setup {
     _show = NO;
     _likeClicked = NO;
     _commentClicked = NO;
@@ -42,9 +40,9 @@
     [self addSubview:_commentButton];
     [self addSubview:line];
     
-    [_likeButton setAttributedTitle:[self generateAttributedStringWithImage:@"AlbumLike" Title:@"点赞"] forState:UIControlStateNormal];
+    [_likeButton setAttributedTitle:[self generateAttributedStringWithImage:@"AlbumLike" title:@"点赞"] forState:UIControlStateNormal];
     [_likeButton addTarget:self action:@selector(onClickToGiveLike:) forControlEvents:UIControlEventTouchUpInside];
-    [_commentButton setAttributedTitle:[self generateAttributedStringWithImage:@"AlbumComment" Title:@"评论"] forState:UIControlStateNormal];
+    [_commentButton setAttributedTitle:[self generateAttributedStringWithImage:@"AlbumComment" title:@"评论"] forState:UIControlStateNormal];
     [_commentButton addTarget:self action:@selector(onClickToComment:) forControlEvents:UIControlEventTouchUpInside];
     [line setBackgroundColor:[UIColor whiteColor]];
     
@@ -55,8 +53,8 @@
 
 #pragma mark - 生成富文本
 
-- (NSAttributedString *) generateAttributedStringWithImage:(NSString *) imageName
-                                                     Title:(NSString *) title{
+- (NSAttributedString *) generateAttributedStringWithImage:(NSString *)imageName
+                                                     title:(NSString *)title{
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] init];
     
     NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
@@ -76,24 +74,21 @@
 
 #pragma mark - 按钮方法
 
-- (void) onClickToGiveLike:(UIButton *) button {
-
+- (void)onClickToGiveLike:(UIButton *)button {
     _likeClicked = !_likeClicked;
     
     if(!_likeClicked){
-        [button setAttributedTitle:[self generateAttributedStringWithImage:@"AlbumLike" Title:@"点赞"] forState:UIControlStateNormal];
-    }
-    else {
-        [button setAttributedTitle:[self generateAttributedStringWithImage:@"AlbumLike" Title:@"取消"] forState:UIControlStateNormal];
+        [button setAttributedTitle:[self generateAttributedStringWithImage:@"AlbumLike" title:@"点赞"] forState:UIControlStateNormal];
+    } else {
+        [button setAttributedTitle:[self generateAttributedStringWithImage:@"AlbumLike" title:@"取消"] forState:UIControlStateNormal];
     }
     
-    if(self.onClickToGiveLikeBlock){
+    if(self.onClickToGiveLikeBlock) {
         self.onClickToGiveLikeBlock(_likeClicked);
     }
 }
 
 - (void)onClickToComment:(UIButton *)button {
-    
     if(self.onClickToCommentBlock){
         self.onClickToCommentBlock();
     }
@@ -110,13 +105,5 @@
 - (void)setShow:(BOOL)show {
     _show = show;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

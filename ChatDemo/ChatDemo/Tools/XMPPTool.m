@@ -77,8 +77,7 @@ NSString *const ResultNotification = @"ResultNotification";
 
 #pragma mark - 连接方法
 /** 断开连接 */
-- (void)disconnect
-{
+- (void)disconnect {
     // 通知服务器，用户下线
     [self goOffline];
     
@@ -86,8 +85,7 @@ NSString *const ResultNotification = @"ResultNotification";
 }
 
 /** 连接方法有失败block回调 */
-- (BOOL)connectionWithFailed:(void (^)(NSString *errorMessage))failed
-{
+- (BOOL)connectionWithFailed:(void (^)(NSString *errorMessage))failed {
     // 需要指定myJID & hostName
     NSString *hostName = [[NSUserDefaults standardUserDefaults] stringForKey:HostnameKey];
     NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:UserNameKey];

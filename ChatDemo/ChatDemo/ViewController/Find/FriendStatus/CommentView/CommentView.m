@@ -229,9 +229,7 @@
  *
  **/
 
-- (NSAttributedString *) generateAttributedStringWithCommentBean:(CommentBean *) commentBean {
-
-    
+- (NSAttributedString *) generateAttributedStringWithCommentBean:(CommentBean *)commentBean {
     NSString *string = [NSString stringWithFormat:@"%@回复%@：%@",commentBean.fromUserName,commentBean.toUserName,commentBean.commentContent];
     
     UIColor *highLightColor = [UIColor blueColor];
@@ -245,13 +243,5 @@
     
     return attributedString;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

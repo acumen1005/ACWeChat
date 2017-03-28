@@ -12,14 +12,14 @@
 @implementation FindViewModel
 
 
-- (void) getFindStatus {
+- (void)getFindStatus{
     
 //    NSString *userId = @"280";
     NSMutableDictionary *mDict = [[NSMutableDictionary alloc] init];
 //    [mDict setObject:userId forKey:@"id"];
     //
     //
-    NSString *url = [NSString stringWithFormat:@"http://app.dianzhiliao.com//dzl_getDetectorCount/get"];
+    NSString *url = [NSString stringWithFormat:@""];
     
     BaseRequest *request = [BaseRequest initBaseRequestWithUrl:url Type:BaseRequestPost];
     

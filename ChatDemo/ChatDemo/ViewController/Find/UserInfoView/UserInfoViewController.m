@@ -7,6 +7,7 @@
 //
 
 #import "UserInfoViewController.h"
+#import "UITableViewCell+Register.h"
 
 @interface UserInfoViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -28,13 +29,8 @@
     [self configHeaderView];
     
     [self.ll_HeaderView setUserName:self.userBean.userName avatar:self.userBean.avatar backgroudImage:self.userBean.bottleBackgroud];
+    [UITableViewCell registerClassForTableView:self.tableView];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 #pragma mark - config 
 
@@ -56,7 +52,6 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         [_tableView setBackgroundColor:[UIColor grayColor]];
-        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
     }
     return _tableView;
 }
@@ -65,17 +60,14 @@
 #pragma mark - dataSouce
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
     return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     return 10;
 }
 
 #pragma mark - tableViewDelegate 
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     

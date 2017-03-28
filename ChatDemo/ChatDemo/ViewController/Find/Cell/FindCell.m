@@ -40,19 +40,19 @@
     [self layoutSubviews];
 }
 
-- (void)setRightImageViewWithImageName:(NSString *)rightImageView{
+- (void)setRightImageViewWithImageName:(NSString *)rightImageView {
 
     [self.rightImageView setHidden:NO];
     [self.rightImageView setImage:[UIImage imageNamed:rightImageView]];
 }
 
-- (void) dismissRightImageView{
+- (void)dismissRightImageView {
     [self.rightImageView setHidden:YES];
 }
 
 #pragma mark - getter 
 
-- (UIImageView *) iconImageView {
+- (UIImageView *)iconImageView {
     
     if(!_iconImageView){
         _iconImageView = [[UIImageView alloc] init];
@@ -60,28 +60,19 @@
     return _iconImageView;
 }
 
-- (UIImageView *) rightImageView {
-    
+- (UIImageView *)rightImageView {
     if(!_rightImageView){
         _rightImageView = [[UIImageView alloc] init];
     }
     return _rightImageView;
 }
 
-- (UILabel *) titleLabel{
-    
+- (UILabel *)titleLabel {
     if(!_titleLabel){
         _titleLabel = [[UILabel alloc] init];
     }
     return _titleLabel;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

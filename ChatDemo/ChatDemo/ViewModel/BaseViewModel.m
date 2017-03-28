@@ -21,12 +21,11 @@
 
 //与接口衔接好,这里先处理成直接返回。
 -(void)fetchSuccessResult:(NSDictionary *)message{
-    
-//    if ([message[HTTP_RESULT] isEqualToString:HTTP_SUCCESS]) {
+    if ([message[HTTP_RESULT] isEqualToString:HTTP_SUCCESS]) {
         self.returnBlock(message[HTTP_MSG]);
-//    }else{
-//        self.errorBlock(message[HTTP_MSG]);
-//    }
+    } else {
+        self.errorBlock(message[HTTP_MSG]);
+    }
 }
 
 -(void)fetchErrorResult:(NSDictionary *)message{
