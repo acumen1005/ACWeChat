@@ -37,8 +37,7 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 @implementation FriendStatusCell
 
-- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
@@ -58,65 +57,66 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 #pragma mark - getter
 
-- (UIImageView *) avatarImageView {
-    if(!_avatarImageView){
+- (UIImageView *)avatarImageView {
+    if(!_avatarImageView) {
         _avatarImageView = [[UIImageView alloc] init];
     }
     return _avatarImageView;
 }
 
-- (MLLinkLabel *) nameLabel {
-    if(!_nameLabel){
+- (MLLinkLabel *)nameLabel {
+    if(!_nameLabel) {
         _nameLabel = [[MLLinkLabel alloc] init];
         _nameLabel.delegate = self;
     }
     return _nameLabel;
 }
 
-- (UILabel *) contentLabel {
+- (UILabel *)contentLabel {
     if(!_contentLabel) {
         _contentLabel = [[UILabel alloc] init];
     }
     return _contentLabel;
 }
 
-- (ACImageBrowseContainerView *) acImageBrowse {
+- (ACImageBrowseContainerView *)acImageBrowse {
     if(!_acImageBrowse) {
         _acImageBrowse = [[ACImageBrowseContainerView alloc] init];
     }
     return _acImageBrowse;
 }
 
-- (MLLinkLabel *) spreadLabel {
+- (MLLinkLabel *)spreadLabel {
     if(!_spreadLabel){
         _spreadLabel = [[MLLinkLabel alloc] init];
-        [_spreadLabel setAttributedText:[self getAttributedStringWithName:@"全文" LinkAttributeName:@"button"]];
+        [_spreadLabel setAttributedText:[self getAttributedStringWithName:@"全文"
+                                                        linkAttributeName:@"button"]];
     }
     return _spreadLabel;
 }
 
-- (UILabel *) timestampLabel {
+- (UILabel *)timestampLabel {
     if(!_timestampLabel) {
         _timestampLabel = [[UILabel alloc] init];
     }
     return _timestampLabel;
 }
 
-- (UIButton *) moreButton {
+- (UIButton *)moreButton {
     if(!_moreButton) {
         _moreButton = [[UIButton alloc] init];
     }
     return _moreButton;
 }
 
-- (MenuSliderView *) menuSliderView {
+- (MenuSliderView *)menuSliderView {
     if(!_menuSliderView){
         _menuSliderView = [[MenuSliderView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, BUTTON_HEIGHT * 0.8)];
     }
     return _menuSliderView;
 }
 
-- (CommentView *) commentView {
+- (CommentView *)commentView {
     if(!_commentView) {
         _commentView = [[CommentView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 50 - INDENT * 3, 35)];
         _commentView.delegate = self;
@@ -126,8 +126,7 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 #pragma mark - setter
 
-- (void) setFriendStatus:(FriendStatusBean *) friendStatusBean{
-    
+- (void)setFriendStatus:(FriendStatusBean *)friendStatusBean{
     _friendStatusBean = friendStatusBean;
     
     [self.avatarImageView setImage:[UIImage imageNamed:friendStatusBean.avatarUrl]];
@@ -135,7 +134,8 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onClickToPushPersional:)];
     [self.avatarImageView addGestureRecognizer:tap];
     
-    [self.nameLabel setAttributedText:[self getAttributedStringWithName:friendStatusBean.userName LinkAttributeName:@"name"]];
+    [self.nameLabel setAttributedText:[self getAttributedStringWithName:friendStatusBean.userName
+                                                      linkAttributeName:@"name"]];
     [self.nameLabel setTextColor:COLOR_RGBA(0, 0, 0, 1.0)];
     [self.nameLabel setFont:[UIFont boldSystemFontOfSize:14.0]];
     [self.nameLabel sizeToFit];
@@ -203,7 +203,6 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     };
     
     self.commentView.returnLayoutBlock = ^(){
-        NSLog(@"11111111");
     };
     
     [self.commentView setLikeItems:friendStatusBean.likes CommentItems:friendStatusBean.comments];
@@ -212,8 +211,7 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 #pragma mark - layout
 
-- (void) layoutSubviews {
-    
+- (void)layoutSubviews {
     [super layoutSubviews];
     
     [self.avatarImageView setFrame:CGRectMake(INDENT, INDENT, 50, 50)];
@@ -229,26 +227,24 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     
     __weak typeof(self) weakSelf = self;
     weakSelf.spreadLabel.didClickLinkBlock = ^(MLLink *link,NSString *linkText,MLLinkLabel *label){
-        
-        NSLog(@"%@",linkText);
-        if([linkText isEqualToString:@"全文"]){
-            [label setAttributedText:[self getAttributedStringWithName:@"收起" LinkAttributeName:@"收起"]];
-            
-            [self.contentLabel setWidth:kScreenWidth - 50.0 - INDENT * 3];
-            [self.contentLabel setNumberOfLines:0];
-            [self.contentLabel sizeToFit];
+        __strong typeof(self) strongify = weakSelf;
+        if([linkText isEqualToString:@"全文"]) {
+            [label setAttributedText:[strongify getAttributedStringWithName:@"收起"
+                                                          linkAttributeName:@"收起"]];
+            [strongify.contentLabel setWidth:kScreenWidth - 50.0 - INDENT * 3];
+            [strongify.contentLabel setNumberOfLines:0];
+            [strongify.contentLabel sizeToFit];
+        } else {
+            [label setAttributedText:[strongify getAttributedStringWithName:@"全文"
+                                                          linkAttributeName:@"全文"]];
+            [strongify.contentLabel setHeight:60.0];
         }
-        else {
-            [label setAttributedText:[self getAttributedStringWithName:@"全文" LinkAttributeName:@"全文"]];
-            [self.contentLabel setHeight:60.0];
-        }
-        
         // 回调block
         self.returnClickLabelBlock(self.indexPath);
     };
     
     if (self.contentLabel.height >= 51.0) {
-        if([self.spreadLabel.text isEqualToString:@"全文"]){
+        if ([self.spreadLabel.text isEqualToString:@"全文"]) {
             [self.contentLabel setHeight:51.0];
         }
         [self.spreadLabel setHidden:NO];
@@ -258,8 +254,7 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
         
         [self.acImageBrowse setLeft:self.nameLabel.left];
         [self.acImageBrowse setTop:self.spreadLabel.bottom + 5.0];
-    }
-    else {
+    } else {
         [self.spreadLabel setHidden:YES];
         
         [self.acImageBrowse setLeft:self.nameLabel.left];
@@ -290,11 +285,9 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 #pragma mark - 生成富文本
 
-- (NSAttributedString *) getAttributedStringWithName:(NSString *) name
-                                   LinkAttributeName:(NSString *) linkAttributeName{
-
+- (NSAttributedString *)getAttributedStringWithName:(NSString *)name
+                                  linkAttributeName:(NSString *)linkAttributeName{
     NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:name];
-    
     //添加链接
     [attri setAttributes:@{NSForegroundColorAttributeName :[UIColor blueColor], NSLinkAttributeName : linkAttributeName} range:[attri.string rangeOfString:name]];
     
@@ -303,14 +296,13 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 #pragma mark - 按钮事件
 
-- (void) onClickToShowMoreOperater:(UIButton *) button {
-    
+- (void)onClickToShowMoreOperater:(UIButton *)button {
     self.returnTableViewCellBlock(true,self.indexPath);
 }
 
 #pragma mark - UILabel点击事件
 
-- (void) addMaskViewInImageView:(UIImageView *) image ImageName:(NSString *) imageName{
+- (void)addMaskViewInImageView:(UIImageView *)image imageName:(NSString *) imageName{
 
 }
 
@@ -318,7 +310,7 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 - (void)didClickLink:(MLLink*)link
             linkText:(NSString*)linkText
-           linkLabel:(MLLinkLabel*)linkLabel{
+           linkLabel:(MLLinkLabel*)linkLabel {
     
     if([self.delegate respondsToSelector:@selector(tableViewCell:didClickNameAtIndexPath:)]){
         [self.delegate tableViewCell:self
@@ -329,14 +321,14 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 #pragma mark - CommentViewDelegate
 
 - (void)onClickToLabelPushUserInfo:(NSString *)userName {
-    if([self.delegate respondsToSelector:@selector(onClickToPushUserInfoWithUserName:)]){
+    if ([self.delegate respondsToSelector:@selector(onClickToPushUserInfoWithUserName:)]) {
         [self.delegate onClickToPushUserInfoWithUserName:userName];
     }
 }
 
 #pragma mark - 计算高度
 
-+ (CGFloat) calocCellHeightWithFriendStatus:(FriendStatusBean *) friendStatusBean {
++ (CGFloat)calocCellHeightWithFriendStatus:(FriendStatusBean *)friendStatusBean {
     
     CGSize size = [FriendStatusCell sizeWithString:friendStatusBean.content font:[UIFont systemFontOfSize:14.0] maxSize:CGSizeMake(kScreenWidth - 50.0 - INDENT * 3, CGFLOAT_MAX)];
     
@@ -344,14 +336,12 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     
     if(size.height < 51){
         height += INDENT + 17.0 * 2 + 2.0 + 5 + INDENT;
-    }
-    else {
+    } else {
         
         height += INDENT * 3 + 17.0 * 3 + 2.0;
     }
     height += (kScreenWidth - 50.0 - INDENT * 3)/3.0 * ([friendStatusBean.statusPics count]/3 + ([friendStatusBean.statusPics count]%3 != 0));
     
-    //commentView;
     NSAttributedString *attibutedString = [self generateAttributedStringWithUserBeans:friendStatusBean.likes];
     
     size = [FriendStatusCell sizeWithString:attibutedString.string font:[UIFont systemFontOfSize:13.5] maxSize:CGSizeMake(kScreenWidth - 50.0 - INDENT * 4, CGFLOAT_MAX)];
@@ -359,7 +349,6 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     
     height += INDENT * 2;
     for (CommentBean *tmp in friendStatusBean.comments) {
-        
         NSString *string = [NSString stringWithFormat:@"%@回复%@：%@",tmp.fromUserName,tmp.toUserName,tmp.commentContent];
         
         CGFloat tmp = [FriendStatusCell sizeWithString:string font:[UIFont systemFontOfSize:13.5] maxSize:CGSizeMake(kScreenWidth - 50.0 - INDENT * 4, CGFLOAT_MAX)].height;
@@ -369,14 +358,15 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     return MAX(height + INDENT, INDENT + 50 + INDENT);
 }
 
-+ (CGSize)sizeWithString:(NSString *)str font:(UIFont *)font maxSize:(CGSize)maxSize
-{
++ (CGSize)sizeWithString:(NSString *)str
+                    font:(UIFont *)font
+                 maxSize:(CGSize)maxSize {
     NSDictionary *dict = @{NSFontAttributeName : font};
     CGSize size =  [str boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
     return size;
 }
 
-+ (NSAttributedString *) generateAttributedStringWithUserBeans:(NSArray *) userBeans {
++ (NSAttributedString *)generateAttributedStringWithUserBeans:(NSArray *)userBeans {
     
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] init];
     
@@ -389,7 +379,6 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     BOOL flag = true;
     for (UserBean *userBean in userBeans) {
         NSString *string = @"";
-        
         string = flag? [NSString stringWithFormat:@" %@",userBean.userName]:[NSString stringWithFormat:@", %@",userBean.userName];
         NSMutableAttributedString *tmp = [[NSMutableAttributedString alloc] initWithString:string];
         
@@ -413,7 +402,6 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 #pragma mark - dismiss菜单
 
 - (void)postOperationButtonClickedNotification {
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:kOperationButtonClickedNotification object:self.moreButton];
 }
 
@@ -430,8 +418,7 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
     [super touchesBegan:touches withEvent:event];
     if (!self.menuSliderView.show) {
         self.returnSelectedCellBlock();
-    }
-    else {
+    } else {
         self.returnTableViewCellBlock(false,self.indexPath);
     }
 }

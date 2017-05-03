@@ -12,7 +12,7 @@ typedef void (^ReturnLayoutBlock)();
 
 @protocol CommentViewDelegate <NSObject>
 
-- (void) onClickToLabelPushUserInfo:(NSString *) userName;
+- (void)onClickToLabelPushUserInfo:(NSString *)userName;
 
 @end
 

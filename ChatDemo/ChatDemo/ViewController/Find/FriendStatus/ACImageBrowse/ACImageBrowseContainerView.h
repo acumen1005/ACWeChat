@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-//typedef void (^AddMaskViewInImageView)(UIImageView *image,NSString *imageName);
-
 @protocol ACImageBrowseContainerView <NSObject>
 
-- (void) addMaskViewInImageView:(UIImageView *) image ImageName:(NSString *) imageName;
+- (void)addMaskViewInImageView:(UIImageView *)image imageName:(NSString *)imageName;
 
 @end
 
@@ -32,11 +30,7 @@
 
 @property (weak,nonatomic) id<ACImageBrowseContainerView> myDelegate;
 
-//@property (copy,nonatomic) AddMaskViewInImageView addMaskViewInImageView;
-
-
-- (void) generateLocalImages;
-- (void) drawImagesLayout;
-//- (void) setBlockAddMaskViewInImageView:(AddMaskViewInImageView) block;
+- (void)generateLocalImages;
+- (void)drawImagesLayout;
 
 @end

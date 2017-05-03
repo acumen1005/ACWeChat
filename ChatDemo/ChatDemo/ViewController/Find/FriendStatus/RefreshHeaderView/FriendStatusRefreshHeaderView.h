@@ -11,7 +11,6 @@
 @interface FriendStatusRefreshHeaderView : CommonRefreshView
 
 + (instancetype)refreshHeaderWithCenter:(CGPoint)center;
-
 @property (nonatomic, copy) void(^refreshingBlock)();
 
 @end

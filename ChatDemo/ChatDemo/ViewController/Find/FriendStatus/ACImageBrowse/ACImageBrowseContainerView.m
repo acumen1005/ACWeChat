@@ -9,6 +9,7 @@
 #import "ACImageBrowseContainerView.h"
 #import "AppDelegate.h"
 #import "ACBrowseCell.h"
+#import "UIView+Layout.h"
 
 static NSString * BROWSE_IDENTIFIER = @"ACBrowseCell";
 
@@ -28,16 +29,14 @@ static NSString * BROWSE_IDENTIFIER = @"ACBrowseCell";
 
 #pragma mark - getter
 
-- (AppDelegate *) appDelegate {
-
+- (AppDelegate *)appDelegate {
     if(!_appDelegate){
         _appDelegate = [[UIApplication sharedApplication] delegate];
     }
     return _appDelegate;
 }
 
-- (UIView *) maskView {
-
+- (UIView *)maskView {
     if(!_maskView){
         _maskView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         [_maskView setBackgroundColor:[UIColor blackColor]];
@@ -45,7 +44,7 @@ static NSString * BROWSE_IDENTIFIER = @"ACBrowseCell";
     return _maskView;
 }
 
-- (UICollectionView *) collectionView{
+- (UICollectionView *)collectionView{
     if(!_collectionView){
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
         flowLayout.itemSize = CGSizeMake(kScreenWidth, kScreenHeight);
@@ -67,46 +66,32 @@ static NSString * BROWSE_IDENTIFIER = @"ACBrowseCell";
 
 #pragma mark - layout 
 
-- (void) layoutSubviews {
-    
+- (void)layoutSubviews {
     [super layoutSubviews];
     
     self.horizontalSpacing = 5.0;
     self.verticalSpacing = 5.0;
     
-    float currentX = 0.0;
-    float currentY = 0.0;
-    float nextLine = 0.0;
+    CGFloat currentX = 0.0;
+    CGFloat currentY = 0.0;
+    CGFloat nextLine = 0.0;
     
-    float currentWidth = 0.0;
-    float currentHeight = 0.0;
+    CGFloat currentWidth = 0.0;
+    CGFloat currentHeight = 0.0;
     
-    for (int i = 0; i < self.localImages.count; i++) {
+    for (NSInteger i = 0; i < self.localImages.count; i++) {
         UIImageView *imageview = self.localImages[i];
-        
         currentWidth = imageview.width;
         currentHeight = imageview.height;
-        
-        float needsHorizontalSpacing = 0.0;
-        
-        if(currentX == 0){
-            needsHorizontalSpacing = 0.0;
-        }
-        else {
-            needsHorizontalSpacing = self.horizontalSpacing;
-        }
+        CGFloat needsHorizontalSpacing = currentX == 0 ? 0 : self.horizontalSpacing;
         
         if((currentX + currentWidth + needsHorizontalSpacing) <= self.width){
-            
             [imageview setX:currentX];
             [imageview setY:currentY];
-            
             currentX = imageview.right + self.horizontalSpacing;
             nextLine = imageview.bottom;
-        }
-        else {
+        } else {
             currentY = nextLine + self.verticalSpacing;
-            
             [imageview setX:0.0];
             [imageview setY:currentY];
             
@@ -122,18 +107,13 @@ static NSString * BROWSE_IDENTIFIER = @"ACBrowseCell";
 
 #pragma mark - 图片绘制
 
-- (void) generateLocalImages{
-
+- (void)generateLocalImages {
     [self.localImages removeAllObjects];
-    for (UIView *view in self.subviews) {
-        [view removeFromSuperview];
-    }
-    
+    [self removeAllSubViews];
     self.viewHeight = 0.0;
+    self.localImages = [@[] mutableCopy];
     
-    self.localImages = [[NSMutableArray alloc] init];
-    
-    for (int i = 0; i < self.imageNames.count; i++) {
+    for (NSInteger i = 0; i < self.imageNames.count; i++) {
         NSString *imageName = self.imageNames[i];
         
         UIImageView *imageview = [[UIImageView alloc] init];
@@ -153,57 +133,45 @@ static NSString * BROWSE_IDENTIFIER = @"ACBrowseCell";
         [self.localImages addObject:imageview];
         [self addSubview:imageview];
         
-        [self.myDelegate addMaskViewInImageView:imageview ImageName:imageName];
+        [self.myDelegate addMaskViewInImageView:imageview
+                                      imageName:imageName];
     }
     
     [self layoutSubviews];
 }
 
-- (void) drawImagesLayout {
-
+- (void)renderImagesLayout {
     self.horizontalSpacing = 5.0;
     self.verticalSpacing = 5.0;
+
+    CGFloat currentX = 0.0;
+    CGFloat currentY = 0.0;
+    CGFloat nextLine = 0.0;
     
-    float currentX = 0.0;
-    float currentY = 0.0;
-    float nextLine = 0.0;
+    CGFloat currentWidth = 0.0;
+    CGFloat currentHeight = 0.0;
     
-    float currentWidth = 0.0;
-    float currentHeight = 0.0;
-    
-    for (int i = 0; i < self.localImages.count; i++) {
+    for (NSInteger i = 0; i < self.localImages.count; i++) {
         UIImageView *imageview = self.localImages[i];
         
         currentWidth = imageview.width;
         currentHeight = imageview.height;
-        
-        float needsHorizontalSpacing = 0.0;
-        
-        if(currentX == 0){
-            needsHorizontalSpacing = 0.0;
-        }
-        else {
-            needsHorizontalSpacing = self.horizontalSpacing;
-        }
+        CGFloat needsHorizontalSpacing = currentX == 0 ? 0 : self.horizontalSpacing;
             
         if((currentX + currentWidth + needsHorizontalSpacing) <= self.width){
-                
             [imageview setX:currentX];
             [imageview setY:currentY];
                 
             currentX = imageview.right + self.horizontalSpacing;
             nextLine = imageview.bottom;
-        }
-        else {
+        } else {
             currentY = nextLine + self.verticalSpacing;
-                
             [imageview setX:0.0];
             [imageview setY:currentY];
                 
             currentX = imageview.right + self.horizontalSpacing;
             nextLine = imageview.bottom;
         }
-        
         self.viewHeight = imageview.bottom + self.verticalSpacing;
     }
     
@@ -213,61 +181,56 @@ static NSString * BROWSE_IDENTIFIER = @"ACBrowseCell";
 
 #pragma mark - 手势方法
 
-- (void) tapToBrowseImage:(UITapGestureRecognizer *) tapGesture {
-
-    _originImageView = (UIImageView *)tapGesture.view;
+- (void)tapToBrowseImage:(UITapGestureRecognizer *)tapGesture {
+    self.originImageView = (UIImageView *)tapGesture.view;
     
-    //转化为屏幕中的坐标
+    //convert to center of screen
     CGRect clickRect = [self convertRect:_originImageView.frame toView:self.appDelegate.window];
     
-    _tempImageView = [[UIImageView alloc] init];
-    [_tempImageView setImage:_originImageView.image];
-    [_tempImageView setFrame:clickRect];
+    self.tempImageView = [[UIImageView alloc] init];
+    [self.tempImageView setImage:self.originImageView.image];
+    [self.tempImageView setFrame:clickRect];
     
-    [self.appDelegate.window addSubview:_tempImageView];
+    [self.appDelegate.window addSubview:self.tempImageView];
     [self.appDelegate.window addSubview:self.maskView];
-    [self.appDelegate.window bringSubviewToFront:_tempImageView];
+    [self.appDelegate.window bringSubviewToFront:self.tempImageView];
     
-    long index = [self.localImages indexOfObject:_originImageView];
+    NSInteger index = [self.localImages indexOfObject:self.originImageView];
     
     [UIView animateWithDuration:0.3f animations:^{
-        
         float width = kScreenWidth - 10.0;
-        float height = (width / _originImageView.image.size.width) * _originImageView.image.size.height;
+        float height = (width / self.originImageView.image.size.width) * self.originImageView.image.size.height;
         
-        [_tempImageView setSize:CGSizeMake(width, height)];
-        [_tempImageView setCenter:CGPointMake(kScreenWidth/2.0, kScreenHeight/2.0)];
+        [self.tempImageView setSize:CGSizeMake(width, height)];
+        [self.tempImageView setCenter:CGPointMake(kScreenWidth/2.0, kScreenHeight/2.0)];
         
     } completion:^(BOOL finished) {
-        
-        [_tempImageView removeFromSuperview];
-        [self.maskView removeFromSuperview];
-        
-        [self.appDelegate.window addSubview:self.collectionView];
-        [self.collectionView reloadData];
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+        if (finished) {
+            [self.tempImageView removeFromSuperview];
+            [self.maskView removeFromSuperview];
+            
+            [self.appDelegate.window addSubview:self.collectionView];
+            [self.collectionView reloadData];
+            [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+        }
     }];
 }
 
 #pragma mark - UICollectionView代理方法
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return [self.localImages count];
 }
 
-
 //加载大图
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ACBrowseCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:BROWSE_IDENTIFIER forIndexPath:indexPath];
     
     if (!cell) {
         cell = [[ACBrowseCell alloc] init];
     }
     
-    cell.cellID = (int)indexPath.row + 1;
+    cell.cellID = (NSInteger)indexPath.row + 1;
     cell.sum = [self.localImages count];
     cell.font = 17.0;
     
@@ -277,59 +240,31 @@ static NSString * BROWSE_IDENTIFIER = @"ACBrowseCell";
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    _originImageView = self.localImages[indexPath.row];
-    
-    //转化为屏幕中的坐标
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    self.originImageView = self.localImages[indexPath.row];
+
     CGRect originRect = [self convertRect:_originImageView.frame toView:self.appDelegate.window];
-    
-    //将新的image的size转化为为屏幕坐标
     {
-        float width = kScreenWidth - 10.0;
-        float height = (width / _originImageView.image.size.width) * _originImageView.image.size.height;
+        CGFloat width = kScreenWidth - 10.0;
+        CGFloat height = (width / _originImageView.image.size.width) * _originImageView.image.size.height;
     
-        [_tempImageView setSize:CGSizeMake(width, height)];
-        [_tempImageView setCenter:CGPointMake(kScreenWidth/2.0, kScreenHeight/2.0)];
+        [self.tempImageView setSize:CGSizeMake(width, height)];
+        [self.tempImageView setCenter:CGPointMake(kScreenWidth/2.0, kScreenHeight/2.0)];
     }
-    [_tempImageView setImage:_originImageView.image];
+    [self.tempImageView setImage:self.originImageView.image];
     
-    [self.appDelegate.window addSubview:_tempImageView];
+    [self.appDelegate.window addSubview:self.tempImageView];
     [collectionView removeFromSuperview];
 
     [UIView animateWithDuration:0.3f animations:^{
-        
-        [_tempImageView setFrame:originRect];
+        [self.tempImageView setFrame:originRect];
         
     } completion:^(BOOL finished) {
-
-        [_tempImageView removeFromSuperview];
+        if (finished) {
+            [self.tempImageView removeFromSuperview];
+        }
     }];
     
 }
-
-- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    
-    int index = (int)(scrollView.contentOffset.x/kScreenWidth) + 1;
-    
-}
-
-#pragma mark - 系统方法
-
-- (void) dealloc {
-
-//    self.addMaskViewInImageView = nil;
-
-}
-
-
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end
