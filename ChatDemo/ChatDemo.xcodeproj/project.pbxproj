@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C0B624A1D92220C00AB6FBF /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0B62491D92220C00AB6FBF /* BaseViewModel.m */; };
-		4C0B624E1D9223C900AB6FBF /* FindViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0B624D1D9223C900AB6FBF /* FindViewModel.m */; };
 		4C0B62521D92240400AB6FBF /* BaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0B62511D92240400AB6FBF /* BaseRequest.m */; };
 		4C0CB9731CD473E30061C4CB /* XMPPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0CB9721CD473E30061C4CB /* XMPPTool.m */; };
 		4C1A22FA1D9D842800D682A6 /* UIViewController+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A22F91D9D842800D682A6 /* UIViewController+hook.m */; };
@@ -264,10 +262,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4C0B62481D92220C00AB6FBF /* BaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
-		4C0B62491D92220C00AB6FBF /* BaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
-		4C0B624C1D9223C900AB6FBF /* FindViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindViewModel.h; sourceTree = "<group>"; };
-		4C0B624D1D9223C900AB6FBF /* FindViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindViewModel.m; sourceTree = "<group>"; };
 		4C0B62501D92240400AB6FBF /* BaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRequest.h; sourceTree = "<group>"; };
 		4C0B62511D92240400AB6FBF /* BaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRequest.m; sourceTree = "<group>"; };
 		4C0CB9711CD473E30061C4CB /* XMPPTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPTool.h; sourceTree = "<group>"; };
@@ -789,25 +783,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4C0B62471D92213600AB6FBF /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				4C0B624B1D9223AB00AB6FBF /* FindViewModel */,
-				4C0B62481D92220C00AB6FBF /* BaseViewModel.h */,
-				4C0B62491D92220C00AB6FBF /* BaseViewModel.m */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		4C0B624B1D9223AB00AB6FBF /* FindViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				4C0B624C1D9223C900AB6FBF /* FindViewModel.h */,
-				4C0B624D1D9223C900AB6FBF /* FindViewModel.m */,
-			);
-			path = FindViewModel;
-			sourceTree = "<group>";
-		};
 		4C0B624F1D9223E700AB6FBF /* Request */ = {
 			isa = PBXGroup;
 			children = (
@@ -1067,7 +1042,6 @@
 				4CB3A3D81DC76F320058A098 /* AppDelegate */,
 				4C1A22F71D9D83F000D682A6 /* Category */,
 				4C0B624F1D9223E700AB6FBF /* Request */,
-				4C0B62471D92213600AB6FBF /* ViewModel */,
 				4C1CF30F1D91714900E81E2A /* Resource */,
 				4C4275BC1D4C875000D4A789 /* Model */,
 				4C7FF5541CD0CC28000E995A /* Config */,
@@ -2596,7 +2570,6 @@
 				4C7FF8321CD0CC91000E995A /* DDContextFilterLogFormatter.m in Sources */,
 				4C7FF82B1CD0CC91000E995A /* XMPPTimer.m in Sources */,
 				4C7FF7BA1CD0CC91000E995A /* XMPPConstants.m in Sources */,
-				4C0B624E1D9223C900AB6FBF /* FindViewModel.m in Sources */,
 				4C7FF7C11CD0CC91000E995A /* XMPPPresence.m in Sources */,
 				4C7FF7E51CD0CC91000E995A /* XMPPRoomOccupantMemoryStorageObject.m in Sources */,
 				4C7FF8331CD0CC91000E995A /* DDDispatchQueueLogFormatter.m in Sources */,
@@ -2796,7 +2769,6 @@
 				4C7FF5231CD0CBE8000E995A /* main.m in Sources */,
 				4C0CB9731CD473E30061C4CB /* XMPPTool.m in Sources */,
 				4C7FF7FA1CD0CC91000E995A /* TURNSocket.m in Sources */,
-				4C0B624A1D92220C00AB6FBF /* BaseViewModel.m in Sources */,
 				4C7FF7B41CD0CC91000E995A /* XMPPSCRAMSHA1Authentication.m in Sources */,
 				4C7FF8011CD0CC91000E995A /* XMPPSoftwareVersion.m in Sources */,
 				4C4275AD1D4C81BB00D4A789 /* TTTAttributedLabel.m in Sources */,
