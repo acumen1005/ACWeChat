@@ -11,8 +11,7 @@
 @implementation HeaderFooterView
 
 
-- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
-{
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
         [self setUserInteractionEnabled:NO];
         [self setBackgroundView:[[UIView alloc] init]];

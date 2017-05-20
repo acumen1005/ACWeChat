@@ -258,15 +258,14 @@ didClickNameAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - 更新 cell 高度
 
-- (void)ll_updateCellHeightWithIndexPath:(NSIndexPath *) indexPath
-                                  isWeak:(BOOL) weak
-                            friendStatus:(FriendStatusBean *) friendStatus {
+- (void)ll_updateCellHeightWithIndexPath:(NSIndexPath *)indexPath
+                                  isWeak:(BOOL)weak
+                            friendStatus:(FriendStatusBean *)friendStatus {
     
     CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:friendStatus];
     if(!weak){
         [self.cacheHeigtsDict setObject:@(height) forKey:indexPath];
-    }
-    else {
+    } else {
         __weak typeof(self) wSelf = self;
         [wSelf.cacheHeigtsDict setObject:@(height) forKey:indexPath];
     }
@@ -292,56 +291,55 @@ didClickNameAtIndexPath:(NSIndexPath *)indexPath {
     cell.delegate = self;
     __weak typeof(self) weakSelf = self;
     if (!cell.returnClickLabelBlock) {
-        cell.returnClickLabelBlock = ^(id indexPath){
+        cell.returnClickLabelBlock = ^(id indexPath) {
+            __strong typeof(self) strongSelf = self;
             NSIndexPath *tmp = indexPath;
             
-            FriendStatusBean *friendStatusBean = weakSelf.friendStatuses[tmp.row];
+            FriendStatusBean *friendStatusBean = strongSelf.friendStatuses[tmp.row];
             friendStatusBean.isOpen = !friendStatusBean.isOpen;
             CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:friendStatusBean];
             [self.cacheHeigtsDict setObject:@(height) forKey:indexPath];
             
-            [weakSelf.tableView reloadData];
+            [strongSelf.tableView reloadData];
         };
     }
     
     if(!cell.returnTableViewCellBlock) {
-        cell.returnTableViewCellBlock = ^(BOOL type,NSIndexPath *indexPath){
-            
-            FriendStatusBean *friendStatusBean = weakSelf.friendStatuses[indexPath.row];
+        cell.returnTableViewCellBlock = ^(BOOL type, NSIndexPath *indexPath) {
+            __strong typeof(self) strongSelf = self;
+            FriendStatusBean *friendStatusBean = strongSelf.friendStatuses[indexPath.row];
             //初始化
             BOOL needUpdate = false;
-            for (FriendStatusBean *tmp in weakSelf.friendStatuses) {
+            for (FriendStatusBean *tmp in strongSelf.friendStatuses) {
                 if(type && tmp == friendStatusBean) {
                     needUpdate = true;
                     continue;
                 }
                 tmp.isCommentStatus = NO;
             }
-            if(type){
+            if (type) {
                 friendStatusBean.isCommentStatus = !friendStatusBean.isCommentStatus;
             }
             
             CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:friendStatusBean];
-            [self.cacheHeigtsDict setObject:@(height) forKey:indexPath];
-            
-            [weakSelf.tableView reloadData];
+            [strongSelf.cacheHeigtsDict setObject:@(height) forKey:indexPath];
+            [strongSelf.tableView reloadData];
         };
     }
     
-    if(!cell.returnSelectedCellBlock){
+    if(!cell.returnSelectedCellBlock) {
         cell.returnSelectedCellBlock = ^(){
-            [weakSelf.singleWindow endEditing:YES];
+            __strong typeof(self) strongSelf = self;
+            [strongSelf.singleWindow endEditing:YES];
         };
     }
     
     return cell;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     id value = [self.cacheHeigtsDict objectForKey:indexPath];
-    
-    if(!value){
+    if (!value) {
         CGFloat height = [FriendStatusCell calocCellHeightWithFriendStatus:self.friendStatuses[indexPath.row]];
         [self.cacheHeigtsDict setObject:@(height) forKey:indexPath];
     }

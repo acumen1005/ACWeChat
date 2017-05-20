@@ -16,7 +16,7 @@
 
 @property (strong,nonatomic) UIImageView *image;
 
-- (void) generateSmallImage:(UIImageView *) imageView;
-- (void) setNumberLabelWithNumber:(NSInteger) number;
+- (void)generateSmallImage:(UIImageView *)imageView;
+- (void)setNumberLabelWithNumber:(NSInteger)number;
 
 @end

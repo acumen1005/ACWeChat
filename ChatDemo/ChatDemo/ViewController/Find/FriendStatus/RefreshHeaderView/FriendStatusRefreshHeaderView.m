@@ -78,7 +78,7 @@ static const CGFloat criticalY = -60.0f;
         }
     }
     
-    if (self.refreshState == CommonRefreshViewStateDidRefresh){
+    if (self.refreshState == CommonRefreshViewStateDidRefresh) {
         return;
     }
     

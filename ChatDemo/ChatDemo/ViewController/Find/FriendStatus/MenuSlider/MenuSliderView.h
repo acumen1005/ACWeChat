@@ -14,9 +14,9 @@ typedef void (^OnClickToCommentBlock)();
 
 @interface MenuSliderView : UIView
 
-- (void) drawMenuSliderView;
-- (void) setShow:(BOOL) show;
-- (BOOL) show;
+- (void)drawMenuSliderView;
+- (void)setShow:(BOOL)show;
+- (BOOL)show;
 
 @property (copy,nonatomic) UpdateTableViewCellBlock updateTableViewCellBlock;
 @property (copy,nonatomic) OnClickToGiveLikeBlock onClickToGiveLikeBlock;
