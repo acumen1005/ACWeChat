@@ -21,8 +21,7 @@
 
 @implementation ACBrowseCell
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
        
         _numberLabel = [[UILabel alloc] init];
@@ -36,27 +35,27 @@
 
 #pragma mark - 标号设置
 
-- (void) setNumberLabelWithNumber:(NSInteger) number {
+- (void)setNumberLabelWithNumber:(NSInteger) number {
 
-    [_numberLabel setText:[NSString stringWithFormat:@"%ld/%ld",(long)number,(long)_sum]];
-    [_numberLabel setTextColor:[UIColor whiteColor]];
-    [_numberLabel setTextAlignment:NSTextAlignmentCenter];
-    [_numberLabel setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5]];
-    [_numberLabel setFont:[UIFont boldSystemFontOfSize:_font]];
-    [_numberLabel sizeToFit];
+    [self.numberLabel setText:[NSString stringWithFormat:@"%ld/%ld",(long)number,(long)_sum]];
+    [self.numberLabel setTextColor:[UIColor whiteColor]];
+    [self.numberLabel setTextAlignment:NSTextAlignmentCenter];
+    [self.numberLabel setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5]];
+    [self.numberLabel setFont:[UIFont boldSystemFontOfSize:self.font]];
+    [self.numberLabel sizeToFit];
     
-    [_numberLabel setWidth:_numberLabel.width + 20];
-    [_numberLabel setHeight:_numberLabel.height + 10];
-    [_numberLabel setTop:30.0];
-    [_numberLabel setCenterX:kScreenWidth/2.0];
-    [[_numberLabel layer] setMasksToBounds:YES];
-    [[_numberLabel layer] setCornerRadius:_numberLabel.height/2.0];
+    [self.numberLabel setWidth:self.numberLabel.width + 20];
+    [self.numberLabel setHeight:self.numberLabel.height + 10];
+    [self.numberLabel setTop:30.0];
+    [self.numberLabel setCenterX:kScreenWidth/2.0];
+    [[self.numberLabel layer] setMasksToBounds:YES];
+    [[self.numberLabel layer] setCornerRadius:self.numberLabel.height/2.0];
 }
 
 
 #pragma mark - 小图设置
 
-- (void) generateSmallImage:(UIImageView *) imageView{
+- (void)generateSmallImage:(UIImageView *) imageView{
     
     [self.image setImage:imageView.image];
     
@@ -65,21 +64,13 @@
     
     [self.image setSize:CGSizeMake(width, height)];
     [self.image setCenter:CGPointMake(kScreenWidth/2.0, kScreenHeight/2.0)];
-    
-//    [self.image setSize:imageView.size];
-//    [self.image setCenter:CGPointMake(kScreenWidth/2.0, kScreenHeight/2.0)];
-
-//    [self enlargeImageSize];
-    
-//    [self performSelector:@selector(enlargeImageSize) withObject:nil afterDelay:0.1f];
 }
 
 #pragma mark - 变大图
 
-- (void) enlargeImageSize {
+- (void)enlargeImageSize {
 
     [UIView animateWithDuration:0.3 animations:^{
-        
         float width = kScreenWidth - 10.0;
         float height = (width / self.image.image.size.width) * self.image.image.size.height;
         

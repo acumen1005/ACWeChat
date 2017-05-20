@@ -32,13 +32,10 @@ NSString *const ResultNotification = @"ResultNotification";
 
 #pragma mark - lazy load
 
-- (XMPPStream *)xmppStream
-{
-    if (_xmppStream == nil) {
+- (XMPPStream *)xmppStream {
+    if (!_xmppStream) {
         _xmppStream = [[XMPPStream alloc] init];
-        
-        // 实例化
-        _xmppReconnect = [[XMPPReconnect alloc]init];
+        _xmppReconnect = [[XMPPReconnect alloc] init];
         _xmppRosterCoreDataStorage = [XMPPRosterCoreDataStorage sharedInstance];
         _xmppRoster = [[XMPPRoster alloc]initWithRosterStorage:_xmppRosterCoreDataStorage dispatchQueue:dispatch_get_global_queue(0, 0)];
         
@@ -78,9 +75,7 @@ NSString *const ResultNotification = @"ResultNotification";
 #pragma mark - 连接方法
 /** 断开连接 */
 - (void)disconnect {
-    // 通知服务器，用户下线
     [self goOffline];
-    
     [self.xmppStream disconnect];
 }
 
@@ -92,19 +87,15 @@ NSString *const ResultNotification = @"ResultNotification";
     
     // 判断hostName & userName 是否有内容
     if (hostName.length == 0 || username.length == 0) {
-        // 用户偏好中没有记录
         return NO;
     }
     
     // 保存块代码
     self.failed = failed;
     
-    // 设置xmppStream的连接信息
     self.xmppStream.hostName = hostName;
     username = [username stringByAppendingFormat:@"@%@", hostName];
     self.xmppStream.myJID = [XMPPJID jidWithString:username];
-    
-    // 连接到服务器，如果连接已经存在，则不做任何事情
     [self.xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:NULL];
     
     return YES;
@@ -113,24 +104,17 @@ NSString *const ResultNotification = @"ResultNotification";
 #pragma mark - 用户的上线和下线
 - (void)goOnline {
     XMPPPresence *p = [XMPPPresence presence];
-    
     [self.xmppStream sendElement:p];
 }
 
 - (void)goOffline {
     XMPPPresence *p = [XMPPPresence presenceWithType:@"unavailable"];
-    
     [self.xmppStream sendElement:p];
 }
 
 - (void)logout {
-    // 所有用户信息是保存在用户偏好，注销应该删除用户偏好记录
     [self clearUserDefaults];
-    
-    // 下线，并且断开连接
     [self disconnect];
-    
-    // 在主线程利用通知发送广播
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:ResultNotification object:
             @{DICT_KEY_LOGIN_TYPE:@(1),
@@ -140,44 +124,34 @@ NSString *const ResultNotification = @"ResultNotification";
 
 #pragma mark - xmpp流代理方法
 /** 连接成功时调用 */
-- (void)xmppStreamDidConnect:(XMPPStream *)sender
-{
+- (void)xmppStreamDidConnect:(XMPPStream *)sender {
     NSLog(@"连接成功");
     
     NSString *password = [[NSUserDefaults standardUserDefaults] valueForKey:PasswordKey];
     
     if (self.isRegisterUser) {
-        // 将用户密码发送给服务器，进行用户注册
         [self.xmppStream registerWithPassword:password error:NULL];
-        // 将注册标记复位
         self.isRegisterUser = NO;
     } else {
-        // 将用户密码发送给服务器，进行用户登录
         NSLog(@"%@",password);
         [self.xmppStream authenticateWithPassword:password error:NULL];
     }
 }
 
 /** 断开连接时调用 */
-- (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error
-{
+- (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error {
     NSLog(@"断开连接");
-    
-    // 在主线程更新UI(用户自己断开的不算)
+
     if (self.failed && error) {
         dispatch_async(dispatch_get_main_queue(), ^ {self.failed(@"无法连接到服务器");});
     }
 }
 
 /** 授权成功时调用 */
-- (void)xmppStreamDidAuthenticate:(XMPPStream *)sender
-{
+- (void)xmppStreamDidAuthenticate:(XMPPStream *)sender {
     NSLog(@"授权成功");
-    
-    // 通知服务器用户上线
     [self goOnline];
     
-    // 在主线程利用通知发送广播
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:ResultNotification object:
          @{DICT_KEY_LOGIN_TYPE:@(1),
@@ -186,44 +160,33 @@ NSString *const ResultNotification = @"ResultNotification";
 }
 
 /** 授权失败时调用 */
--(void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(DDXMLElement *)error
-{
+-(void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(DDXMLElement *)error {
     NSLog(@"授权失败");
     
-    // 断开与服务器的连接
     [self disconnect];
-    // 清理用户偏好
     [self clearUserDefaults];
-    // 在主线程更新UI
+    
     if (self.failed) {
         dispatch_async(dispatch_get_main_queue(), ^ {self.failed(@"用户名或者密码错误！");});
     }
-    // 在主线程利用通知发送广播
+
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:ResultNotification object:@(NO)];
     });
 }
 
 /** 注册成功时调用 */
-- (void)xmppStreamDidRegister:(XMPPStream *)sender
-{
+- (void)xmppStreamDidRegister:(XMPPStream *)sender {
     NSLog(@"注册成功");
     
     [self logout];
     [self clearUserDefaults];
-    //    // 让用户上线
-    //    [self goOnline];
-    
-    // 发送通知，切换控制器
-    dispatch_async(dispatch_get_main_queue(), ^{
-    });
-    
+
     dispatch_async(dispatch_get_main_queue(), ^ {self.failed(@"注册成功！～请登录");});
 }
 
 /** 注册失败时调用 */
-- (void)xmppStream:(XMPPStream *)sender didNotRegister:(DDXMLElement *)error
-{
+- (void)xmppStream:(XMPPStream *)sender didNotRegister:(DDXMLElement *)error {
     NSLog(@"注册失败");
     
     if (self.failed) {
@@ -234,8 +197,7 @@ NSString *const ResultNotification = @"ResultNotification";
 #pragma mark - 清除的方法
 
 /** 清除用户的偏好 */
-- (void)clearUserDefaults
-{
+- (void)clearUserDefaults {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults]; // $$$$$
     
     [defaults removeObjectForKey:UserNameKey];
@@ -247,8 +209,7 @@ NSString *const ResultNotification = @"ResultNotification";
 }
 
 /** 销毁调用 */
-- (void)teardownXmppStream
-{
+- (void)teardownXmppStream {
     // 删除代理 禁用模块 清理缓存
     [self.xmppStream removeDelegate:self];
     [self.xmppRoster removeDelegate:self];
@@ -264,8 +225,7 @@ NSString *const ResultNotification = @"ResultNotification";
     
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [self teardownXmppStream];
 }
 
@@ -293,8 +253,7 @@ NSString *const ResultNotification = @"ResultNotification";
     [vc presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)xmppRoomDidCreate:(XMPPRoom *)sender{
-    
+- (void)xmppRoomDidCreate:(XMPPRoom *)sender {
     NSLog(@"房间创建成功");
     
     [self sendDefaultRoomConfig];
@@ -302,8 +261,7 @@ NSString *const ResultNotification = @"ResultNotification";
 
 #pragma mark - 永久房间的配置
 
--(void)sendDefaultRoomConfig
-{
+-(void)sendDefaultRoomConfig {
     
     NSXMLElement *x = [NSXMLElement elementWithName:@"x" xmlns:@"jabber:x:data"];
     
@@ -332,8 +290,7 @@ NSString *const ResultNotification = @"ResultNotification";
 
 #pragma mark - IQ请求
 
-- (void)getExistRoom
-{
+- (void)getExistRoom {
     NSXMLElement *queryElement= [NSXMLElement elementWithName:@"query" xmlns:@"http://jabber.org/protocol/disco#items"];
     NSXMLElement *iqElement = [NSXMLElement elementWithName:@"iq"];
     [iqElement addAttributeWithName:@"type" stringValue:@"get"];
@@ -356,7 +313,7 @@ NSString *const ResultNotification = @"ResultNotification";
 
 #pragma mark - IQ响应
 
-- (BOOL)xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq{
+- (BOOL)xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq {
     
     NSXMLElement *queryElement = [iq elementForName: @"query" xmlns: @"http://jabber.org/protocol/disco#items"];
     

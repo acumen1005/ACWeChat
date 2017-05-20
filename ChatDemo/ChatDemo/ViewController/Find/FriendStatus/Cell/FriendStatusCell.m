@@ -391,7 +391,7 @@ NSString *const kOperationButtonClickedNotification = @"kOperationButtonClickedN
 
 #pragma mark - 通知方法
 
-- (void)receiveOperationButtonClickedNotification:(NSNotification *) notification {
+- (void)receiveOperationButtonClickedNotification:(NSNotification *)notification {
     UIButton *btn = [notification object];
     if (btn != self.moreButton && self.menuSliderView.show) {
         self.menuSliderView.show = NO;

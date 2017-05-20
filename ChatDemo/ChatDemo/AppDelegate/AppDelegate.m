@@ -32,40 +32,10 @@
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
-    [self getFindStatusWithCompation:^(BOOL flag) {
-        
-    }];
-    
+  
     return YES;
 }
-
-- (void) getFindStatusWithCompation:(void (^)(BOOL flag)) compation{
-    
-//    NSString *userId = @"280";
-    NSMutableDictionary *mDict = [[NSMutableDictionary alloc] init];
-//    [mDict setObject:userId forKey:@"id"];
-    
-    NSString *url = [NSString stringWithFormat:@"https://www.baidu.com"];
-    
-    BaseRequest *request = [BaseRequest initBaseRequestWithUrl:url Type:BaseRequestGet];
-    request.paramDict = mDict;
-    
-    [request sendRequestWithReturnBlock:^(id returnValue) {
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-           NSLog(@"---- %@",returnValue);
-        });
-        
-        compation(true);
-        
-    } WithFailureBlock:^{
-        NSLog(@"---- error");
-        compation(true);
-    }];
-}
-
-- (void)notificationToChange:(NSNotification *)notification{
+- (void)notificationToChange:(NSNotification *)notification {
     
     id isChange = notification.object;
     NSDictionary *dict = (NSDictionary *)isChange;

@@ -229,7 +229,7 @@
  *
  **/
 
-- (NSAttributedString *) generateAttributedStringWithCommentBean:(CommentBean *)commentBean {
+- (NSAttributedString *)generateAttributedStringWithCommentBean:(CommentBean *)commentBean {
     NSString *string = [NSString stringWithFormat:@"%@回复%@：%@",commentBean.fromUserName,commentBean.toUserName,commentBean.commentContent];
     
     UIColor *highLightColor = [UIColor blueColor];
